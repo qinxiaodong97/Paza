@@ -1,0 +1,489 @@
+<!-- BEGIN app block: shopify://apps/wholesale-gorilla/blocks/wsg-header/c48d0487-dff9-41a4-94c8-ec6173fe8b8d -->
+<!-- check for active ws customer -->
+<!-- this now downcases to compare so we are no longer concerned about case matching in tags -->
+<!-- redirect to ws-cart -->
+<!-- added a check for a certain shop to skip the redirect -->    
+<!-- ajax data -->           
+<script type="lazyload_int">
+    // here we need to check if we on a previw theme and set the shop config from the metafield    
+    const wsgShopConfigMetafields = {
+        shopConfig : {"btnClasses":"button","hideDomElements":[".hideWsg","#cart-notification-form button",".boost-sd__cart-btn-group button:first-of-type",".boost-pfs-search-suggestion-product-price"],"wsgPriceSelectors":{"productPrice":[".price",".boost-pfs-quickview-price-wrapper",".product-price"],"collectionPrices":[".price ",".cbb-also-bought-product-price-container"]},"autoInstall":true,"wsgAjax":true,"wsgMultiAjax":false,"wsgAjaxSettings":{"price":".cart__line-info--total-price","linePrice":".cart__line-info--total-price","subtotal":".wsgAjaxSub","checkoutBtn":".cart__footer .cart__submit"},"wsgSwatch":"","wsgAccountPageSelector":"h1","wsgVolumeTable":".product-form","excludedSections":[],"productSelectors":["#CollectionProductGrid .grid__item",".cbb-also-bought-slider-list .cbb-also-bought-product",".boost-pfs-filter-products .grid__item"],"wsgQVSelector":[".boost-pfs-modal-container"],"fileList":["layout/theme.liquid"],"wsgVersion":6},
+    }
+    let wsgShopConfig = {"btnClasses":"button","hideDomElements":[".hideWsg","#cart-notification-form button",".boost-sd__cart-btn-group button:first-of-type",".boost-pfs-search-suggestion-product-price"],"wsgPriceSelectors":{"productPrice":[".price",".boost-pfs-quickview-price-wrapper",".product-price"],"collectionPrices":[".price ",".cbb-also-bought-product-price-container"]},"autoInstall":true,"wsgAjax":true,"wsgMultiAjax":false,"wsgAjaxSettings":{"price":".cart__line-info--total-price","linePrice":".cart__line-info--total-price","subtotal":".wsgAjaxSub","checkoutBtn":".cart__footer .cart__submit"},"wsgSwatch":"","wsgAccountPageSelector":"h1","wsgVolumeTable":".product-form","excludedSections":[],"productSelectors":["#CollectionProductGrid .grid__item",".cbb-also-bought-slider-list .cbb-also-bought-product",".boost-pfs-filter-products .grid__item"],"wsgQVSelector":[".boost-pfs-modal-container"],"fileList":["layout/theme.liquid"],"wsgVersion":6};
+    if (window.Shopify.theme.role !== 'main') {
+        const wsgShopConfigUnpublishedTheme = wsgShopConfigMetafields[`shopConfig${
+            window.Shopify.theme.id
+        }`];
+        if (wsgShopConfigUnpublishedTheme) 
+            wsgShopConfig = wsgShopConfigUnpublishedTheme; 
+    }
+</script>
+<script type="lazyload_int">
+    // ==========================================
+    //      Set global liquid variables
+    // ==========================================
+    // general variables
+    var wsgVersion = 6.0;
+    var wsgActive = true;
+    var isWsgCustomer = false;
+    var wsgRunCollection;
+    var wsgBetaRestrictedCart = true;
+    var wsgCollectionObserver;
+    var wsgRunProduct;
+    var wsgRunAccount;
+    var wsgRunCart;
+    var wsgCartObserver = false;
+    var wsgShopCountryCode = "US";
+    var wsgRunSinglePage;
+    var wsgRunSignup;
+    var wsgRunSignupV2;
+    // AJAX variables
+    var wsgRunAjax;
+    var wsgAjaxCart;
+    var runProxy;
+    var wsgData = {"translations":{"enable":false,"language":"english","custom":false},"server_link":"https://www.wholesalegorilla.app/shop_assets/wsg-index.js","shop_preferences":{"cart":{"note":{"description":null,"isRequired":null},"poNumber":{"isShow":null,"isRequired":null},"termsAndConditions":{"isEnable":null,"text":null}},"checkInventory":false,"showShipPartial":false,"minOrder":-1,"exclusions":[],"exclusionsAndLocksSettings":{"hidePrices":{"loginToViewPrices":null,"replacementText":null,"link":null},"lockedContent":{"title":"Content Restricted","content":"<p>This content is only available to approved customers. Please <a href=\"/pages/ws-account-login\"><em>log in</em></a> or create an account to view.</p>"}},"hideExclusions":true,"draftNotification":true,"autoBackorder":false,"taxRate":-1,"marketSetting":false,"transitions":{"showTransitions":null,"installedTransitions":null},"retailPrice":{"enable":null,"strikethrough":null,"lowerOpacity":null,"label":null}},"activeTags":[],"hideDrafts":[],"page_styles":{"proxyMargin":0,"btnClasses":"","shipMargin":50},"volume_discounts":{"quantity_discounts":{"enabled":false,"collections":[],"products":[]},"settings":{"product_price_table":{},"custom_messages":{"custom_banner":{"banner_default":true,"banner_input":"Spend {{$}}, receive {{%}} off of your order."},"custom_success":{"success_default":true,"success_input":"Congratulations!  You received {{%}} off of your order!"}}},"enabled":false,"discounts":[]},"shipping_rates":{"itemReservationOnInternational":{"isReserveInventory":false,"isEnabledCustomReservationTime":false,"reserveInventoryDays":60},"internationalMsg":{"title":"Thank you for your order!","message":"Because you are outside of our home country we will calculate your shipping and send you an invoice shortly."},"localPickup":{"isEnabled":false,"minOrderPrice":0,"fee":-1,"pickupTime":"","instructions":"","locations":[]},"localDelivery":{"isEnabled":true,"minOrderPrice":0},"autoApplyLowestRate":true,"isIncludeLocalDeliveryInLowestRate":true,"deliveryTime":"","ignoreAll":false,"ignoreCarrierRates":false,"ignoreShopifyFreeRates":false,"useShopifyDefault":true,"freeShippingMin":-1,"fixedPercent":-1,"flatRate":-1,"handlingFee":-1,"redirectInternational":false},"single_page":{"collapseCollections":true,"menuAction":"exclude","message":"","linkInCart":true,"isShowSku":true,"isShowInventoryInfo":true,"isHideSPOFbtn":false},"net_orders":{"netRedirect":{"title":"Thank you for your order!","message":"","autoEmail":false},"netTag":"","enabled":false,"autoPending":false,"defaultPaymentTermsTemplateId":"","isReserveInventory":false,"isEnabledCustomReservationTime":false,"reserveInventoryDays":60,"netTags":[]},"customer":{"signup":{"autoInvite":false,"autoTags":[],"taxExempt":true},"loginMessage":"Log in to your wholesale account here.","accountMessage":"","redirectMessage":"Keep an eye on your email. As soon as we verify your account we will send you an email with a link to set up your password and start shopping.","accountPendingTitle":"Account Created!"},"quantity":{"cart":{},"migratedToCurrent":false,"collections":[],"products":[]}}
+    var hideDomElements = wsgShopConfig.hideDomElements;
+    var wsgProdData = null
+    // product variables
+    var wsgCustomerTags = null
+    var wsgCollectionsList = null
+    var wsgCustomerId = null
+    // Market and tax variables
+    var wsgCustomerTaxExempt = null
+    var wsgCustomerSelectedMarket = {
+        country: "United States",
+        iso_code: "US"
+    }
+    var wsgPrimaryMarketCurrency = "USD";
+    // money formatting
+    var wsgMoneyFormat = "${{amount}}";
+    var wsgCurrentVariant = null;
+    var wsgAjaxSettings = wsgShopConfig.wsgAjaxSettings;
+    var wsgSwatch = wsgShopConfig.wsgSwatch;
+    var wsgPriceSelectors = wsgShopConfig.wsgPriceSelectors;
+    var wsgVolumeTable = wsgShopConfig.wsgVolumeTable;
+    var wsgUseLegacyCollection = wsgShopConfig.wsgUseLegacyCollection;
+    var wsgQVSelector = wsgShopConfig.wsgQVSelector;
+    var wsgIsEntireStoreLocked = false;
+    var wsgIsLogInToViewPrices = false;
+    // button color settings
+    var embedButtonBg = '#000000';
+    var embedButtonText = '#000000';
+    // Quick Order Form Label settings
+    var embedSPOFLabel = '';
+    // the permanent domain of the shop
+    var shopPermanentDomain = 'shoppzaz.myshopify.com';
+    const wsgShopOrigin = 'https://pzaz.com';
+    // here we need to check whether we need to add local pickup info to cart attributes
+    checkForAddLocalPickupToCartAttributes();
+    // Load WSG script
+    (function() {
+        var loadWsg = function(url, callback) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            // If the browser is Internet Explorer.
+            if (script.readyState) {
+                script.onreadystatechange = function() {
+                    if (script.readyState == "loaded" || script.readyState == "complete") {
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                };
+                // For any other browser.
+            } else {
+                script.onload = function() {
+                    callback();
+                };
+            } script.src = url;
+            document.getElementsByTagName("head")[0].appendChild(script);
+        };
+        loadWsg(wsgData.server_link + "?v=6", function() {})
+    })();
+    // Run appropriate WSG process
+    // === PRODUCT===    
+    // === ACCOUNT ===  
+    // === SPOF ===    
+    // === COLLECTION ===
+    // Run collection on all templates/pages if we're running the 5+ script
+    wsgRunCollection = true;
+    // === AJAX CART ===  
+    if (wsgAjaxSettings && (wsgAjaxSettings.price || wsgAjaxSettings.linePrice || wsgAjaxSettings.subtotal || wsgAjaxSettings.checkoutBtn)) {
+        wsgRunAjax = true;
+    }    
+    // === CART ===   
+    // here we need to check whether we need to hide the price for the unauthorized user
+    document.addEventListener('DOMContentLoaded', function() {
+        const restrictedPageUrl = `${
+            window.Shopify.routes.root
+        }pages/ws-proxy?proxyUrl=/a/wsg/proxy/locked-page`;
+        let change = false;
+        window.addEventListener('scroll', () => {
+            checkForLogInToViewPrices(restrictedPageUrl);
+            if (change) 
+            return change = true;       
+            const collectionPricesSelectors = wsgShopConfig.wsgPriceSelectors.collectionPrices;
+            const priceObserver = new MutationObserver((mutations, observer) => {
+                collectionPricesSelectors.forEach(collectionPriceSelector => {
+                    const elements = document.querySelectorAll(collectionPriceSelector);
+                    if (! elements.length) 
+                        return;           
+                    checkForLogInToViewPrices(restrictedPageUrl);
+                    observer.disconnect();
+                    change = false
+                })
+            });
+            priceObserver.observe(document.querySelector('body'), {
+                subtree: true,
+                childList: true
+            });
+        }, true);
+        document.body.addEventListener('click', () => {
+            if (change) 
+            return
+            change = true;
+            const collectionPricesSelectors = wsgShopConfig.wsgPriceSelectors.collectionPrices;
+            const priceObserver = new MutationObserver((mutations, observer) => {
+                collectionPricesSelectors.forEach(collectionPriceSelector => {
+                    const elements = document.querySelectorAll(collectionPriceSelector);
+                    if (! elements.length) 
+                    return;           
+                    checkForLogInToViewPrices(restrictedPageUrl);
+                    observer.disconnect();
+                    change = false
+                })
+            });
+            priceObserver.observe(document.querySelector('body'), {
+                subtree: true,
+                childList: true
+            });
+        }, true);
+        checkForLogInToViewPrices(restrictedPageUrl);
+        // here we need to check whether the user is not on the locked page
+        const isLockedPage = checkForLockedPages();
+        if (isLockedPage) {
+            const metaElement = document.createElement("meta");
+            metaElement.setAttribute('name', 'robots');
+            metaElement.content = 'noindex';
+            document.getElementsByTagName('head')[0].appendChild(metaElement);
+            window.location.href = restrictedPageUrl;
+        }
+        if (typeof window.embedButtonBg !== undefined && typeof window.embedButtonText !== undefined && window.embedButtonBg !== window.embedButtonText) {
+            const style = document.createElement('style');
+            style.textContent = `
+              .wsg-button-fix,
+              .wsg-toast.default {
+                  background: ${embedButtonBg} !important;
+                  border-color: ${embedButtonBg} !important;
+                  color: ${embedButtonText} !important;
+              }
+              .wsg-inc svg rect,
+              .wsg-dec svg rect {
+                  fill: ${embedButtonBg} !important;
+              }
+              .wsg-inc svg path,
+              .wsg-dec svg path {
+                  fill: ${embedButtonText} !important;
+              }
+              #wsg-quick-order-form .swiper-button-next,
+              #wsg-quick-order-form .swiper-button-prev {
+                  background: ${embedButtonBg} !important;
+              }
+              #wsg-quick-order-form .swiper-button-next svg path,
+              #wsg-quick-order-form .swiper-button-prev svg path {
+                  fill: ${embedButtonText} !important;
+              }
+              #wsg-pagination .wsg-part-previous, 
+              #wsg-pagination .wsg-part-next {
+                  background: ${embedButtonBg} !important;
+              }
+              #wsg-pagination .wsg-part-previous svg path,
+              #wsg-pagination .wsg-part-next svg path {
+                  stroke: ${embedButtonText} !important;
+              }
+              #wsg-pagination a.wsg-pagination-link:hover {
+                  background: ${embedButtonBg} !important;
+              }
+              .wsg-button-fix svg path {
+                  fill: ${embedButtonText} !important;
+              }
+              #wsg-pagination span.wsg-pagination-link {
+                  background: ${embedButtonBg} !important;
+                  color: ${embedButtonText} !important;
+              }
+            `;
+              document.head.appendChild(style);
+        }
+    });
+    function checkForLockedPages() {
+        if (! wsgData.shop_preferences.lockedPages || ! wsgData.shop_preferences.lockedPages.length) 
+        return false;
+        const isAllRetailCustomers = wsgData.shop_preferences.lockedPages.some(lockedPage => {
+            return lockedPage.isAllRetailCustomers
+        });
+        if (! wsgCustomerTags && ! isAllRetailCustomers) 
+        return false;     
+        const whiteListPathParams = [
+            `${
+                window.Shopify.routes.root
+            }account`,
+            `${
+                window.Shopify.routes.root
+            }account/activate`,
+            `${
+                window.Shopify.routes.root
+            }account/login`,
+            `${
+                window.Shopify.routes.root
+            }account/invalid_token`,
+            `${
+                window.Shopify.routes.root
+            }pages/ws-account-login`,
+            `${
+                window.Shopify.routes.root
+            }pages/wholesale-registration-form`,
+            `${
+                window.Shopify.routes.root
+            }pages/ws-account-create`,
+            `${
+                window.Shopify.routes.root
+            }pages/ws-proxy`
+        ];
+        // add allowed paths from metafields
+        if (wsgShopConfig ?. allowPaths) {
+            wsgShopConfig.allowPaths.map(path => {
+                whiteListPathParams.push(path)
+            })
+        }
+        const lockedPages = wsgData.shop_preferences.lockedPages;
+        const isLockedPage = lockedPages.some(lockedPage => {
+            const currPathParams = window.location.pathname;
+            // downcase for comparison
+            const downcasedWsgCustomerTags = wsgCustomerTags ?. map(tag => tag = tag.toLowerCase())
+        if ((lockedPage.isAllRetailCustomers && ! isWsgCustomer) || (lockedPage.isAllWholesaleCustomers && isWsgCustomer) || (wsgCustomerTags && downcasedWsgCustomerTags.includes(lockedPage.customerTag.toLowerCase()))) {
+          if (lockedPage.isEntireStore) {
+            wsgIsEntireStoreLocked = true;
+            if (window.location.pathname.indexOf('account/activate') > -1 || window.location.pathname.indexOf('account/reset') > -1) {
+              return false;
+            }
+            if (! whiteListPathParams.includes(currPathParams)) {
+              return true;
+            }
+          } else {
+            const absoluteUrlRegExp = /^https?:\/\//;
+            const lockedPageRelativeUrls = lockedPage.urls.map(url => {
+              if (absoluteUrlRegExp.test(url)) {
+                const {pathname} = new URL(url);
+                return pathname;
+              }
+              return `${
+                window.Shopify.routes.root
+              }${
+                url.substring(1)
+              }`;
+            })
+            return lockedPageRelativeUrls.includes(currPathParams);
+          }
+        } else {
+          return false;
+        }
+      })
+      return isLockedPage;
+    }
+    function checkForLogInToViewPrices(restrictedPageUrl) {
+      if (! isWsgCustomer && wsgData ?. shop_preferences ?. exclusionsAndLocksSettings ?. hidePrices ?. loginToViewPrices) {
+        wsgIsLogInToViewPrices = true;
+        let {replacementText: wsgReplacementText, link: wsgHidePricesLink} = wsgData.shop_preferences.exclusionsAndLocksSettings.hidePrices;
+
+        // here we need to check whether the URL is not absolute
+        const absoluteUrlRegExp = /^https?:\/\//;
+        if (wsgHidePricesLink) {
+          if (absoluteUrlRegExp.test(wsgHidePricesLink)) {
+            if (wsgHidePricesLink.indexOf(wsgShopOrigin) >= 0 && wsgHidePricesLink.indexOf(window
+              .Shopify
+              .routes
+              .root
+              .substring(0, window
+                .Shopify
+                .routes
+                .root
+                .length - 1)) === -1) {
+              wsgHidePricesLink = wsgHidePricesLink.slice(0, wsgShopOrigin.length) + window.Shopify.routes.root + wsgHidePricesLink.slice(wsgShopOrigin.length + 1);
+            }
+          } else {
+            wsgHidePricesLink = `https://${shopPermanentDomain}${
+              window.Shopify.routes.root
+            }${
+              wsgHidePricesLink.substring(1)
+            }`;
+          }
+        }
+
+        // next step, we need to check whether we on the /cart or pages/ws-cart
+        // or pages/ws-quick-order-form and redirect to the restricted content page.
+        const currPathParams = window.location.pathname;
+        const cartPagesPath = [`${
+            window.Shopify.routes.root
+          }cart`, `${
+            window.Shopify.routes.root
+          }pages/ws-cart`, `${
+            window.Shopify.routes.root
+          }pages/ws-quick-order-form`];
+
+        if (cartPagesPath.includes(currPathParams)) {
+          window.location.href = restrictedPageUrl;
+        }
+        const wsgHidePricesElement = wsgHidePricesLink
+          ? `<a href="${wsgHidePricesLink}">${wsgReplacementText}</a>`
+          : wsgReplacementText;
+        if (wsgShopConfig ?. wsgPriceSelectors ?. productPrice ?. length) {
+          wsgShopConfig.wsgPriceSelectors.productPrice.forEach(productPriceSelector => {
+            const elements = document.querySelectorAll(productPriceSelector);
+            if (! elements.length) 
+              return;
+            
+
+
+            elements.forEach(element => {
+              Element.prototype.appendAfter = function(element) {
+                element.parentNode.insertBefore(this, element.nextSibling);
+              },
+              false;
+              var newElement = element.parentElement.cloneNode(true);
+              newElement.appendAfter(element.parentElement);
+              newElement.classList.add('wsg-hide-prices-element');
+              newElement.innerHTML = wsgHidePricesElement;
+              newElement.style.position = "relative";
+              newElement.style.zIndex = "10";
+              element.parentElement.style.display = "none";
+            })
+          })
+        }
+        if (wsgShopConfig ?. wsgPriceSelectors ?. collectionPrices ?. length) {
+          const collectionPricesSelectors = wsgShopConfig.wsgPriceSelectors.collectionPrices;
+          const recomendedCollectionExists = document.querySelectorAll(collectionPricesSelectors[0]).length;
+          if (recomendedCollectionExists) {
+            collectionPricesSelectors.forEach(collectionPriceSelector => {
+              const elements = document.querySelectorAll(collectionPriceSelector);
+              if (! elements.length) 
+                return;
+              
+
+
+              elements.forEach(element => {
+                element.style.position = "relative";
+                element.style.zIndex = "10";
+                element.innerHTML = wsgHidePricesElement;
+              });
+            });
+          } else {
+            const observer = new MutationObserver((mutations, observer) => {
+              collectionPricesSelectors.forEach(collectionPriceSelector => {
+                const elements = document.querySelectorAll(collectionPriceSelector);
+                if (! elements.length) 
+                  return;
+                
+
+
+                elements.forEach(element => {
+                  element.style.position = "relative";
+                  element.style.zIndex = "10";
+                  element.innerHTML = wsgHidePricesElement;
+                });
+                observer.disconnect();
+              })
+            });
+            observer.observe(document.querySelector('body'), {
+              subtree: true,
+              childList: true
+            });
+          }
+        }
+      }
+    }
+
+    // Save the Expected pickup time and Pickup instructions as cart attributes
+    function checkForAddLocalPickupToCartAttributes() {
+      const {attributes: wsgCartAttributes} = {"note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[],"checkout_charge_amount":0};
+      const wsgShippingRatesData = wsgData.shipping_rates;
+
+      const updatesData = {
+        attributes: {}
+      };
+      let shouldUpdateCartAttributes = false;
+
+      if ((wsgShippingRatesData.useShopifyDefault || ! wsgShippingRatesData ?. localPickup ?. isEnabled) && (wsgCartAttributes.hasOwnProperty('localPickupTime') || wsgCartAttributes.hasOwnProperty('localPickupInstructions'))) {
+        updatesData.attributes.localPickupTime = '';
+        updatesData.attributes.localPickupInstructions = '';
+        shouldUpdateCartAttributes = true;
+      }
+
+      if (! wsgShippingRatesData.useShopifyDefault && wsgShippingRatesData ?. localPickup ?. isEnabled) {
+        if (wsgShippingRatesData ?. localPickup ?. pickupTime !== wsgCartAttributes.localPickupTime) {
+          updatesData.attributes.localPickupTime = wsgShippingRatesData ?. localPickup.pickupTime;
+          shouldUpdateCartAttributes = true;
+        }
+        if (wsgShippingRatesData ?. localPickup ?. instructions !== wsgCartAttributes.localPickupInstructions) {
+          updatesData.attributes.localPickupInstructions = wsgShippingRatesData ?. localPickup.instructions;
+          shouldUpdateCartAttributes = true;
+        }
+      }
+
+      if (shouldUpdateCartAttributes) {
+        fetch('/cart/update.js', {
+          method: 'POST',
+          credentials: 'same-origin',
+          body: JSON.stringify(updatesData),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+      }
+    }
+</script>
+<!-- Set styles -->
+<style>.cart-notification{display:none}</style>
+<!-- product data -->  
+<!--
+  If a user attempts to visit a product page for an excluded product, we should show them the Restricted Product page
+-->
+<!-- BEGIN app snippet: wsg-exclusions -->
+<script type="lazyload_int">
+    const currentPageUrl = "https://pzaz.com/";
+    const wsgExclusionConfig = {
+        currentPageUrl: currentPageUrl,
+        customerTags: wsgCustomerTags,
+        productExclusionTags: wsgData.shop_preferences.exclusions,
+        tagsOverrideExclusions: wsgData.shop_preferences.tagsOverrideExclusions || [],
+        isWsgCustomer: isWsgCustomer,
+        //areas we do not want exclusions to run. edge cases, for example hidden products within the 'head' tag.  Any time weird parts of site are disappearing
+        excludedSections: wsgShopConfig.excludedSections,
+        //used to be col-item, usually product grid item. If a collection isn't repricing OR exclusions leaves gaps.  if you set this for 1, you have to set for all.
+        productSelectors: wsgShopConfig.productSelectors // '.grid__item', '.predictive-search__list-item'
+    }
+    var loadExclusions = function (url, callback) {
+        var script = document.createElement("script");
+        script.setAttribute("defer", "")
+        script.type = "text/javascript";
+        // If the browser is Internet Explorer.
+        if (script.readyState) {
+            script.onreadystatechange = function () {
+                if (script.readyState == "loaded" || script.readyState == "complete") {
+                    script.onreadystatechange = null;
+                    callback();
+                }
+            };
+            // For any other browser.
+        } else {
+            script.onload = function () {
+                callback();
+            };
+        }
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    };
+    loadExclusions(wsgData.server_link.split("wsg-index.js")[0] + "wsg-exclusions.js?v=6", function () {
+    })
+</script><!-- END app snippet -->  
+<style>.wsg-toast,.wsg-toast.default{background:#202123;color:#e3e5e7}.product--no-media .wsg-hide-prices-element,.wsg-toast{text-align:center}.wsg-toast{position:fixed;z-index:10;bottom:23px;left:50%;transform:translateX(-50%);border-radius:8px;padding:16px;align-items:center;justify-content:center;font-weight:400;font-size:20px;line-height:28px;display:none;max-width:90%;width:fit-content}.wsg-toast.error{background:red;color:#e3e5e7}</style>
+<!-- END app app block -->
+<script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/fa84d944-b138-4928-b9a8-5e9d18d7fcae/0.45.0/assets/wsg-dependencies.js"></script>

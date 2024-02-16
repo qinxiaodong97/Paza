@@ -1,0 +1,65 @@
+{{ 'collage.css' | asset_url | stylesheet_tag }}
+
+<div class="container collage-wrapper">
+  <div class="collage">
+    <div class="bg-blue collage-cta" id="collage-item-1">
+      <h1 class="home-title collage-title">
+        Energy<br>
+        Your Way
+      </h1>
+      <p class="fw-body-bold collage-copy">
+        Pzaz powers up creatives, athletes, students, professionals, travelers, and entertainers.
+      </p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+    <div class="bg-red" id="collage-item-2">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/berry-blast-masc-model-1-squooshed.jpg?v=1675956656"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-dark" id="collage-item-3">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/model-group-shot-1-squooshed.jpg?v=1675956655"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-red" id="collage-item-4">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/xxxtra-strong-masc-model-2-squooshed.jpg?v=1675958903"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-dark" id="collage-item-5">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/berry-blast-fem-model-3-squooshed.jpg?v=1675958845"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-gray" id="collage-item-6">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/super-sour-fem-model-1-squooshed.jpg?v=1675956655"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-red  collage-cta" id="collage-item-7">
+      <h1 class="home-title collage-title">AFFORDABLE</h1>
+      <p class="fw-body-bold collage-copy">Every spray costs less than $0.03.</p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,209 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+{% if section.settings.show_on_only_product == true %}
+{% if template.name == 'product' %}
+  {% if section.settings.content != blank %}
+  <div class="header-banner" style="background: {{section.settings.background}}">
+    {{section.settings.content }}
+  </div>
+  {% endif %}
+  <style>
+    .header-banner{
+      padding: 10px 20px;
+      border-bottom: solid 1px #000;
+      font-weight: 500;
+      position: fixed;
+      top: 0px;
+      width: 100%;
+      z-index: 1000;
+      font-size: 14px;
+      text-align:center;
+    }
+    .header{
+      top: 44px !important;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .header-banner{
+        padding: 10px 60px;
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.6;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 1000;
+      }
+      .header, .sticky-submit-wrapper{
+        top: 54px !important;
+      }
+    }
+  </style>
+  {% endif %}
+{% else %}
+  {% if section.settings.content != blank %}
+    <div class="header-banner" style="background: {{section.settings.background}}">
+      {{section.settings.content }}
+    </div>
+    {% endif %}
+    <style>
+      .header-banner{
+        padding: 10px 20px;
+        border-bottom: solid 1px #000;
+        font-weight: 500;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 1000;
+        font-size: 14px;
+        text-align:center;
+      }
+      .header{
+        top: 44px !important;
+      }
+
+      @media screen and (min-width: 1024px) {
+        .header-banner{
+          padding: 10px 60px;
+          font-size: 19px;
+          font-weight: 500;
+          line-height: 1.6;
+          position: fixed;
+          top: 0px;
+          width: 100%;
+          z-index: 1000;
+        }
+        .header, .sticky-submit-wrapper{
+          top: 54px !important;
+        }
+      }
+    </style>
+  {% endif %}
+<div class="header">
+  
+  <a
+    class="header__logo"
+    {% if template.name != 'index' %}
+      href="/"
+    {% endif %}
+  >
+    <img
+      src="{{ 'logo_breathspray.png' | asset_url }}"
+      alt="Logo"
+      id="logo-image"
+      width="auto"
+      height="auto"
+      loading="lazy"
+    >
+
+    <img
+      src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/B3D94728-6F39-40F3-9E62-48E38B249BD5_b26b8f78-786f-40dd-a870-517969d7c4b2.gif?v=1672863371"
+      alt="Logo"
+      id="logo-gif"
+      width="auto"
+      height="auto"
+      loading="lazy"
+    >
+  </a>
+  <a class="cart-toggle" data-cart-view="data-cart-view">
+    {% render 'icon-cart' %}
+    <span class="cart-toggle__quantity" data-ajax-cart-section>{{ cart.item_count }}</span>
+  </a>
+
+  <a class="menu-toggle">
+    {% render 'icon-menu' %}
+  </a>
+</div>
+
+{% style %}
+  .header {
+    transition: all 0.3s ease-out;
+    /* background-color: #fff; */
+    /* z-index: -1; */
+  }
+  .header.hide {
+    transform: translateY(-100%);
+    transition: 0.3s;
+  }
+
+  .header.shrink {
+    transform: scale(0.8) translateY(-32px);
+  }
+
+  /* .header__logo.shrink {
+    transform: scale(0.8) translateY(-32px);
+  } */
+{% endstyle %}
+
+<script>
+  {% comment %} document.querySelectorAll('.header__logo').forEach((logo) => {
+    logo.addEventListener('click', () => {
+     window.scrollTop = 0;
+    });
+  }); {% endcomment %}
+  let doc = document.documentElement;
+  let w = window;
+
+  let prevScroll = w.scrollY || doc.scrollTop;
+  let curScroll;
+  let direction = 0;
+  let prevDirection = 0;
+  let header = document.querySelector('.header');
+  function checkScroll() {
+    /*
+     ** Find the direction of scroll
+     ** 0 - initial, 1 - up, 2 - down
+     */
+
+    curScroll = w.scrollY || doc.scrollTop;
+    if (curScroll > prevScroll) {
+      //scrolled up
+      direction = 2;
+    } else if (curScroll < prevScroll) {
+      //scrolled down
+      direction = 1;
+    }
+
+    if (direction !== prevDirection) {
+      toggleHeader(direction, curScroll);
+    }
+
+    prevScroll = curScroll;
+  }
+
+  function toggleHeader(direction, curScroll) {
+    if (direction === 2 && curScroll > 100) {
+      {% comment %} document.querySelector('.header').classList.add('hide'); {% endcomment %}
+      prevDirection = direction;
+    } else if (direction === 1) {
+      {% comment %} document.querySelector('.header').classList.remove('hide'); {% endcomment %}
+      prevDirection = direction;
+    }
+  }
+  window.addEventListener('scroll', checkScroll);
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Content",
+      "default": "Buy 5 tubes and unlock free shipping + gifts..."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#FDFF02"
+    },
+    {
+      "type": "checkbox",
+      "label": "Show on only Product",
+      "id": "show_on_only_product",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

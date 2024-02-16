@@ -1,0 +1,188 @@
+ <script src="{{ 'faq.js' | asset_url }}" defer></script>
+{% style %}
+  .faqs {
+    margin-bottom: 40px;
+    border-radius: 10px;
+    /* margin-left: 2rem;
+    margin-right: 2rem; */
+  }
+
+  .faqs__wrapper {
+    margin-inline: auto;
+    padding: 0px 20px;
+  }
+
+  .faqs__heading {
+    font-size: var(--fs-base);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    margin: 1rem 1rem 0;
+    display: inline-block;
+    background: black;
+    color: white;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  @media (min-width: 768px) {
+    
+    .faqs__heading {
+      font-size: var(--fs-lg);
+    }
+  }
+  @media (min-width: 1280px) {
+    .faqs__wrapper {
+      padding: 0px;
+    }
+  }
+  .faqs__list {
+    list-style: none;
+    padding: 1rem 0rem;
+    margin: 0;
+  }
+
+  .faqs__item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
+    margin-left: 5px;
+  }
+  .faqs__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .faqs__question .minus{
+    display: none;
+  }
+  .faqs__question .plus{
+    display: block;
+  }
+  .faqs__question.active .minus{
+    display: block;
+  }
+  .faqs__question.active .plus{
+    display: none;
+  }
+  .faqs__answer p:first-child {
+    margin-top: 0.75em;
+  }
+
+  .faqs__question h3 {
+    line-height: 1.5;
+    font-size: var(--fs-lg, 18px);
+    font-size: clamp(var(--fs-lg, 18px), 15.8873239437px + 0.4225352113vw, 24px);
+    /* white-space: nowrap; */
+    margin-right: 1rem;
+  }
+
+  .faqs__item:first-child {
+    padding-top: 0;
+  }
+  .faqs__item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .faqs__button {
+    background: black;
+    border-radius: 3px;
+    min-width: 30px;
+    height: 25px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .faqs__button:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  [data-answer] {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+  }
+
+  [data-answer].active {
+    max-height: 500px;
+    height: auto;
+    transition: max-height 1s ease-out;
+  }
+{% endstyle %}
+<div class="faqs__wrapper  container">
+  <div class="faqs">
+    {% if section.settings.title != blank %}
+    <h2 class="faqs__heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    <ul class="faqs__list">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'question' %}
+            <li class="faqs__item" data-question>
+              <div class="faqs__question">
+                <h3>{{ block.settings.question }}</h3>
+                <button class=" faqs__button plus ">+</button>
+                <button class=" faqs__button minus ">-</button>
+              </div>
+              <div class="faqs__answer flow" style="--flow-gap:1em;" data-answer>
+                {{ block.settings.answer }}
+              </div>
+            </li>
+        {% endcase %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Faq",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Group Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "question",
+      "type": "question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Why is that new zazz so delicous?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Maxxie and Jonah whippin in the kitchen</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Faq",
+      "settings": {
+        "title": "FAQs"
+      },
+      "blocks": [
+        {
+          "type": "question"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

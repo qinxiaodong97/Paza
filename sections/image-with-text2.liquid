@@ -1,0 +1,73 @@
+
+{{ 'text-with-image.css' | asset_url | stylesheet_tag }}
+
+<div class="text-with-image2" style="background: {{section.settings.background}};">
+    <div class="container text-with-image">
+        <div class="twi-left ">
+            {% if section.settings.desktop_image != blank %}
+                <img class="mb-hidden" src="{{section.settings.desktop_image |  img_url: 'master'}}" loading="lazy">
+            {% endif %}
+            {% if section.settings.mobile_image != blank %}
+                <img class="dk-hidden" src="{{section.settings.mobile_image |  img_url: 'master'}}" loading="lazy">
+            {% endif %}
+        </div>
+        <div class="twi-right"> 
+            {% for block in section.blocks %}
+                {% if block.settings.title != blank %}
+                    <div class="twi-right-item">
+                        <p>{{block.settings.title}}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+{% schema %}
+{
+  "name": "Image with text 2",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "color",
+        "id": "background",
+        "label": "Background"
+    },
+    {
+      "type": "image_picker",
+      "label": "Desktop Image",
+      "id": "desktop_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "mobile_image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Title",
+          "id": "title",
+          "default": "Every order ships with a reusable mesh bag and stickers to decorate."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text 2"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

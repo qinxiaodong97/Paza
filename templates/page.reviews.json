@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_reviews",
+      "blocks": {
+        "40f3fddc-7de1-4048-8046-4cc64714d4ad": {
+          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-agg-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "hide_thumbnails": true,
+            "product_handle": "",
+            "aggregated": true,
+            "data-limit": 20,
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "40f3fddc-7de1-4048-8046-4cc64714d4ad"
+      ],
+      "settings": {
+        "title": "Reviews",
+        "copy": "Find Pzaz for only $3.99 per tube at more than 200+ retailers nationwide."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

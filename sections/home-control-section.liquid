@@ -1,0 +1,154 @@
+<div class="home-control container section-padding">
+    <div class="product-banner-split">
+        <div class="product-banner image-banner">
+            <h2 class="home-title"> Power up. </h2>
+            <p class="fw-body-medium fs-xl">Every spray of Pzaz delivers fresh breath and a controlled kick of caffeine energy with no crash or jitters. </p>
+        </div>
+        <div class="product-banner">
+        <video
+            class="lazy btf-3"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/basketball-poster-image.jpg?v=1679939405"
+        >
+            <source data-src="https://cdn.shopify.com/videos/c/o/v/4acb50b061c64cad99facb0f28f10fac.mp4" type="video/mp4">
+        </video>
+        </div>
+    </div>
+    
+    
+    
+</div>
+<div class="home-video-section container section-padding">
+    <div class="image-section ">
+        <video
+            class="lazy btf-3"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/new.png?v=1683123703"
+        >
+            <source data-src="https://cdn.shopify.com/videos/c/o/v/dc67c014a1bf4a9cb20ecea443b61380.mp4" type="video/mp4">
+        </video>
+        <div class="ab-image">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/22.png?v=1683057172"
+            
+            loading="lazy"
+            >
+        </div>
+        <div class="ab-button">
+           <a href="/products/pzaz-four-pack" class="button button--primary button--small quick-add">
+                Shop Now
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container section-padding">
+    <div class="image-section">
+        <img class="dk-view"
+            src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/us_vs_them.jpg?v=1683915918"
+           
+        loading="lazy"
+        
+        >
+        <img class="mb-view"
+            src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/us_vs_thhem_mobile.jpg?v=1683916514"
+           
+        loading="lazy"
+        
+        >
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Home Control Section",
+  "tag": "section",
+  "settings": [
+    
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Home Control Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.image-section {
+    position: relative;
+}
+.ab-button {
+   position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.ab-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-section video {
+    max-height: 500px;
+    object-position: top;
+}
+.ab-image img {
+    width: 100%;
+}
+.image-banner p {
+    margin-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+    .flavor-card__copy {
+        font-size: 21px !important;
+    }
+}
+@media screen and (max-width: 500px) {
+    
+    .ab-image {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .home-control.section-padding {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 1rem;
+    }
+    .home-video-section.section-padding {
+        padding-bottom: 1rem;
+    }
+    .ab-button {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      
+    }
+    .product-banner.image-banner{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+</style>
+
+{% javascript %}
+{% endjavascript %}

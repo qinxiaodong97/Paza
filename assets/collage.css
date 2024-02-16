@@ -1,0 +1,207 @@
+/* ------------------- */
+/*      collage        */
+/* ------------------- */
+:root {
+  --collage-padding: 1rem;
+  --collage-gap: 1rem;
+}
+.collage-wrapper {
+  /* padding-left: var(--collage-padding);
+  padding-right: var(--collage-padding); */
+  /* padding-bottom: 2rem; */
+}
+
+.collage video,
+img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.collage {
+  gap: 1rem;
+  overflow: hidden;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-rows: repeat(4, 50%); */
+  grid-template-rows: 1.2fr 1fr 1.2fr 1fr;
+  height: 800px;
+  /* max-height: 1400px; */
+
+  grid-template-areas:
+    'one one'
+    'two three'
+    'four four'
+    'six five';
+}
+
+.collage-cta {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  justify-content: center;
+  gap: 1rem;
+}
+.collage-title {
+  font-size: clamp(var(--fs-2xl), 5vw, var(--fs-5xl));
+}
+
+.collage-copy {
+  font-size: var(--fs-xl);
+}
+
+.collage-title,
+.collage-copy {
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  .collage-cta {
+    padding: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .collage-copy {
+    font-size: var(--fs-base);
+  }
+}
+
+.collage-cta:first-child p {
+  max-width: 18em;
+}
+
+.collage-cta:last-child p {
+  max-width: 12em;
+}
+
+.collage > * {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+
+.collage img,
+.collage video {
+  overflow: hidden;
+  /* object-fit: cover;
+  object-position: center; */
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.collage-bg-image {
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.collage-bg-image-green,
+.collage-bg-image-blue {
+  object-position: 150px;
+}
+
+@media (max-width: 700px) {
+  .collage-bg-image-green {
+    object-position: 75px;
+  }
+  .collage-bg-image-blue {
+    display: none;
+  }
+  .collage-bg-image {
+    top: -41px;
+    height: 143% !important;
+  }
+  #light-section {
+    margin-top: 30px;
+  }
+}
+.collage-bg-image-green,
+.collage-bg-image-blue {
+  object-position: 75px;
+}
+
+.collage-bg-image-red {
+  object-position: center;
+  height: 135% !important;
+  top: -23%;
+}
+
+.collage :nth-child(1) {
+  grid-area: one;
+}
+.collage :nth-child(2) {
+  grid-area: two;
+}
+
+.collage :nth-child(2) video {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.collage :nth-child(2) img {
+  object-position: top;
+}
+.collage :nth-child(3) {
+  grid-area: three;
+}
+.collage :nth-child(4) {
+  grid-area: four;
+  position: relative;
+}
+
+.collage :nth-child(4) video {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.collage :nth-child(5) {
+  grid-area: five;
+}
+.collage :nth-child(6) {
+  grid-area: six;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.collage :nth-child(7) {
+  grid-area: seven;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (min-width: 700px) {
+  .collage-cta {
+    justify-content: flex-start;
+  }
+  .collage {
+    height: 100%;
+    /* min-height: 100vw; */
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    grid-template-areas:
+      'one one one two two'
+      'three three four four four'
+      'six six six five five';
+  }
+}

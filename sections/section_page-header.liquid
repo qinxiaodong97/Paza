@@ -1,0 +1,95 @@
+{% style %}
+    .heading-subtitle {
+      display: inline-block;
+      max font-size: 18px;
+      font-size: clamp(18px, 15.8873239437px + 0.4225352113vw, 24px);
+      margin-bottom: 2rem;
+      /* max-width:50em; */
+    }
+
+    .faq-header-media {
+     width: 100%;
+     height: min(100vh, {{section.settings.video_height | append: 'px'}});
+     overflow: hidden;
+    }
+
+    .faq-header-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+  /* .faqs__header{
+    padding-inline:2rem;
+  } */
+{% endstyle %}
+
+<div class="flex flex-column align-start faqs__header">
+  <div class="faq-header-media">
+    {% comment %}
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="{{section.settings.video.url}}" type="video/mp4">
+      </video>
+    {% endcomment %}
+
+    {{
+      section.settings.video
+      | video_tag:
+        controls: false,
+        autoplay: true,
+        loop: true,
+        playsinline: true,
+        preload: 'metadata',
+        class: 'faq-header-media'
+    }}
+  </div>
+
+  <h1 class="ff-heading fw-heading-bold fs-4xl container">{{- section.settings.title }}</h1>
+  <p class="heading-subtitle fw-body-regular  padding-base container">
+    {{- section.settings.copy -}}
+  </p>
+</div>
+
+{% schema %}
+{
+  "name": "faq-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FAQS"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Learn more about the world’s most effective, portable, and fun way to wake up."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "FAQ Video"
+    },
+    {
+      "type": "number",
+      "id": "video_height",
+      "label": "FAQ Video height",
+      "default": 500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

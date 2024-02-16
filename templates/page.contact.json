@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_contact",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/3_2_1.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

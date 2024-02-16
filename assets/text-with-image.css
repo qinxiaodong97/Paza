@@ -1,0 +1,128 @@
+.text-with-image{
+    display: flex;
+    flex-wrap: wrap;
+}
+.twi-left {
+    width: 100%;
+    display: none;
+}
+.twi-right {
+    width: 100%;
+}
+.twi-top{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: solid 1px #000;
+}
+.twi-bottom{
+    padding: 10px;
+    border-top: solid 1px #000;
+}
+.twi-bottom-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.twi-bottom-item svg{
+    width: 20px;
+}
+.text-with-image2{
+    padding: 20px 0px;
+}
+.text-with-image2 .twi-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+.text-with-image2 .twi-right p {
+    font-weight: 600;
+}
+.text-with-image2 .twi-left {
+    width: 60%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.text-with-image2 .twi-left img{
+    height: auto;
+}
+.text-with-image2 {
+    border-top: solid 1px #000;
+    border-bottom: solid 1px #000;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.twi-right-item a {
+    color: #000;
+}
+@media (min-width: 768px) {
+    .text-with-image2 .text-with-image {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .text-with-image2 .twi-left img{
+        height: 100%;
+    }
+    .text-with-image2 .twi-left {
+        display: block;
+        width: 50%;
+        height: 150px;
+    }
+    .text-with-image2{
+        padding: 40px 0px;
+    }
+    .text-with-image2 .twi-right {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        font-size: 22px;
+        margin-top: 0px;
+    }
+    .text-with-image{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .twi-left {
+        width: 50%;
+        display: block;
+    }
+    .twi-right {
+        width: 50%;
+        font-size: 30px;
+    }
+    .twi-middle {
+        display: none;
+    }
+    .twi-bottom{
+        border-top: none;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 50px;
+    }
+    .twi-bottom-item svg{
+        width: 50px;
+    }
+    .twi-top{
+        padding: 50px;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,31 @@
+{{ 'button-round-shadow.css' | asset_url | stylesheet_tag -}}
+<a
+  class="
+    button
+    {% if color == "dark" %}
+      button--dark
+    {% elsif color == "light" %}
+      button--light
+    {% elsif color == "primary" %}
+      button--primary
+    {% elsif color == "gradient" %}
+      button--gradient
+    {% endif %}
+    {% if size == "large" %}
+      button--large
+    {% elsif size == "small" %}
+      button--small
+    {% endif %}
+  "
+  {% if link %}
+    href="{{ link }}"
+  {% else %}
+    href="/products/pzaz-four-pack"
+  {% endif %}
+>
+  {% if text %}
+    {{ text }}
+  {% else %}
+    Shop Now
+  {% endif %}
+</a>

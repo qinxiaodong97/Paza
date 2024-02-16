@@ -1,0 +1,228 @@
+{
+  "sections": {
+    "main": {
+      "type": "section_page-header",
+      "settings": {
+        "title": "",
+        "copy": "Control your energy with Pzaz® Breath Spray. Our research team is dedicated to creating the most convenient, delicious, and enjoyable way to wake up. Learn more below:",
+        "video": "shopify:\/\/files\/videos\/drive-video_twitter-encoding.mp4",
+        "video_height": 500
+      }
+    },
+    "701d9b08-fd8d-4b47-992e-e732c0dab133": {
+      "type": "section_faq",
+      "blocks": {
+        "21a26ec5-4299-4fa9-a154-d73a907b6fbe": {
+          "type": "question",
+          "settings": {
+            "question": "How does Pzaz work?",
+            "answer": "<p>Pzaz is the most convenient and controlled way to wake up.<\/p><p>Every spray contains a highly bioavailable blend of caffeine and vitamins that your body absorbs much faster and more efficiently than with any other beverage or supplement.<\/p><p>The result? Fast-acting energy and focus with no jitters or crash.<\/p>"
+          }
+        },
+        "template--16732988866803__701d9b08-fd8d-4b47-992e-e732c0dab133-1678218834a927a8fb-0": {
+          "type": "question",
+          "settings": {
+            "question": "How much does Pzaz cost?",
+            "answer": "<p>One tube of Pzaz costs $3.99, which means every serving costs only $0.40. <\/p><p>Unlock lower pricing by purchasing more than one flavor online, or by visiting our retailers using applicable promotions. <\/p>"
+          }
+        },
+        "1d693e8e-5202-4b66-ad4f-cbbc3d4c82e9": {
+          "type": "question",
+          "settings": {
+            "question": "How many sprays should I take?",
+            "answer": "<p>Taste 5 sprays and feel a burst of energy and focus.<\/p>"
+          }
+        },
+        "88c94644-6315-4361-943d-3e109bba17ff": {
+          "type": "question",
+          "settings": {
+            "question": "How many calories are in Pzaz?",
+            "answer": "<p>None 🤝 Pzaz has zero calories, zero sugar, and zero artificial flavors.<\/p>"
+          }
+        },
+        "4de1c5b5-6210-41c3-baf2-d9648d46757b": {
+          "type": "question",
+          "settings": {
+            "question": "What flavors does Pzaz come in?",
+            "answer": "<p>Pzaz comes in three delectable flavors: super sour, berry blast, and mint frost. <\/p><p><\/p><p>We also occasionally release limited edition flavors :-)<\/p>"
+          }
+        },
+        "c28c588b-06f9-40b9-ba69-76ddb1369760": {
+          "type": "question",
+          "settings": {
+            "question": "Where is Pzaz manufactured?",
+            "answer": "<p>Our research team develops and tests our formulations in New York City. Then, our product is manufactured at a nearby facility registered with the FDA and in compliance with federally recognized <em>Good Manufacturing Practices<\/em>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "21a26ec5-4299-4fa9-a154-d73a907b6fbe",
+        "template--16732988866803__701d9b08-fd8d-4b47-992e-e732c0dab133-1678218834a927a8fb-0",
+        "1d693e8e-5202-4b66-ad4f-cbbc3d4c82e9",
+        "88c94644-6315-4361-943d-3e109bba17ff",
+        "4de1c5b5-6210-41c3-baf2-d9648d46757b",
+        "c28c588b-06f9-40b9-ba69-76ddb1369760"
+      ],
+      "settings": {
+        "title": "The Basics"
+      }
+    },
+    "521d0d56-66ad-4a25-a825-21b42be5d0ec": {
+      "type": "section_faq",
+      "blocks": {
+        "template--16732988866803__521d0d56-66ad-4a25-a825-21b42be5d0ec-1678218834a927a8fb-0": {
+          "type": "question",
+          "settings": {
+            "question": "What is microdosing?",
+            "answer": "<p>Microdosing something means consuming a very small amount of it in order to unlock its optimal effects with no crash or side effects.<\/p>"
+          }
+        },
+        "e74e541b-8ea0-4f86-a735-baecc5209ae0": {
+          "type": "question",
+          "settings": {
+            "question": "Why microdose caffeine?",
+            "answer": "<p>Too much caffeine causes stress and insomnia. But little bits can actually focus and calm you down.<\/p><p><\/p><p> Since 1923, scientists have shown that caffeine is an incredible performance enhancer, but too much and it has the opposite effect.<\/p><p><\/p><p>Pzaz is the only way to quickly and comfortably microdose caffeine. Spray by spray, feel fast-acting energy all day long with no crash or jitters.<\/p>"
+          }
+        },
+        "e67469b9-bbca-40ac-8b93-026405338b35": {
+          "type": "question",
+          "settings": {
+            "question": "What are the potential benefits to microdosing?",
+            "answer": "<p>Microdose caffeine to experience mental clarity and optimal physical performance without any sleeplessness or anxiety. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16732988866803__521d0d56-66ad-4a25-a825-21b42be5d0ec-1678218834a927a8fb-0",
+        "e74e541b-8ea0-4f86-a735-baecc5209ae0",
+        "e67469b9-bbca-40ac-8b93-026405338b35"
+      ],
+      "settings": {
+        "title": "Microdosing"
+      }
+    },
+    "caea845c-bb7c-4630-9c52-9830b8f56c6b": {
+      "type": "section_faq",
+      "blocks": {
+        "template--16759236690163__caea845c-bb7c-4630-9c52-9830b8f56c6b-167829407856981931-0": {
+          "type": "question",
+          "settings": {
+            "question": "Where is my Pzaz?",
+            "answer": "<p>Every order ships with a tracking number! Email us with your order number if you think we can help you with a package :-)<\/p>"
+          }
+        },
+        "dc9a7f84-8e88-4518-a46d-123b412625af": {
+          "type": "question",
+          "settings": {
+            "question": "Do you really have a Money Back Guarantee?",
+            "answer": "<p>Yes, we really do. Click <a href=\"\/policies\/refund-policy\" title=\"Refund Policy\">here<\/a> to read the full terms and conditions of our Returns and Refunds policies.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16759236690163__caea845c-bb7c-4630-9c52-9830b8f56c6b-167829407856981931-0",
+        "dc9a7f84-8e88-4518-a46d-123b412625af"
+      ],
+      "settings": {
+        "title": "Order Issues"
+      }
+    },
+    "b92d4a3a-1b55-4a2d-a474-6c4c9d45a672": {
+      "type": "section_faq",
+      "blocks": {
+        "template--16732988866803__b92d4a3a-1b55-4a2d-a474-6c4c9d45a672-1678218834a927a8fb-0": {
+          "type": "question",
+          "settings": {
+            "question": "What is the Pzaz bottle made from?",
+            "answer": "<p>Pzaz spray bottles are manufactured using previously recycled plastic waste. <\/p><p><\/p><p>Our bottles are designed to deliver energy with far less of a water, material, and carbon impact on the environment than with any energy drink or bottled beverage.<\/p>"
+          }
+        },
+        "238664a2-ef38-4587-836f-0c2a26a7aeb1": {
+          "type": "question",
+          "settings": {
+            "question": "Can I recycle Pzaz?",
+            "answer": "<p>Check with your local waste management protocols, but Pzaz is fully recyclable in many municipalities.<\/p>"
+          }
+        },
+        "5d9ca7ab-b70c-446e-844f-1b0b85c16425": {
+          "type": "question",
+          "settings": {
+            "question": "Do you have any future sustainability initiatives?",
+            "answer": "<p>Yes! We are always working on sourcing more environmentally friendly ingredients, supporting clean and fair manufacturers, and developing revolutionary bio-plastics and algae-based alternatives to plastic.<\/p><p><\/p><p>We also work to lobby governments to minimize the variety of plastic allowed and better encourage circularity like with aluminum.<\/p>"
+          }
+        },
+        "dedd8072-6fd0-49bd-912b-81afa053106d": {
+          "type": "question",
+          "settings": {
+            "question": "What does your Plastic Negative™ certification mean?",
+            "answer": "<p>For every tube sold, we ensure that two tubes worth of plastic litter are removed from the earth.<\/p><p><\/p><p>This means that using Pzaz always has a net negative effect on the amount of plastic waste circulating in landfills and waterways around the world.<\/p><p><\/p><p>We do this in partnership with RePurpose Global and women-owned waste management companies around the world.<\/p><p><\/p><p>So far, we've removed the equivalent of hundreds of thousands of littered energy drinks and coffees.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16732988866803__b92d4a3a-1b55-4a2d-a474-6c4c9d45a672-1678218834a927a8fb-0",
+        "238664a2-ef38-4587-836f-0c2a26a7aeb1",
+        "5d9ca7ab-b70c-446e-844f-1b0b85c16425",
+        "dedd8072-6fd0-49bd-912b-81afa053106d"
+      ],
+      "settings": {
+        "title": "Sustainability"
+      }
+    },
+    "472a46f5-520a-4f68-8ed5-2d80018bbfd4": {
+      "type": "section_faq",
+      "blocks": {
+        "d9c87028-4596-49ae-8170-eeaffaf7edfc": {
+          "type": "question",
+          "settings": {
+            "question": "Why does Pzaz taste so much better than an energy drink?",
+            "answer": "<p>Maxxie and Jonah whippin in the kitchen<\/p>"
+          }
+        },
+        "template--16759236690163__472a46f5-520a-4f68-8ed5-2d80018bbfd4-16782955394b7841a0-0": {
+          "type": "question",
+          "settings": {
+            "question": "Do you use artificial flavors?",
+            "answer": "<p>No...duh.<\/p>"
+          }
+        },
+        "0be40a6d-bee3-439a-8855-d7eb938dc98f": {
+          "type": "question",
+          "settings": {
+            "question": "What sweeteners do you use?",
+            "answer": "<p>Our flavor and chemistry team has developed a revolutionary blend of natural flavors that sweeten Pzaz while effectively masking the bitterness of caffeine. <\/p><p><\/p><p>We also experiment with natural derivatives of sugar such as zero-calorie sucralose. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "d9c87028-4596-49ae-8170-eeaffaf7edfc",
+        "template--16759236690163__472a46f5-520a-4f68-8ed5-2d80018bbfd4-16782955394b7841a0-0",
+        "0be40a6d-bee3-439a-8855-d7eb938dc98f"
+      ],
+      "settings": {
+        "title": "Flavor"
+      }
+    },
+    "635283d3-086c-4af3-8694-4c938f340772": {
+      "type": "new-press",
+      "settings": {}
+    },
+    "603e454e-7472-4341-b81e-9f06b764828d": {
+      "type": "page-product-cards",
+      "settings": {
+        "description": "<p>Receive free shipping, free accessories, and a free limited edition fanny pack when you purchase five or more tubes. <strong>Try another flavor?<\/strong><\/p>",
+        "product": "pzaz-breath-spray-caffeine-energy"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "701d9b08-fd8d-4b47-992e-e732c0dab133",
+    "521d0d56-66ad-4a25-a825-21b42be5d0ec",
+    "caea845c-bb7c-4630-9c52-9830b8f56c6b",
+    "b92d4a3a-1b55-4a2d-a474-6c4c9d45a672",
+    "472a46f5-520a-4f68-8ed5-2d80018bbfd4",
+    "635283d3-086c-4af3-8694-4c938f340772",
+    "603e454e-7472-4341-b81e-9f06b764828d"
+  ]
+}

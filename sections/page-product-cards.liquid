@@ -1,0 +1,155 @@
+
+<style>
+.try-other {
+    padding: 30px 0px;
+    border-top: solid 1px #000;
+  }
+  .try-other-variants {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .try-slider{
+    border-radius: 13px;
+    border: solid 1px #000;
+    overflow: hidden;
+  }
+  .trySwiper {
+    padding-bottom: 30px !important;
+  }
+  .trySwiper .swiper-pagination {
+    bottom: 0px;
+  }
+  .try-variant-btn {
+    background: yellow;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    font-family: var(--ff-heading);
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #000;
+  }
+  .try-other-item {
+    background: #e8e800;
+    border-radius: 5px;
+    overflow: hidden;
+    border: solid 1px #000;
+  }
+  .try-slider-image {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 40%;
+    overflow: hidden;
+  }
+  .try-slider-image img{
+    object-position: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .try-other-description p{
+    font-size: 23px;
+    font-weight: 500;
+  }
+  @media screen and (max-width: 1024px) {
+    .try-variant-btn {
+      font-size: 13px;
+    }
+    variant-selector .submit-wrapper {
+      padding-bottom: 5px;
+      margin-top: 0px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .variant-description {
+      /* font-size: var(--fs-lg); */
+      margin-top: 15px;
+    }
+    .try-other{
+      padding: 30px 0px 30px;
+    }
+    .try-other-description p{
+      font-size: 17px;
+      font-weight: 500;
+    }
+    .try-variant-btn {
+      font-size: 9px;
+    }
+    .try-other-variants {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+{% assign product = section.settings.product %}
+<div class="try-other">
+    <div class="container">
+        {% if section.settings.description != blank %}
+            <div class="try-other-description">
+                {{ section.settings.description }}
+            </div>
+        {% endif %}
+        <div class="try-other-variants">
+            {% for variant in product.variants %}
+                {% if variant.metafields.custom.variant_available == false %}
+                    {% continue %}
+                {% endif %}
+                <div class="try-other-item {% if forloop.first %} hidden {% endif %} " data-id="{{variant.id}}">
+                    <div class="try-slider-image" style="background:{{variant.metafields.custom.background_1}};">
+                        <img src="{{variant.image | img_url: 'master'}}" loading="lazy"/>
+                    </div>
+                    <button class="try-variant-btn" data-id="{{variant.id}}">
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+  document.querySelectorAll(".try-variant-btn").forEach((item) => {
+    item.addEventListener("click", function () {
+      let id = item.getAttribute("data-id");
+      addToCart(id);
+      openCart();
+      refreshCart();
+    });
+  });
+  
+</script>
+{% schema %}
+{
+  "name": "New Product Cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+        "type": "product",
+        "id": "product",
+        "label": "Product"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "New Product Cards"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

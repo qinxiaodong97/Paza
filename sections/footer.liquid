@@ -1,0 +1,75 @@
+{{ 'enhanced-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="footer">
+  <div class="footer-content container">
+    <div class="footer-left">
+      <div class="footer__top">
+        <div class="footer-button-wrapper"></div>
+        <div class="footer__socials">
+          <a href="https://www.instagram.com/pzaz_energy/">{% render 'social-instagram' %}</a>
+          <a href="https://www.tiktok.com/@pzaz">{% render 'social-tiktok' %}</a>
+          <a href="https://twitter.com/pzaz_energy">{% render 'social-twitter' %}</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer__nav">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/faqs">FAQ</a></li>
+          <li class="footer__nav-item">
+            <a class="footer__nav-link" href="/products/pzaz-breath-spray-caffeine-energy">Buy Now</a>
+          </li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/reviews">Reviews</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/new-store-locator">Store Locator</a></li>
+          {% comment %} <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/sustainability">Sustainability</a></li> {% endcomment %}
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/blogs/writing">Research</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/contact-us">Contact Us</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/careers">Careers</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/college">College Associates</a></li>
+          <li class="footer__nav-item"><a class="footer__nav-link" href="/pages/wholesale">Wholesale</a></li>
+        </ul>
+      </div>
+
+      <ul class="footer__policies">
+        <li>
+          <a href="/policies/privacy-policy">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="/blogs/info/disclaimers">Disclaimers</a>
+        </li>
+        <li>
+          <a href="/policies/shipping-policy">Shipping Policies</a>
+        </li>
+        <li>
+          <a href="/policies/terms-of-service">Terms of Service</a>
+        </li>
+        <li>
+          <a href="/policies/refund-policy">Money Back Guarantee</a>
+        </li>
+      </ul>
+      <p class="footer__legal">Copyright &#169 2023 Pzaz, Inc. All rights reserved. Patents Pending.</p>
+      {% if section.settings.bottom_text != blank %}
+        <div class="bottom-text">
+          {{section.settings.bottom_text}}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  
+  
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+
+    {
+      "type": "textarea",
+      "id": "bottom_text",
+      "label": "Bottom Text"
+    }
+  ]
+}
+{% endschema %}

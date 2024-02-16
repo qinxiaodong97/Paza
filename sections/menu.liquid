@@ -1,0 +1,539 @@
+{% comment %} {{ 'menu.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% style %}
+  .menu-drawer {
+    background: #fdff02;
+    background: #fff;
+    padding: 120px 2rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* min-height: 400px; */
+    transform: translateY(-100%);
+    border-bottom-right-radius: 100%;
+    transition-property: transform, border-bottom-right-radius;
+    transition-duration: 0.2s, 0.2s;
+    z-index: 500;
+    overflow: hidden;
+
+  }
+
+  .menu-banner {
+    padding: 1rem 2rem;
+    /* border-top: 3px solid #000;
+       border-bottom: 4px solid #000; */
+  }
+
+  .menu-banner p,
+  .menu-banner a {
+    color: {{ section.settings.banner-text-color}}
+    ;
+    width: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    /* text-decoration: none; */
+  }
+
+  .menu-drawer.active {
+    transform: translateY(0);
+    transition-property: transform, border-bottom-right-radius;
+    transition-duration: 0.5s, 0.5s;
+    transition-timing-function: ease-in ease-in;
+    border-bottom-right-radius: 32px;
+    border-bottom-left-radius: 0;
+  }
+
+  .menu-flex-container {
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: flex-start;
+    height: 100%;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  @media(min-width: 1000px) {
+    .menu-flex-container {
+      justify-content: space-evenly;
+      padding-top:20px;
+    }
+  }
+
+  .menu-nav {
+    flex 1;
+  }
+  .menu-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-nav ul:first-child {
+    margin-top: 0;
+  }
+  .menu-nav a {
+    display: block;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    {% if section.settings.link_decoration %}
+      text-decoration: underline;
+    {% endif %}
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  @media(max-width: 768px) {
+    .menu-nav a {
+      font-size: 1.2rem;
+    }
+  }
+
+  {% if section.settings.links_as_buttons %}
+    .menu-nav li {
+      border-radius: 8px;
+      box-shadow: 0 2px #000;
+      border: 2px solid #000;
+    }
+    .menu-nav a {
+      padding: 0.5rem 1rem;
+      line-height: 1;
+    }
+
+    .menu-nav a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  {% endif %}
+
+  .menu-callout {
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .menu-callout--border {
+    box-shadow: 0 2px #000;
+    border: 2px solid #000;
+  }
+
+  .menu-card-title--border {
+    box-shadow: 0 2px #000;
+    border: 2px solid #000;
+  }
+
+  .menu-callout-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  @media(max-width: 768px) {
+    .menu-callout-text {
+      font-size: 1.1rem;
+    }
+  }
+{% endstyle %}
+<menu-drawer>
+  {% comment %}remove active class for push{% endcomment %}
+  <div class="menu-drawer" style="background-color:{{section.settings.background-color}}">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'banner' %}
+          <div class="menu-banner">
+            <div class="menu-banner-text">
+              <p>
+                {{ block.settings.text }}
+              </p>
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+    <div class="menu-flex-container">
+      <div class="menu-nav">
+        <ul class="flow" style="--flow-gap:{{section.settings.nav_spacing}}px">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'nav-link' %}
+                <li
+                  class="role {{block.settings.custom_class}}"
+                  id="{{block.settings.custom_id}}"
+                  {% if section.settings.links_as_buttons %}
+                    style="background-color:{{block.settings.background_color}};"
+                  {% endif %}
+                >
+                  <a
+                    class="role {{block.settings.custom_class}}"
+                    id="{{block.settings.custom_id}}"
+                    {% if block.settings.url %}
+                      href="{{block.settings.url}}"
+                    {% endif %}
+                  >
+                    {{- block.settings.text -}}
+                  </a>
+                </li>
+            {% endcase %}
+          {% endfor %}
+        </ul>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'callout' %}
+              <a href="{{block.settings.link}}"
+                class="menu-callout {% if block.settings.has_border %}menu-callout--border{% endif %}"
+                style="background-color:{{ block.settings.background_color }}; padding:{{block.settings.padding | append:'px'}};"
+              >
+                <p class="menu-callout-text" style="color: {{ block.settings.text_color}};">
+                  {{ block.settings.text }}
+                </p>
+              </a>
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'content-card' %}
+            {% style %}
+              .menu-card {
+                display: block;
+                position: relative;
+                border: 2px solid black;
+                border-radius: 20px;
+                flex: 0 0 min(100%, 500px);
+                background-color: #fff;
+                padding: {{ block.settings.card_padding | append: 'px'}};
+                background-color: {{ block.settings.background_color}}
+                ;
+                overflow: hidden;
+              }
+              @media(max-width: 768px) {
+
+                {% if  block.settings.desktop_only %}
+                  .menu-card {
+                    display: none;
+                  }
+                {% endif %}
+              }
+              .menu-card-title {
+                width: 100%;
+                text-align: center;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                overflow: hidden;
+                padding: {{ block.settings.title_padding | append: 'px'}}
+              }
+
+              .menu-card-title-text {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: {{ block.settings.title_text_color }};
+                display: inline-block;
+              }
+              {% if block.settings.title_has_background %}
+                .menu-card {
+                  padding-top: calc(1.2rem + {{block.settings.card_padding | append: 'px'}});
+                }
+                .menu-card-title {
+                  position: absolute;
+                  border-bottom: solid 2px #000;
+                  background: #FDFF02;
+                }
+                .menu-card-title-text {}
+              {% endif %}
+
+              .menu-card-body {
+                font-weight: 600;
+                text-align: {{ block.settings.text_align}}
+                ;
+              }
+              .menu-card-image {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+              }
+              .menu-card-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+              {% if block.settings.is_variant_image %}
+                .menu-card-image {
+                  position: relative;
+                  height: 150px;
+
+                }
+                .menu-card-image img {
+                  position: absolute;
+                  object-fit: contain;
+                  height: 400px;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%)rotate(90deg);
+                }
+              {% endif %}
+            {% endstyle %}
+            <div class="menu-card" style="background-color:{{block.settings.background-color }};">
+              <div class="menu-card-title">
+                <h4 class="menu-card-title-text">
+                  {{ block.settings.title }}
+                </h4>
+              </div>
+              <div class="menu-card-image">
+                {% if block.settings.image %}
+                  {{ block.settings.image | image_url: width: 400 | image_tag | replace: ' src="' , ' data-class="LazyLoad" data-src="' | replace: ' srcset="' , ' data-srcset="' }}
+                {% endif %}
+              </div>
+              <p class="menu-card-body">
+                {{ block.settings.body_text }}
+              </p>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</menu-drawer>
+<script src="{{ 'menu-drawer.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Menu",
+  "settings": [
+    {
+      "type": "range",
+      "id": "nav_spacing",
+      "label": "Navigation Spacing",
+      "min": 0,
+      "max": 100,
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "links_as_buttons",
+      "label": "Links as Buttons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "link_decoration",
+      "label": "Underline Links",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "nav_link_color",
+      "label": "Link Text Color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav-link",
+      "name": "Nav Link",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "custom_id",
+          "label": "Custom ID"
+        },
+        {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom Class"
+        },
+        {
+          "type": "radio",
+          "id": "align_text",
+          "label": "Text Align:",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Link Background Color (ignored if button styling is disabled)",
+          "default": "#fdff02"
+        }
+      ]
+    },
+    {
+      "type": "content-card",
+      "name": "Content Card",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Card Background Color"
+        },
+        {
+          "type": "color",
+          "id": "title_background_color",
+          "label": "Title Background Color"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        },
+        {
+          "type": "range",
+          "id": "card_padding",
+          "label": "Card padding",
+          "min": 0,
+          "max": 64,
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "title_padding",
+          "label": "Title padding",
+          "min": 0,
+          "max": 64,
+          "default": 16
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title"
+        },
+        {
+          "type": "checkbox",
+          "id": "title_has_background",
+          "label": "give the title a background color"
+        },
+        {
+          "type": "textarea",
+          "id": "body_text",
+          "label": "Card Body Text"
+        },
+        {
+          "type": "radio",
+          "id": "text_align",
+          "label": "Align Card Text:",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "checkbox",
+          "id": "desktop_only",
+          "label": "Show card on desktop only"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_variant_image",
+          "label": "Select this option if the image is a variant image (temporary fix)"
+        }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Banner Text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Banner Text Color"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Banner Background Color"
+        }
+      ]
+    },
+    {
+      "type": "callout",
+      "name": "Callout",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Copy"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_border",
+          "label": "Give the callout a background color",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color"
+        },
+        {
+          "type": "range",
+          "id": "padding",
+          "label": "Padding",
+          "min": 0,
+          "max": 64,
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Spacing Above",
+          "min": 0,
+          "max": 100,
+          "default": 16
+        }
+      ]
+    }
+  ],
+  "presets": []
+}
+{% endschema %}

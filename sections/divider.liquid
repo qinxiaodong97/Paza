@@ -1,0 +1,30 @@
+
+<div class="container section-padding">
+    {% if section.settings.image != blank %}
+    <div class="image-section ">
+        <img
+            src="{{section.settings.image| img_url: 'master'}}"
+            loading="lazy"
+        >
+    </div>
+    {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Divider Section",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    }
+   
+  ],
+  "presets": [
+    {
+      "name": "Divider Section"
+    }
+  ]
+}
+{% endschema %}

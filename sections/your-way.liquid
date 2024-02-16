@@ -1,0 +1,174 @@
+{{ 'reviews.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  @media (min-width: 768px) {
+    .your-way p {
+      max-width: 50%;
+      margin-left: 1rem;
+    }
+  }
+{% endstyle %}
+<div class=" reviews your-way padding-base flow color-primary overflow-x">
+  <h1
+    class="ff-heading fs-heading- fs-5xl"
+  >
+    Energy<br>
+    Your Way
+  </h1>
+  <p
+    class="fw-body-medium fs-xl"
+  >
+    Pzaz powers up creatives, athletes, students, professionals, travelers, and entertainers.
+  </p>
+
+  {% comment %}
+    <div
+      class="reviews__carousel embla"
+    >
+      <div
+        class="embla__container"
+      >
+        <div
+          class="embla__slide"
+        >
+          <div
+            class="embla__slide__inner"
+          >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0685/9076/4328/files/903581E8-D2F7-4B58-93AB-7F120F04ED29.jpg?v=1671570767"
+              alt="review"
+              class="reviews__image"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+            <div
+              class="fixed-atop"
+            >
+              {% render 'cta-button', border: true, color: 'light', size: 'small', text: 'Shop Berry' %}
+            </div>
+          </div>
+        </div>
+        <div
+          class="embla__slide"
+        >
+          <div
+            class="embla__slide__inner"
+          >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0685/9076/4328/files/F7B4C7DF-6B8F-4F5C-8DD1-D7012E889A92.jpg?v=1671570766"
+              alt="review"
+              class="reviews__image"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+            <div
+              class="fixed-atop"
+            >
+              {% render 'cta-button', border: true, color: 'light', size: 'small', text: 'Shop Sour' %}
+            </div>
+          </div>
+        </div>
+        <div
+          class="embla__slide"
+        >
+          <div
+            class="embla__slide__inner"
+          >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0685/9076/4328/files/44BCD2C1-2A84-4A12-890C-CE2978257CE3_1_105_c.jpg?v=1671570785"
+              alt="review"
+              class="reviews__image"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+            <div
+              class="fixed-atop"
+            >
+              {% render 'cta-button', border: true, color: 'light', size: 'small', text: 'Shop Mint' %}
+            </div>
+          </div>
+        </div>
+        <div
+          class="embla__slide"
+        >
+          <div
+            class="embla__slide__inner"
+          >
+            <img
+              src="https://cdn.shopify.com/s/files/1/0685/9076/4328/files/74EA3B61-234F-46A2-9433-57082C985ECE_1_105_c.jpg?v=1671570807"
+              alt="review"
+              class="reviews__image"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+            <div
+              class="fixed-atop"
+            >
+              {% render 'cta-button', border: true, color: 'light', size: 'small', text: 'Shop Strong' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endcomment %}
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+
+  <div
+    class="loox-rating"
+    data-id="{{ product.id }}"
+    data-rating="{{ product.metafields.loox.avg_rating }}"
+    data-raters="{{ product.metafields.loox.num_reviews }}"
+  ></div>
+</div>
+
+<script defer>
+  function InitReviewsEmbla() {
+    const emblaNode = document.querySelector('.reviews__carousel.embla');
+    const plugins = [EmblaCarouselAutoplay(), EmblaCarouselClassNames()];
+    const options = {
+      align: 'center',
+      inViewThreshold: 1,
+      loop: true,
+    };
+    const reviews = EmblaCarousel(emblaNode, options, plugins);
+  }
+
+  window.addEventListener('load', InitReviewsEmbla);
+
+  window.addEventListener('load', () => {
+    gsap.to('.locator__image', {
+      scrollTrigger: {
+        trigger: '.locator-cta',
+        start: 'top bottom',
+        scrub: 1,
+        onEnter: () => console.log('onEnter'),
+        onLeave: () => console.log('onLeave'),
+      },
+      y: '-200px',
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "your-way-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

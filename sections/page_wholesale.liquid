@@ -1,0 +1,224 @@
+{% style %}
+  .wholesale {
+    --wholesale-bg: #f4f4f4;
+    padding-top: 120px;
+  }
+
+  .wholesale__subtitle {
+    max-width: 40em;
+  }
+  .wholesale__card {
+    flex-basis: 50%;
+  }
+  .wholesale__card_content{
+    padding: 2rem;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    flex-basis: 50%;
+  }
+  .wholesale__card li {
+    font-weight: 500;
+  }
+  .wholesale__card ul {
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  .wholesale__card_content ul {
+    margin-top: 0px;
+  }
+  .wholesale__card p {
+    margin-top: 20px;
+  }
+
+  .wholesale__card .button {
+    display: inline-block;
+    font-size: var(--fs-sm);
+    margin-top: 20px;
+  }
+
+  .wholesale__image {
+    display: inline-block;
+    position: relative;
+    /* background-color: red; */
+    width: 100%;
+    border-radius: 1rem;
+    {% comment %} margin-left: 2rem; {% endcomment %}
+    flex-basis: 50%;
+    overflow: hidden;
+  }
+
+  .wholesale__image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .wholesale__image::before {
+    content: '';
+    width: 1px;
+    margin-left: -1px;
+    float: left;
+    height: 0;
+    padding-bottom: calc(9 / 16 * 100%);
+  }
+  .wholesale__image::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .wholesale__flex-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    /* flex-wrap: wrap; */
+    /* margin-top: 2rem; */
+  }
+
+  @media (max-width: 800px) {
+    .wholesale__flex-wrapper {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+    }
+    .wholesale__flex-wrapper > * {
+      flex-basis: auto;
+    }
+  }
+
+  .wholesale__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 800px) {
+    .wholesale__items {
+      grid-template-columns: 1fr;
+    }
+  }
+  .wholesale__item {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 12px;
+    display: grid;
+    grid-template-areas: 'icon content';
+    grid-template-columns: 5rem 1fr;
+    place-items: center;
+  }
+  .wholesale__item-icon {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(var(--color-primary));
+    border: 2px solid rgba(var(--color-dark));
+    padding: 0.5rem;
+    border-radius: 50%;
+    grid-area: icon;
+  }
+
+  .wholesale__item-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+{% endstyle %}
+
+<div class="wholesale container flow">
+  
+  <div class="wholesale__flex-wrapper flex">
+    <div class="wholesale__card  flow">
+      <h1 class="home-title wholesale__title">Wholesale</h1>
+      <p class="wholesale__subtitle">
+        Energy shots are dead. Generate more profit per square inch with Pzaz, the superior energy impulse purchase for
+        next-generation consumers.
+      </p>
+      <div class="wholesale__card_content">
+        <ul>
+          <li>$100 off your first order*</li>
+          <li>1 year of free shipping*</li>
+          <li>Buy now, pay 60 days later</li>
+          <li>Free returns on your first order</li>
+        </ul>
+        {% render 'cta-button', text: 'shop wholesale', link: 'https://pzaz.faire.com' %}
+
+        <p>*Available for accredited retailers new to our system</p>
+      </div>
+      
+    </div>
+    <div class="wholesale__image">
+      <img
+        src="{{section.settings.image | img_url: 'master'}}"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+  </div>
+  <div class="wholesale__items">
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-heart' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">Consumers’ new daily essential</h3>
+        <p class="Wholesale__item-copy">
+          Pzaz is the most portable, fast-acting, and delicious energy product of all time.
+        </p>
+      </div>
+    </div>
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-lightning' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">Microdose energy technology</h3>
+        <p class="Wholesale__item-copy">
+          3 sprays or 30? Only Pzaz breath spray lets you control your energy throughout the day.
+        </p>
+      </div>
+    </div>
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-plus-depth' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">A superior impulse brand</h3>
+        <p class="Wholesale__item-copy">More profit per square inch than Hershey’s, 5 Hour Energy, and Wrigley.</p>
+      </div>
+    </div>
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-money' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">Built for retail</h3>
+        <p class="Wholesale__item-copy">
+          Affordable, shelf stable, merchandising options for checkout, in-line or in clip strips.
+        </p>
+      </div>
+    </div>
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-star' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">Next-generation formulation</h3>
+        <p class="Wholesale__item-copy">0 calories, 100% natural flavors, zero sugar, vegan, and made in the USA.</p>
+      </div>
+    </div>
+
+    <div class="wholesale__item">
+      <span class="wholesale__item-icon">{% render 'icon-earth' %} </span>
+      <div class="wholesale__item-content">
+        <h3 class="wholesale__item-title">For anyone, anywhere</h3>
+        <p class="Wholesale__item-copy">You don’t need to be an energy drink consumer to love Pzaz.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Wholesale",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

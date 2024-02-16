@@ -1,0 +1,431 @@
+{% style %}
+  .college {
+    padding-top: var(--header-height);
+    padding-inline: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .college {
+      padding-inline: 1rem;
+    }
+  }
+
+  .college h1 {
+    margin-bottom: 0.75rem;
+  }
+
+  .college h2 {
+    font-size: var(--fs-2xl);
+    font-weight: 500;
+    font-family: var(--ff-heading);
+    text-transform: uppercase;
+    margin-block: 1rem;
+  }
+
+  .college p {
+    max-width: 30em;
+  }
+
+  .college__subtitle {
+    font-weight: 500;
+    font-size: var(--fs-2xl);
+    max-width: 30em;
+  }
+
+  .college__header {
+    text-align: left;
+    /* padding-inline: 2rem; */
+  }
+
+  .college__content {
+    margin-top: 2rem;
+    margin-inline: 2rem;
+  }
+
+  .college__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 500px;
+  }
+
+  .college__footer img {
+    bottom: 0;
+  }
+
+  .college__footer .button {
+    font-size: var(--fs-2xl);
+  }
+
+  .college__banner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .college__banner video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .college__banner .button {
+    z-index: 1;
+  }
+
+  .college__gig-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    padding-block: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .college__gig-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .college__gig-item {
+    background-color: rgba(var(--color-red));
+    position: relative;
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .college__gig-item img {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    /* bottom: 0;
+    right: 0; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1rem;
+  }
+
+  .college__educate {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    padding-block: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .college__educate {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .college__educate-wrapper {
+    margin-block: 2rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 0 2rem;
+  }
+
+  .college__educate-item {
+    padding: 1rem;
+  }
+
+  .college__educate-item-icon {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: rgba(var(--color-primary));
+    padding: 5px;
+    border: 2px solid black;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+  }
+
+  .college__educate-item-icon svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  .college__educate-item-title {
+    font-size: var(--fs-base);
+    /* white-space: nowrap; */
+  }
+
+  .college__educate-item-copy {
+  }
+
+  .college__earn-heading {
+    margin-block: 2rem;
+  }
+
+  .college__earn {
+    margin-bottom: 2rem;
+  }
+  .college__earn-item {
+    position: relative;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+    border-radius: 1rem;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .college__earn-item {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .college__earn-item span {
+    display: block;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  .college__earn-item span:first-child {
+    border-right: 2px dashed black;
+  }
+
+  @media (max-width: 768px) {
+    .college__earn-item span:first-child {
+      border-right: none;
+      border-bottom: 2px dashed black;
+    }
+  }
+
+  .college__earn-item-title {
+    font-size: var(--fs-base);
+  }
+
+  .college__earn-item-copy {
+  }
+{% endstyle %}
+
+{% assign hero_image_url = section.settings.image %}
+
+<div class="college full-height container flow">
+  <div class="college__header">
+    <div>
+      <h1 class=" ff-body fw-body-bold college__title home-title">
+        power up your<br>
+        campus & career
+      </h1>
+    </div>
+    <div>
+      <p class="college__subtitle">
+        We’re looking for creative and entrepreneurial students to help spread positive energy in their communities.
+      </p>
+    </div>
+  </div>
+  <div class="college__banner">
+    {% render 'cta-button',
+      text: 'apply now',
+      color: 'dark',
+      link: 'https://docs.google.com/forms/d/e/1FAIpQLSfroEtJjI7ZXYpyPKomcrAqqgIyqrfj0GLnZrSKQyBQkIwvtQ/viewform'
+    %}
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="https://cdn.shopify.com/videos/c/o/v/bf447523135b43bbac0b748fc2519e31.mp4" type="video/mp4">
+    </video>
+  </div>
+  <h2>The Gig</h2>
+  <div class="college__gig-grid">
+    <div class="college__gig-item">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/college-img-4.jpg?v=1675446384"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+    <div class="college__gig-item">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/bodega_guy.jpg?v=1675446385"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+    <div class="college__gig-item">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/college-img-2-squooshed.jpg?v=1675446736"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+    <div class="college__gig-item">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/college-img-3.jpg?v=1675446384"
+        loading="lazy"
+        width="auto"
+        height="auto"
+      >
+    </div>
+  </div>
+  <p>
+    Representing Pzaz on campus requires a unique blend of marketing, sales, event coordination, and content creation.
+  </p>
+  <div class="college__educate-wrapper">
+    <h2 class="text-center">How does it work?</h2>
+    <div class="college__educate">
+      <div class="college__educate-item">
+        <div class="college__educate-item-icon">
+          {% render 'icon-money' %}
+        </div>
+
+        <h3 class="college__educate-item-title">GUARANTEED STIPEND</h3>
+        <p class="college__educate-item-copy">
+          We pay a minimum of $250/month to every accepted campus Brand Representative.
+        </p>
+      </div>
+      <div class="college__educate-item">
+        <div class="college__educate-item-icon">
+          {% render 'icon-lightning' %}
+        </div>
+        <h3 class="college__educate-item-title">SALES SKILLS</h3>
+        <p class="college__educate-item-copy">
+          Bring some Pzaz to your favorite stores around campus and learn sales strategy.
+        </p>
+      </div>
+      <div class="college__educate-item">
+        <div class="college__educate-item-icon">
+          {% render 'icon-plus-depth' %}
+        </div>
+        <h3 class="college__educate-item-title">BONUS PAY</h3>
+        <p class="college__educate-item-copy">Get paid extra for every event, sampling, sale, photo, and more.</p>
+      </div>
+      <div class="college__educate-item">
+        <div class="college__educate-item-icon">
+          {% render 'icon-star' %}
+        </div>
+        <h3 class="college__educate-item-title">PARTY SKILLS</h3>
+        <p class="college__educate-item-copy">Take Pzaz out to the best events and organizations on campus.</p>
+      </div>
+    </div>
+  </div>
+  <h2>learn</h2>
+  <p>
+    Being a Campus Associate for Pzaz is an opportunity to gain experience in consumer goods, marketing, retail sales,
+    and content creation.
+  </p>
+
+  <div class="college__banner">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source src="https://cdn.shopify.com/videos/c/o/v/bf447523135b43bbac0b748fc2519e31.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <h2 class="college__earn-heading">earn</h2>
+  <div class="college__earn flow">
+    <div class="college__earn-item">
+      <span>
+        <h3 class="college__earn-item-title">
+          $250 stipend per<br>
+          month
+        </h3>
+      </span>
+      <span>
+        <p class="college__earn-item-copy">
+          Every campus associate receives a base stipend per month, just for staying part of our community.
+        </p>
+      </span>
+    </div>
+    <div class="college__earn-item">
+      <span>
+        <h3 class="college__earn-item-title">
+          $50 for collecting<br>
+          content
+        </h3>
+      </span>
+      <span>
+        <p class="college__earn-item-copy">
+          Collect 20+ videos and photos of people enjoying Pzaz and we’ll pay you an extra $50.
+        </p>
+      </span>
+    </div>
+    <div class="college__earn-item">
+      <span>
+        <h3 class="college__earn-item-title">
+          $50 for making<br>
+          content
+        </h3>
+      </span>
+      <span>
+        <p class="college__earn-item-copy">
+          Turn your content into 5+ ready-to-post Reels and TikToks and we’ll pay you an extra $50.
+        </p>
+      </span>
+    </div>
+    <div class="college__earn-item">
+      <span>
+        <h3 class="college__earn-item-title">
+          $100 for a big<br>
+          party
+        </h3>
+      </span>
+      <span>
+        <p class="college__earn-item-copy">
+          Make Pzaz a big part of an approved campus event with more than 100 attendees and we’ll pay you an extra $100.
+        </p>
+      </span>
+    </div>
+  </div>
+
+  <div class="college__footer padding-base">
+    {% render 'cta-button',
+      text: 'apply now',
+      link: 'https://docs.google.com/forms/d/e/1FAIpQLSfroEtJjI7ZXYpyPKomcrAqqgIyqrfj0GLnZrSKQyBQkIwvtQ/viewform'
+    %}
+    <p class="fs-2xl">
+      Visit pzaz.com/college or contact us at<br>
+      <strong>friends@pzaz.com</strong> with any questions.
+    </p>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/college-footer-boxes-squooshed.png?v=1675449417"
+      loading="lazy"
+      width="auto"
+      height="auto"
+    >
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": " college-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

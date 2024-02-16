@@ -1,0 +1,113 @@
+{{ 'home-review.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<div class=" reviews your-way  flow color-dark overflow-x">
+    <div class="container">
+        <div class="new-review-section ">
+            <div class="review-header">
+              <h1 class="review-header-title">{{section.settings.title}}</h1>
+              
+            </div>
+            <div class="swiper reviewSwiper ">
+                <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type =='review' %}
+                    <div class="swiper-slide review-slider">
+                        <div class="newreview-header">
+                            <div class="review-stars">
+                            {% render 'five-stars' %}
+                            </div>
+                            <div class="review-title">
+                                <h3>{{block.settings.title}}</h3>
+                            </div>
+                        </div>
+                        <div class="user_name">
+                        {{block.settings.user_name}}
+                        </div>
+                        <p> Verified Customer</p>
+                        <div class="review-description">
+                        {{block.settings.content}}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+
+  
+
+</div>
+<script>
+    var reviewswiper = new Swiper(".reviewSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+         1024: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        }
+      },
+    });
+  </script>
+</div>
+{% schema %}
+{
+  "name": "Home Review",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "It really Works"
+        },
+        {
+          "type": "text",
+          "id": "user_name",
+          "label": "Client Name",
+          "default": "AlEC S."
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ], "presets": [
+    {
+      "name": "Home Review"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+{{ 'text-with-button.css' | asset_url | stylesheet_tag }}
+<div class="text-with-button" style="background:{{section.settings.background}};">
+    <div class="container twb-content">
+        <div class="twb-text">
+            {% if section.settings.title != blank %}
+                <div class="twb-title">
+                    {{section.settings.title}}
+                </div>
+            {% endif %}
+            {% if section.settings.description != blank %}
+                <div class="twb-description">
+                    {{section.settings.description}}
+                </div>
+            {% endif %}
+        </div>
+        {% if section.settings.button_label != blank %}
+        <div class="twb-btn">
+            <a href="{{section.settings.button_link}}">
+                {{section.settings.button_label}}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+{% schema %}
+{
+  "name": "Text With Button",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Background",
+      "id": "background",
+      "default": "#fdff02"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title",
+      "default": "Fresh breath and caffeine energy. "
+    },
+    {
+      "type": "text",
+      "label": "Description",
+      "id": "description",
+      "default": "Pzaz is the ultimate way to power up."
+    },
+    {
+      "type": "text",
+      "label": "Button Label",
+      "id": "button_label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "label": "Button Link",
+      "id": "button_link"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Text With Button"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

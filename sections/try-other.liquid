@@ -1,0 +1,54 @@
+
+<div class="try-other">
+    <div class="container">
+        {% if section.settings.description != blank %}
+            <div class="try-other-description">
+                {{ section.settings.description }}
+            </div>
+        {% endif %}
+        <div class="try-other-variants">
+            {% for variant in product.variants %}
+            {% if variant.metafields.custom.variant_available == false %}
+              {% continue %}
+            {% endif %}
+            <div class="try-other-item {% if forloop.first %} hidden {% endif %}" data-id="{{variant.id}}">
+                <div class="try-slider-image" style="background:{{variant.metafields.custom.background_1}};">
+                    <img src="{{variant.image | img_url: 'master'}}" loading="lazy"/>
+                </div>
+                <button class="try-variant-btn" data-id="{{variant.id}}">
+                    <span>Add to cart</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Try Other Variant",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Try other Variant"
+    }
+  ],
+  "templates": [
+    "product"
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

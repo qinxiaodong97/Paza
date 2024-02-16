@@ -1,0 +1,100 @@
+ {{ 'new-product-2.css' | asset_url | stylesheet_tag }}
+ <style>
+ .home-product .product-content{
+     margin-top: 0rem; 
+     margin-bottom: 2rem; 
+     padding-inline: 0rem; 
+     display: block;
+ }
+ .home-product.section-padding {
+    padding-bottom: 0px;
+ }
+ </style>
+ <div class="container section-header-padding">
+  <h2 class="home-title flavor-heading">{{section.settings.flavors-heading-2}}</h2>
+  <p class="fw-body-medium fs-xl">{{section.settings.flavors-subheading-2}}</p>
+</div>
+ <div class="container section-padding home-product">
+    <div class="product-content flow" style="--flow-gap:2rem">
+   
+   
+    <div class="product-banner">
+      {% if section.settings.image_1 != blank %}
+        <img
+          src="{{ section.settings.image_1 | img_url:'master' }}"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-8"
+        >
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Hero_Image.png?v=1682955388"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-8"
+        >
+      {% endif %}
+      
+    </div>
+   
+
+    <div class="product-banner-split">
+      <a href="{{section.settings.image_2_link}}" class="product-banner">
+      {% if section.settings.image_2 != blank %}
+        <img
+          src="{{ section.settings.image_2 | img_url: 'master' }}"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-6"
+        >
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/image_1.png?v=1683808843"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-6"
+        >
+      {% endif %}
+      </a>
+      
+      <a href="{{section.settings.image_3_link}}" class="product-banner">
+      {% if section.settings.image_3 != blank %}
+        <img
+          src="{{ section.settings.image_3 | img_url: 'master' }}"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-6"
+        >
+      {% else %}
+       <img
+          src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/image_3aef5396-e58d-4b9a-b7b2-759371c683e8.png?v=1683808866"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-6"
+        >
+      {% endif %}
+      
+        {% comment %} <video
+          class="lazy btf-7"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pdp-btf-image-2.jpg?v=1680891013"
+        >
+          <source data-src="https://cdn.shopify.com/videos/c/o/v/a44fe01afdc74cd2a900bf0cbbd17f4f.mp4" type="video/mp4">
+        </video> {% endcomment %}
+      </a>
+    </div>
+  
+    
+  </div>
+ </div>
+ 

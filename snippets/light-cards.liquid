@@ -1,0 +1,88 @@
+{{ 'flavor-cards.css' | asset_url | stylesheet_tag }}
+<div class="container section-header-padding">
+  <h2 class="home-title flavor-heading">{{ heading }}</h2>
+  <p class="flavor-subheading">{{ subheading }}</p>
+</div>
+<div class="container  section-padding  flex justify-center flavor-cards-wrapper">
+  <div class="flavor-cards">
+    <div class="flavor-cards-inner">
+     
+      <div
+        class="flavor-card bg-blue"
+        id="card-blue"
+        data-active="true"
+        data-id="43551487983859"
+      >
+        <div class="flavor-card-inner">
+          <div class="flavor-card__image">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/mint-1920x960_03_09_23_compressed.png?v=1678475257"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+          <div class="flavor-card__body">
+            <h2 class="flavor-card__title">mint frost</h2>
+            <p class="flavor-card__copy">
+                Our coldest, freshest flavor features an abundance of spicy peppermint leaf extracts.
+            </p>
+            <div class="flex justify-center align-center">
+              <a class="button button--primary  button--small" href="/products/pzaz-four-pack">
+                  Shop Now
+              </a>
+              {% comment %} {% render 'add-button', border: true, color: 'primary', size: 'small', id: '43551487983859' %} {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flavor-card bg-green"
+        id="card-green"
+        data-active="false"
+        data-id="43551488049395"
+      >
+        <div class="flavor-card-inner">
+          <div class="flavor-card__image">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/sour-1920x960_03_09_23_compressed.png?v=1678475257"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+          <div class="flavor-card__body">
+            <h2 class="flavor-card__title">super sour</h2>
+            <p class="flavor-card__copy">
+                A mouthpuckering blend of tart green apple with fresh lemon. Limited edition flavor.
+            </p>
+            <div class="flex justify-center align-center">
+              <a class="button button--primary  button--small" href="/products/pzaz-four-pack">
+                  Shop Now
+              </a>
+              {% comment %} {% render 'add-button', border: true, color: 'primary', size: 'small', id: '43551488049395' %} {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const cards = [...document.querySelectorAll('.flavor-card')];
+
+  cards.forEach((card) => {
+    card.addEventListener('click', (event) => {
+      console.log(`clicked ${event.currentTarget.classList}`);
+
+      cards.map((card) => {
+        if (card.dataset.active == 'true') {
+          card.dataset.active = 'false';
+        }
+      });
+      event.currentTarget.dataset.active = 'true';
+    });
+  });
+</script>
+{% comment %} <script src="{{ 'cards.js' | asset_url }}" defer></script> {% endcomment %}

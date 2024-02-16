@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "404",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/29_1.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

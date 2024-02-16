@@ -1,0 +1,81 @@
+{% style %}
+  .store-locator {
+  }
+
+  .store-locator h1 {
+    text-transform: uppercase;
+    font-family: var(--ff-heading);
+    font-style: italic;
+    font-size: var(--fs-5xl);
+    line-height: 1.2;
+  }
+
+  .store-locator p {
+    font-weight: var(fw-body-bold);
+    padding-bottom: 4rem;
+  }
+
+  .closeby-inline-embed {
+    border-radius: 15px !important;
+    border: 2px solid #fff !important;
+    /* background: linear-gradient(white, white) padding-box,
+      linear-gradient(
+          to bottom,
+          rgba(255, 255, 255) 0%,
+          rgba(255, 255, 255) 30%,
+          rgba(var(--color-primary)) 30%,
+          rgba(var(--color-primary)) 60%,
+          rgba(255, 255, 255) 60%,
+          rgba(255, 255, 255) 100%
+        )
+        border-box !important; */
+    box-shadow: 0px 4px #fff !important;
+  }
+{% endstyle %}
+
+<div class="color-primary store-locator container padding-base header-spacer full-height">
+  <h1>{{- section.settings.title }}</h1>
+  <p>
+    {{- section.settings.copy -}}
+  </p>
+
+  <div class="closeby-embed-77dc4bbd3fa21c5bf464044a3fcc35a0"></div>
+  <script>
+    window.closeby = { mapKey: '77dc4bbd3fa21c5bf464044a3fcc35a0', options: { embed: true, height: 700 } };
+  </script>
+  <script src="https://embed.closeby.co/v1.js" async defer></script>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "store-locator-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "check us out"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Find Pzaz for only $3.99 per tube at more than 200+ retailers nationwide."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,109 @@
+{% comment %} {{ 'reviews.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% style %}
+  .check-us-out p {
+    max-width: 70%;
+    margin-left: 1rem;
+  }
+
+  .locator-cta {
+    width: 100%;
+    height: 15rem;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    margin-block: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .locator-cta {
+      height: 25rem;
+    }
+  }
+
+  .locator-cta .button {
+    position: relative;
+    z-index: 100;
+  }
+
+  .locator-cta .button-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .locator-cta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /*MAKING IMAGES LARGE FOR PARALLAX #TEMPORARY*/
+  .locator-cta img {
+    width: 150%;
+    height: 150%;
+    object-fit: cover;
+    object-position: bottom;
+  }
+{% endstyle %}
+<div
+  class="check-us-out container padding-base flow color-primary"
+>
+  <h1
+    class="ff-heading fs-heading fs-7xl"
+  >
+    Check<br>
+    us out
+  </h1>
+  <p
+    class="fw-body-medium fs-xl"
+  >
+    Find us at more than 200+ locations nationwide.
+  </p>
+  <div
+    class="locator-cta"
+  >
+    <img
+      src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/NEWSTAND_compressed_squoosh.jpg?v=1674227181"
+      width="auto"
+      height="auto"
+      loading="lazy"
+    >
+    <div
+      class="button-wrapper"
+    >
+      {% render 'cta-button',
+        color: 'light',
+        size: 'small',
+        border: true,
+        text: 'Store locator',
+        link: '/pages/new-store-locator'
+      %}
+    </div>
+  </div>
+</div>
+
+<script
+  src="{{ 'reviews.js' | asset_url }}"
+  defer
+></script>
+
+{% schema %}
+{
+  "name": "check-us-out-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

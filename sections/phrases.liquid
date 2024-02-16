@@ -1,0 +1,75 @@
+{% comment %} {{ 'reviews.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% style %}
+  .phrases {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+
+    margin-bottom: 10%;
+    /* margin-block: 10%; */
+  }
+  .phrases__text {
+    /* padding-left: 5%; */
+    padding-bottom: 5%;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: clamp(var(--fs-2xl), 5vw, 4rem);
+    font-weight: var(--fw-heading-bold);
+    font-family: var(--ff-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    width: 100%;
+    /* border-bottom: 2px solid white; */
+  }
+
+  /* .phrases__no {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(var(--color-primary));
+    font-size: 7vw;
+  } */
+
+  /* .phrases__subject {
+    color: rgba(var(--color-primary));
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(var(--color-primary));
+    font-size: 5vw;
+  } */
+{% endstyle %}
+
+<div class="phrases color-primary overflow-hidden">
+  <span>
+    <div class="phrases__text">
+      <span class="phrases__no">NO</span>
+      <span class="phrases__subject">CRASH</span>
+    </div>
+    <div class="phrases__text">
+      <span class="phrases__no">NO</span>
+      <span class="phrases__subject">JITTERS</span>
+    </div>
+    <div class="phrases__text">
+      <span class="phrases__no">NO</span>
+      <span class="phrases__subject">NEED TO PEE</span>
+    </div>
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "phrases-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{{ 'science.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #light-section {
+    /* margin-left: 1rem;
+    margin-right: 1rem; */
+    border-radius: 20px;
+  }
+{% endstyle %}
+<div class=" full-height bg-light" id="light-section">
+ 
+</div>
+{% schema %}
+{
+  "name": "home-section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "PICK YOUR FLAVOR"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Caffeine and vitamins in a delicious, convenient, and controlled form factor."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,92 @@
+{% render 'iwans-blog-css' %}
+{% assign custom_title = article.metafields.custom.title | metafield_text %}
+{% assign custom_headline = article.metafields.custom.headline | metafield_text %}
+{% assign hero_image_url = section.settings.image %}
+{% assign hero_video_url = section.settings.video %}
+<div class="blog-hero-image__container">
+  {% if hero_image_url %}
+    <img
+      src="{{ hero_image_url | img_url:'2000x' }}"
+      class="blog-hero-image"
+      width="100"
+      height="auto"
+      loading="lazy"
+    >
+  {% elsif hero_video_url %}
+    {{ hero_video_url | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+  {% endif %}
+</div>
+<section class="container padding-base blog-main__heading">
+  <div class="container">
+    <div class="flex justify-center flex-column">
+      <h1 class="ff-heading fs-4xl">research</h1>
+      <p class="fw-body-regular fs-lg">
+        Pzaz is a biotechnology company developing superior alternatives to functional beverages and supplements. Our
+        research team comprises chemists, material scientists, chefs, and academics. Read more about our work below.
+      </p>
+      <h2 class="blog-general__subheading">{{ section.settings.sub_heading }}</h2>
+    </div>
+    {% if custom_headline.size > 0 %}
+      <h2 class="blog-header-main__headline">
+        {{ article.metafields.custom.headline }}
+      </h2>
+    {% endif %}
+  </div>
+
+  <div class="blog-main contain" style="overflow:hidden;">
+    {% for article in blog.articles %}
+      <div class="blog-main__card">
+        <div class="blog-main__card-image">
+          {% if article.metafields.custom.image %}
+            {% assign card_image_url = article.metafields.custom.image %}
+          {% else %}
+            {% assign card_image_url = article.image %}
+          {% endif %}
+          <a href="{{article.url}}">
+            <img src="{{ card_image_url | img_url:'720x' }}" width="100" height="auto" loading="lazy">
+          </a>
+        </div>
+        <a href="{{article.url}}">
+          <div class="blog-more__card-content">
+            <h2 class="blog-more__card-title">
+              {{ article.title }}
+            </h2>
+
+            <span class=" blog-more__card-date">
+              {% comment %} {{ article.published_at | date: '%B %d, %Y' }} {% endcomment %}
+              Read more.
+            </span>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+  <a href="/blogs/research" class="blog__industry-link">
+    Click here to see our industry team’s research into the world and history of caffeine.
+  </a>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "heading title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "video"
+    }
+  ]
+}
+{% endschema %}

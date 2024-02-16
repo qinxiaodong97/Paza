@@ -1,0 +1,399 @@
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{{ 'subscription-button.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #preorder-cart-text {
+    width: 100%;
+    bottom: 0;
+    padding: 0.5rem;
+    position: relative;
+    backdrop-filter: blur(5px);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-size: cover;
+    color: #fff;
+  }
+
+  #preorder-cart-text p {
+    z-index: 3;
+  }
+
+  .cart-discount-cta {
+    background: gray;
+    position: relative;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+  }
+
+  .cart-discount-cta-inner {
+    background: #fdff02;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+  .cart-discount-cta-inner span {
+    width: 1.1rem;
+    min-width: 1.1rem;
+    height: 1.1rem;
+    transform: translateY(-0.1rem);
+    margin-right: 0.5rem;
+  }
+
+  .cart-discount-cta-inner span svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cart-discount-cta-inner p {
+    font-size: var(--fs-base);
+    font-weight: 700;
+  }
+  .cart-discount-message {
+    font-size: var(--fs-base);
+    font-weight: 400;
+    text-decoration: none;
+    color: #000;
+    text-align: left;
+  }
+  @media screen and (max-width: 768px) {
+    .cart-discount-cta-inner p {
+      font-size: var(--fs-base);
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .cart-discount-cta-inner p {
+      font-size: var(--fs-sm);
+    }
+  }
+{% endstyle %}
+
+{% assign addons = section.settings.collection.products %}
+
+{% for item in cart.items %}
+  {% assign SUBSCRIBED = false %}
+  {% if item.selling_plan_allocation %}
+    {% assign SUBSCRIBED = true %}
+  {% endif %}
+{% endfor %}
+
+<pzaz-cart>
+  <div class="cart color-dark" id="cart">
+    <div class="cart__header">
+      {% comment %} <h3 class="cart-title ff-heading fs-lg fw-heading-super">Your Cart</h3> {% endcomment %}
+      <div class="cart-count-icon">
+          {% render 'icon-cart' %}
+          <span class="cart-toggle__quantity" data-ajax-cart-section>{{ cart.item_count }}</span>
+      </div>
+      <span class="cart__close" id="cart-close">{% render 'icon-x' %}</span>
+    </div>
+    <div class="cart-discount-cta">
+      <div class="cart-discount-cta-inner">
+       
+        <a class="cart-discount-message" href="/products/pzaz-breath-spray-caffeine-energy">
+          {% if SUBSCRIBED %}
+            By subscribing you are saving 50% on your first order and 10% after that!
+          {% else %}
+            Spend $20 or more to unlock free shipping!
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    
+
+    {% comment %} <div class="filler"></div> {% endcomment %}
+    <div class="cart__empty" id="cart-empty">
+
+      <div class="go_shop">
+        <p>Your cart is empty.</p>
+        <a href="/products/pzaz-breath-spray-caffeine-energy">
+          <button>Shop Now</button>
+        </a>
+      </div>
+      <div class="empty_footer">
+        {% if settings.cart_product != blank %}
+          {% assign product = settings.cart_product %}
+          <div class="cart-product-title">
+            We recommend:
+          </div>
+          <div class="cart-product">
+            {% assign count = 0 %}
+            {% for variant in product.variants %}
+              {% if count < 2 and variant.available %}
+              <div class="cart-product-item">
+                  <div class="cart-product-image" style="background:{{variant.metafields.custom.background_1}};">
+                      <img src="{{variant.image | img_url: 'master'}}" loading="lazy"/>
+                  </div>
+                  <button class="cart-product-btn" data-id="{{variant.id}}">
+                      <span>Add to cart</span>
+                  </button>
+              </div>
+              {% assign count = count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="cart__footer_empty flow"  style="--flow-gap:0.7rem" >
+          <div class="cart__summary fs-base">
+            <div class="flex space-between" data-type="savings">
+              <h4 class="fw-body-medium">Total savings</h4>
+              <span class="fw-body-semibold">
+                $0
+              </span>
+            </div>
+            <div class="flex space-between" data-type="shipping">
+              <h4 class="fw-body-medium">Shipping</h4>
+              <span class="fw-body-semibold">
+                $0
+              </span>
+            </div>
+          </div>
+
+          {% assign CART_TOTAL = cart.total_price | plus: SHIPPING %}
+            <button
+              type="submit"
+              class="product-submit ff-heading  soldout"
+              name="checkout"
+              value="Checkout"
+            >
+            SUBMIT ORDER
+            </button>
+          <div class="payment-icon">
+            <img class="payment-image" 
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+                  data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/credit_card_symbmols.png?v=1684394892" width="auto"
+                  height="auto"
+                  loading="lazy" />
+          </div>
+        
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="cart__main" id="cart-main">
+      {% comment %} FIX THIS JANK, ALL WE NEEDED WAS THE ORIGINAL PRICE OF ALL OF THE ITEMS {% endcomment %}
+      <div class="cart__line fw-body-medium" data-ajax-cart-section>
+        {% assign SUBSCRIBED = false %}
+        {% assign OG_PRICE = 0 %}
+        <div class="cart__line-items flow" style="--flow-gap:1rem">
+          {% for item in cart.items %}
+            {% assign item_index = forloop.index %}
+            {% assign og-line-price = item.variant.price | times: item.quantity %}
+            {% assign OG_PRICE = OG_PRICE | plus: og-line-price %}
+          
+            {% if item.id == 43740474704115 %}
+               <div class="cart__line-item">
+                  <div class="line-item-left">
+                    <div class="line-item-image" style="background: {{item.variant.metafields.custom.background_1}};">
+                      <img src="{{ item.variant.featured_image | image_url | img_url:'200x' }}" width="100" height="auto" loading="lazy">
+                    </div>
+                    <div class="line-item-content">
+                      <div class="line-item-content-top">
+                        <h3 class="line-item-title fw-body-bold fs-base">
+                          {{ item.variant.title }}
+                          <br>
+                        </h3>
+                      </div>
+                      <div class="line-item-content-bottom">
+                      
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="line-item-price">
+                    {{item.final_line_price | money }}
+                  </div>
+                </div>
+            {% else %}
+               <div class="cart__line-item">
+                <div class="line-item-left">
+                  <div class="line-item-image" style="background: {{item.variant.metafields.custom.background_1}};">
+                    <img src="{{ item.variant.featured_image | image_url | img_url:'200x' }}" width="100" height="auto" loading="lazy">
+                  </div>
+                  <div class="line-item-content">
+                    <div class="line-item-content-top">
+                      <h3 class="line-item-title fw-body-bold fs-base">
+                        {{ item.variant.title }}
+                        <br>
+                        {% if item.selling_plan_allocation %}
+                          {% assign SUBSCRIBED = true %}
+                          
+                        {% endif %}
+                      </h3>
+                    </div>
+                    <div class="line-item-content-bottom">
+                      <div class="line-item-quantity">
+                        <a
+                          class="
+                            line-item-quantity-input
+                            line-item-quantity-input--minus
+                          "
+                          data-ajax-cart-request-button
+                          href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | minus: 1 }}"
+                        >
+                          <span>-</span>
+                        </a>
+                        <p class="line-item-quantity-text">{{ item.quantity }}</p>
+                        <a
+                          class="line-item-quantity-input line-item-quantity-input--plus"
+                          data-ajax-cart-request-button
+                          href="{{ routes.cart_change_url }}?line={{ item_index }}&quantity={{ item.quantity | plus: 1 }}"
+                        >
+                          <span>+</span>
+                        </a>
+                      </div>
+                      {% comment %} <a
+                        data-ajax-cart-static-element
+                        data-ajax-cart-request-button="{{ routes.cart_change_url }}?id={{ item.id }}&quantity=0"
+                        class="cart__line-info--button text-right fs-base fw-body-semibold italic"
+                        id="cart-clear"
+                        data-action="clear"
+                        >remove</a
+                      > {% endcomment %}
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="line-item-price">
+                  {{item.final_line_price | money }}
+                </div>
+              </div>
+            {% endif %}
+           
+            {% comment %}  end of line item{% endcomment %}
+          {% endfor %}
+        </div>
+        <div class="cart__line-info">
+          <div>
+            <span class="cart__line-info--original-price">
+              {%- if SUBSCRIBED %}{% endif -%}
+              {% if cart.total_discount > 0 or SUBSCRIBED %}
+                {{ OG_PRICE | money }}
+              {% endif %}
+            </span>
+            <span class="cart__line-info--total-price"> {{ cart.total_price | money }}</span>
+          </div>
+        </div>
+        <div class="cart-over"></div>
+      </div>
+      
+      <div class="cart_content">
+        <div class="subscription-slider">
+           
+          <div class="wrapper">
+            <div class="sub-toggle {% if SUBSCRIBED %}active{% endif %}">
+              <p class="sub-toggle__active-text">You’re subscribed and saving 50% today!</p>
+              <div class="circle">
+                <div class="inside-circle"></div>
+              </div>
+              <p class="sub-toggle__text">Activate subscription and save 50% today </p>
+            </div>
+          </div>
+          <p class="cart-subscribe__description">
+           {% if SUBSCRIBED %}
+            You're saving <b>50%</b> on your order today by selecting a 2+ month subscription.
+           {% else %}
+            <b>Save 50%</b> on your first order and <b>10%</b> on all recurring orders orders when you activate a 2+ month subscription of Pzaz.
+           {% endif %}
+          </p>
+        </div>
+      </div>
+      
+
+    </div>
+
+    <div class="cart__footer flow"  style="--flow-gap:0.7rem" data-ajax-cart-section >
+      <div class="cart__summary fs-base">
+        <div class="flex space-between" data-type="savings">
+          <h4 class="fw-body-medium">Total savings</h4>
+          <span class="fw-body-semibold">
+            {% if SUBSCRIBED %}
+              {{ OG_PRICE | minus: cart.total_price | money }}
+            {% else %}
+              {{ cart.total_discount | money }}
+            {% endif %}
+          </span>
+        </div>
+        <div class="flex space-between" data-type="shipping">
+          <h4 class="fw-body-medium">Shipping</h4>
+          <span class="fw-body-semibold">
+            {% assign SHIPPING = 439 %}
+            {% if cart.total_price > 1995 or cart.item_count > 4 %}
+              {% assign SHIPPING = 0 %}
+              Free Shipping
+            {% else %}
+              {{ SHIPPING | money }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+
+      {% assign CART_TOTAL = cart.total_price | plus: SHIPPING %}
+      <form class="cart_draw_btn" action="{{ routes.cart_url }}" method="post">
+        <button
+          type="submit"
+          class="cart__submit ff-heading fs-base fw-heading-bold"
+          id="cart-submit"
+          name="checkout"
+          value="Checkout"
+        >
+         <span> SUBMIT ORDER </span>
+         <span>{{ CART_TOTAL | money }}</span>
+        </button>
+      </form>
+      <div class="payment-icon">
+        <img class="payment-image" 
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+              data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/credit_card_symbmols.png?v=1684394892" width="auto"
+              height="auto"
+              loading="lazy" />
+      </div>
+     
+    </div>
+  </div>
+
+  <script type="application/json">
+    {{ cart | json }}
+  </script>
+</pzaz-cart>
+
+<script>
+  window.SUBSCRIBED = false;{% if SUBSCRIBED %}window.SUBSCRIBED = true;{% endif %}
+</script>
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "cart-section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Main Product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

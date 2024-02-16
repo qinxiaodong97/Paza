@@ -1,0 +1,192 @@
+{% comment %} {{ 'reviews.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+{% style %}
+  #map-section {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* margin-top: 2rem; */
+    overflow: hidden;
+    position: relative;
+  }
+
+  #map-section h1 {}
+
+  /* .map-cta__image {
+    position: absolute;
+    top: -30vw;
+    flex: 1;
+    fill: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  } */
+
+  .map-cta__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .map-cta__image svg {
+    stroke: #fff;
+    stroke-width: 5px;
+    fill: none;
+  }
+  .map-cta__image path {
+    fill: black !important;
+  }
+
+  .map-cta__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+  }
+
+  .map-cta__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .map-marker {
+    --map-marker-size: max(8%, 1rem);
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    animation: map-marker 2s infinite;
+    fill: #fdff02;
+    width: var(--map-marker-size);
+    height: var(--map-marker-size);
+    object-fit: contain;
+  }
+  .mb-hidden {
+      display:block;
+    }
+    .dk-hidden {
+      display: none;
+    }
+  @media screen and (max-width: 500px) {
+    .map-cta__button button {
+      padding: 0.5rem 1.2rem;
+    }
+    .mb-hidden {
+      display:none;
+    }
+    .dk-hidden {
+      display: block;
+    }
+  }
+{% endstyle %}
+<div class="map container section-padding" id="map-section">
+  <div class="map-cta__wrapper">
+    <div class="map-cta__content">
+      <h1 class="home-title">
+       {{section.settings.title}}
+      </h1>
+      <p class="fw-body-medium fs-xl">
+      {{section.settings.description}}
+      </p>
+    </div>
+    
+  </div>
+  <div class="map-cta__image">
+    
+    {% if section.settings.image != blank %}
+      <img class="mb-hidden" src="{{section.settings.image | img_url: 'master' }}"
+      loading="lazy"
+      width="auto"
+      height="auto">
+    {% endif %}
+    {% if section.settings.mobile_image != blank %}
+      <img class="dk-hidden" src="{{section.settings.mobile_image | img_url: 'master' }}"
+      loading="lazy"
+      width="auto"
+      height="auto">
+    {% endif %}
+
+    {% if section.settings.video != blank %}
+        <div class=" fw-video overflow-hidden">
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+        </div>
+    {% endif %}
+    <div class="map-cta__button">
+      {% render 'cta-button', color: 'light', text: section.settings.button_label, link: section.settings.button_link %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const mapMarkers = [...document.querySelectorAll('.map-marker')];
+  let xMin = 0;
+  let xMax = 80;
+  let yMin = 20;
+  let yMax = 68;
+  mapMarkers.forEach((marker, i) => {
+    marker.style.top = `${
+      Math.random() * (yMax - yMin) + yMin
+    }%`;
+    marker.style.left = `${
+      Math.random() * (xMax - xMin) + xMin
+    }%`;
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Map Section",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": " Check<br> us out"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description",
+        "default":"Experience Pzaz at hundreds of retailers nationwide."
+      },
+      {
+        "type":"text",
+        "id": "button_label",
+        "label": "Button Text",
+        "default": "Store locator"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "image_picker",
+        "label": "Desktop Image",
+        "id": "image"
+      },
+      {
+        "type": "image_picker",
+        "label": "Mobile Image",
+        "id": "mobile_image"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,109 @@
+{{ 'science.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #light-section {
+    /* margin-left: 1rem;
+    margin-right: 1rem; */
+    border-radius: 20px;
+  }
+  .product-page {
+    margin-top: 0px !important;
+    margin-bottom: 2rem;
+  }
+{% endstyle %}
+<div class=" full-height bg-light" id="light-section">
+  {% comment %} {% render 'light-energy' %} {% endcomment %}
+  {% comment %}{% render 'light-cards' heading: {{section.settings.flavors-heading}}, subheading: {{section.settings.flavors-subheading}} %}{% endcomment %}
+  {% render 'light-reviews' %}
+  {% render 'home-content' %}
+  {% comment %} {% render 'collage' %} {% endcomment %}
+</div>
+{% schema %}
+{
+  "name": "light-section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "flavors-heading",
+      "label": "Flavors Heading",
+      "default": "Delicious Flavors"
+    },
+    {
+      "type": "text",
+      "id": "flavors-subheading",
+      "label": "Flavors Subheading",
+      "default": "Shop now to view any in-stock limited edition flavors"
+    },
+      {
+      "type": "text",
+      "id": "flavors-heading-2",
+      "label": "Flavors Heading 2",
+      "default": "Delicious Flavors"
+    },
+    {
+      "type": "text",
+      "id": "flavors-subheading-2",
+      "label": "Flavors Subheading 2",
+      "default": "Shop now to view any in-stock limited edition flavors"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "url",
+      "id": "image_2_link",
+      "label": "Image2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "url",
+      "id": "image_3_link",
+      "label": "Image3 Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review Title",
+          "default": "It really Works"
+        },
+        {
+          "type": "text",
+          "id": "user_name",
+          "label": "Client Name",
+          "default": "AlEC S."
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ], "presets": [
+    {
+      "name": "Light Section"
+    }
+  ]
+}
+{% endschema %}

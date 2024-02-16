@@ -1,0 +1,318 @@
+{% render 'iwans-blog-css' %}
+{% assign custom_title = article.metafields.custom.title | metafield_text %}
+{% assign custom_headline = article.metafields.custom.headline | metafield_text %}
+{% assign custom_tagline = article.metafields.custom.tagline | metafield_text %}
+
+{% if article.metafields.custom.image %}
+  {% assign hero_image_url = article.metafields.custom.image %}
+{% else %}
+  {% assign hero_image_url = article.image %}
+{% endif %}
+<style>
+.blog-content-first {
+    display: flex;
+
+}
+.blog-content-text {
+    margin-top: 20px;
+}
+.blog-content-first .blog-content-text{
+    width: 68%;
+}
+.blog-content-image {
+    width: 30%;
+}
+.blog-quote {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.blog-quote .blog-quote-text {
+    width: 80%;
+    background: #D9D9D9;
+    border-radius: 40px;
+    padding: 20px 40px;
+}
+.blog-quote .blog-quote-text p {
+    padding-bottom: 0px;
+}
+.blog-content-new{
+  width: 70%;
+}
+.blog-list-image{
+  width: 48%;
+  border-radius: 0px;
+}
+.blog-list-images {
+  display: flex;
+  justify-content: space-between;
+}
+.blog-list-titles{
+  margin-top: 40px;
+}
+.blog-list-1{
+  margin-top: 60px
+}
+.blog-list-2{
+  margin-top: 40px
+}
+.blog-list-3{
+  margin-top: 40px
+}
+.blog-list-1 .blog-list-image{
+  width: 100%;
+}
+.blog-list-image img{
+  margin: 1rem 0px;
+  border-radius: 0px;
+}
+.blog-list-title {
+  position: relative;
+  width: fit-content;
+  font-weight: 700;
+}
+.blog-list-title::after{
+    position: absolute;
+    height: 1px;
+    background: #000;
+    content: ' ';
+    left: 20px;
+    right: 0;
+    bottom: 0;
+}
+.article-refer {
+  margin-top: 40px;
+  border-top: solid 1px;
+  padding-top: 40px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.article-refer  li{
+  list-style: number;
+  color: #000;
+  padding-block: 0.2rem;
+}
+.article-refer  a{
+  color: #000 !important;
+}
+.article-refer  a:hover{
+  color: #00D300 !important;
+}
+@media (max-width: 750px) {
+    .blog-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .blog-content-image {
+        width: 100%;
+    }
+    .blog-content-new{
+      width: 100%;
+    }
+    .blog-content-first .blog-content-text {
+        width: 100%;
+    }
+    .blog-content-first {
+        flex-wrap: wrap;
+    }
+    .blog-quote .blog-quote-text {
+        width: 100%;
+        border-radius: 20px;
+    }
+}
+</style>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"
+  integrity="sha512-wdUM0BxMyMC/Yem1RWDiIiXA6ssXMoxypihVEwxDc+ftznGeRu4s9Fmxl8PthpxOh5CQ0eqjqw1Q8ScgNA1moQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+></script>
+<article class="blog-wrapper">
+  <div class="blog-hero-image__container">
+    {% if hero_image_url %}
+      <img
+        src="{{ hero_image_url | img_url:'2000x' }}"
+        class="blog-hero-image"
+        width="100"
+        height="auto"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+  <div class="blog-header container">
+    <div class="blog-header-main">
+      <h1 class="blog-header-main__title">
+        {% if custom_title.size > 0 %}
+          {{- article.metafields.custom.title -}}
+        {% else %}
+          {{ article.title }}
+        {% endif %}
+      </h1>
+      {% if custom_headline.size > 0 %}
+        <h2 class="blog-header-main__headline">
+          {{- article.metafields.custom.headline -}}
+        </h2>
+      {% endif %}
+      {% if custom_tagline.size > 0 %}
+        <h3 class="blog-header-main__tagline">
+          {{- article.metafields.custom.tagline -}}
+        </h3>
+      {% endif %}
+    </div>
+    {% unless blog.title == 'Company Pages' %}
+      <div class="blog-header-info">
+        <span class="blog-header-info__date">Updated: {{ article.updated_at | date: '%B %d, %Y' }} </span>
+        <br>
+        <span class="blog-header-info__author"
+          >Written by:
+          {{ article.author }}
+        </span>
+      </div>
+    {% endunless %}
+  </div>
+  <div class="blog-content container">
+    <div class="blog-content-new">
+      {% if article.metafields.custom.subtitle_1 != blank %}
+          <h2>{{ article.metafields.custom.subtitle_1 }}</h2>
+      {% endif %}
+      <div class="blog-content-first">
+          {% if article.metafields.custom.content_1 != blank %}
+              <div class="blog-content-text">
+                  <p class="" >{{ article.metafields.custom.content_1 }}</p>
+              </div>
+          {% endif %}
+          {% if article.metafields.custom.content_image != blank %}
+              <div class="blog-content-image">
+                  <img src="{{article.metafields.custom.content_image | img_url:'master'}}" loading="lazy" />
+              </div>
+          {% endif %}
+      </div>
+      <div class="blog-content-second">
+          {% if article.metafields.custom.subtitle_2 != blank %}
+              <h2>{{ article.metafields.custom.subtitle_2 }}</h2>
+          {% endif %}
+          {% if article.metafields.custom.content_2 != blank %}
+              <div class="blog-content-text">
+                  <p class="" >{{ article.metafields.custom.content_2 }}</p>
+              </div>
+          {% endif %}
+      </div>
+      {% if article.metafields.custom.blockquote != blank %}
+      <div class="blog-quote">
+          
+              <div class="blog-quote-text">
+                  <p  class="fw-body-medium fs-xl" >{{ article.metafields.custom.blockquote }}</p>
+              </div>
+          
+      </div>
+      {% endif %}
+      <div class="blog-content-third">
+          {% if article.metafields.custom.content_3 != blank %}
+              <div class="blog-content-text">
+                  <p class="" >{{ article.metafields.custom.content_3 }}</p>
+              </div>
+          {% endif %}
+      </div>
+
+      {{article.content}}
+      <div class="blog-list-titles">
+        {% if article.metafields.custom.blog_list_1_title != blank %}
+            <h3 class="blog-list-title">{{article.metafields.custom.blog_list_1_title}}</h3>
+        {% endif %}
+        {% if article.metafields.custom.blog_list_2_title != blank %}
+            <h3 class="blog-list-title">{{article.metafields.custom.blog_list_2_title}}</h3>
+        {% endif %}
+        {% if article.metafields.custom.blog_list_3_title != blank %}
+            <h3 class="blog-list-title">{{article.metafields.custom.blog_list_3_title}}</h3>
+        {% endif %}
+      </div>
+      {% if article.metafields.custom.blog_list_1_title != blank %}
+        <div class="blog-list-1">
+          <h3 class="blog-list-title">{{article.metafields.custom.blog_list_1_title}}</h3>
+          {% if article.metafields.custom.blog_list_1_content != blank %}
+            <div class="blog-list-content">{{article.metafields.custom.blog_list_1_content}}</div>
+          {% endif %}
+          {% if article.metafields.custom.blog_list_1_image != blank %}
+            <div class="blog-list-image">
+                <img src="{{article.metafields.custom.blog_list_1_image | img_url:'master'}}"  loading="lazy" />
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if article.metafields.custom.blog_list_2_title != blank %}
+        <div class="blog-list-2">
+          <h3 class="blog-list-title">{{article.metafields.custom.blog_list_2_title}}</h3>
+          {% if article.metafields.custom.blog_list_2_content != blank %}
+            <div class="blog-list-content">{{article.metafields.custom.blog_list_2_content}}</div>
+          {% endif %}
+          {% if article.metafields.custom.blog_list_2_image != blank %}
+            <div class="blog-list-image">
+                <img src="{{article.metafields.custom.blog_list_2_image | img_url:'master'}}"  loading="lazy" />
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if article.metafields.custom.blog_list_3_title != blank %}
+        <div class="blog-list-3">
+          <h3 class="blog-list-title">{{article.metafields.custom.blog_list_3_title}}</h3>
+          {% if article.metafields.custom.blog_list_3_content != blank %}
+            <div class="blog-list-content">{{article.metafields.custom.blog_list_3_content}}</div>
+          {% endif %}
+          <div class="blog-list-images">
+            {% if article.metafields.custom.blog_list_3_image != blank %}
+              <div class="blog-list-image">
+                  <img src="{{article.metafields.custom.blog_list_3_image | img_url:'master'}}"  loading="lazy" />
+              </div>
+            {% endif %}
+            {% if article.metafields.custom.blog_list_3_2_image != blank %}
+              <div class="blog-list-image">
+                  <img src="{{article.metafields.custom.blog_list_3_2_image | img_url:'master'}}"  loading="lazy" />
+              </div>
+            {% endif %}
+          </div>
+        
+        </div>
+      {% endif %}
+      
+      {% if article.metafields.custom.reference != blank %}
+        <div class="article-refer">
+          <div>Rerferences:</div>
+          {{ article.metafields.custom.reference | metafield_tag }}
+        </div>
+      {% endif %}
+    </div>
+    
+    
+  </div>
+ 
+
+</article>
+
+
+{% schema %}
+{
+  "name": "New Article",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "default": true,
+      "label": "show date"
+    },
+    {
+      "type": "text",
+      "id": "article_headline",
+      "label": "Article Headline"
+    }
+  ],
+  "presets":[
+    {
+      "name": "New Article"
+    }
+  ]
+}
+{% endschema %}

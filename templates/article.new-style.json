@@ -1,0 +1,303 @@
+{
+  "sections": {
+    "main": {
+      "type": "article",
+      "disabled": true,
+      "settings": {
+        "blog_show_date": true,
+        "article_headline": ""
+      }
+    },
+    "f2184a5a-5f3b-41d5-9bc8-2e9044662b7c": {
+      "type": "new-article",
+      "settings": {
+        "blog_show_date": true,
+        "article_headline": ""
+      }
+    },
+    "9a09323c-3e4f-4ae2-84d0-59be8fe0006b": {
+      "type": "new-press",
+      "settings": {}
+    },
+    "54e17200-71af-42c8-953e-e3b31f08e6b4": {
+      "type": "new-product3",
+      "settings": {
+        "title": "",
+        "subtitle": "",
+        "product": "pzaz-breath-spray-caffeine-energy",
+        "heading": "Pzaz Breath Spray",
+        "subheading": "With 70 refreshing sprays and 180mg of caffeine energy, Pzaz is the most convenient and controlled way to power up.",
+        "show_content": true
+      }
+    },
+    "6316fe59-044e-43f4-b9df-e3cac32997fd": {
+      "type": "divider",
+      "settings": {}
+    },
+    "d64b392e-abb2-424d-b37c-16bf6e492c1d": {
+      "type": "product-new-section",
+      "blocks": {
+        "fde89fbe-a311-4c94-b05a-589fcb369b47": {
+          "type": "top_text",
+          "settings": {
+            "title": "Instantly fresh breath"
+          }
+        },
+        "01d21f2c-6747-4be9-8e8f-890c44978818": {
+          "type": "top_text",
+          "settings": {
+            "title": "Zero calorie caffeine"
+          }
+        },
+        "cb30f000-b574-4a30-bc09-779de1b93798": {
+          "type": "top_text",
+          "settings": {
+            "title": "Use as needed with no crash"
+          }
+        },
+        "3c6bbce4-1820-488c-900c-ff82dfadcad1": {
+          "type": "top_text",
+          "settings": {
+            "title": "Energy and focus in your pocket"
+          }
+        },
+        "67b76861-68be-454c-bcd8-65920f46579c": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "0 Calories"
+          }
+        },
+        "4c4c1038-2c0e-447c-b541-e294e3e11249": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "Electrolytes"
+          }
+        },
+        "0f289da0-6afc-4a2f-9b25-e136c8337200": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "Vitamin B12"
+          }
+        },
+        "52df5389-ab23-4241-90db-9a5d289a603b": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "0g Sugar"
+          }
+        },
+        "b01ba8e4-6b13-4e21-8fbf-04397adcfe09": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "Caffeine"
+          }
+        },
+        "12601d93-8ba9-47ea-af0b-0d3462eb7966": {
+          "type": "bottom_text",
+          "settings": {
+            "title": "Vitamin C"
+          }
+        }
+      },
+      "block_order": [
+        "fde89fbe-a311-4c94-b05a-589fcb369b47",
+        "01d21f2c-6747-4be9-8e8f-890c44978818",
+        "cb30f000-b574-4a30-bc09-779de1b93798",
+        "3c6bbce4-1820-488c-900c-ff82dfadcad1",
+        "67b76861-68be-454c-bcd8-65920f46579c",
+        "4c4c1038-2c0e-447c-b541-e294e3e11249",
+        "0f289da0-6afc-4a2f-9b25-e136c8337200",
+        "52df5389-ab23-4241-90db-9a5d289a603b",
+        "b01ba8e4-6b13-4e21-8fbf-04397adcfe09",
+        "12601d93-8ba9-47ea-af0b-0d3462eb7966"
+      ],
+      "settings": {
+        "top_desktop_image": "shopify:\/\/shop_images\/02193901_1_f2e3f704-0a99-4659-8092-040896255d5c.png",
+        "top_mobile_image": "shopify:\/\/shop_images\/02193901_1_d39ee9df-bc85-4135-b187-5583be9d5759.png",
+        "title": "180mg of caffeine per bottle spread across 70 refreshing sprays.",
+        "bottom_image": "shopify:\/\/shop_images\/Mask_group.png",
+        "bottom_title": "Refresh your body and mind."
+      }
+    },
+    "c298f0d2-ff53-4cd7-b710-327e1ca5892f": {
+      "type": "divider",
+      "settings": {}
+    },
+    "c8c29ab8-4e14-43a1-8a1c-d38cb27c82cf": {
+      "type": "product-faq",
+      "blocks": {
+        "69525df0-1f81-40d4-bc9e-a2bc895c4713": {
+          "type": "question",
+          "settings": {
+            "question": "How does Pzaz fix bad breath?",
+            "answer": "<p>Pzaz uses extra strong peppermint extract to instantly eliminate odors on your tongue and mouth, helping to kill germs and bacteria that cause tooth decay and plaque. <\/p>"
+          }
+        },
+        "7a17231c-5a8a-4fd3-bb3d-05ef7c621cf9": {
+          "type": "question",
+          "settings": {
+            "question": "What are the ingredients?",
+            "answer": "<p>Pzaz contains zero calories and is sugar-free, dairy-free, gluten-free, and vegan.<\/p><p><strong>Active ingredients: <\/strong>caffeine, Vitamin B12, Vitamin C, electrolytes.<\/p><p><strong>Inactive ingredients:<\/strong> water, peppermint and other natural flavors, citric acid, menthol, sucralose and potassium sorbate (for freshness).<\/p>"
+          }
+        },
+        "template--16812185354483__4393bd49-66e4-46e0-a6a8-b1caf4345808-16874919166e4f0965-0": {
+          "type": "question",
+          "settings": {
+            "question": "Why put caffeine in a breath spray?",
+            "answer": "<p>By using caffeine in small bursts throughout the day, you can feel energized and focused with no crash, no jitters, and less trouble getting to sleep.<\/p><p>One bottle of Pzaz (70 sprays) contains 180 mg of caffeine, which is the equivalent of about two large cups of coffee. <\/p><p>Use three sprays at a time to control your energy all day long without feeling the side effects of excessive caffeine use.<\/p>"
+          }
+        },
+        "82385fea-89e9-4f04-9fab-e1cb7dd92d63": {
+          "type": "question",
+          "settings": {
+            "question": "How much should I use?",
+            "answer": "<p>Enjoy three sprays at a time for a light pick-me-up whenever you’re feeling sluggish, tired, or unfocused. <\/p>"
+          }
+        },
+        "f44e4f88-7bf8-4289-a9c8-16cfdca5a1c7": {
+          "type": "question",
+          "settings": {
+            "question": "What makes Pzaz a healthy choice?",
+            "answer": "<p>Keep Pzaz in your pocket as a healthier, zero-calorie alternative to gum, mints, candy, energy drinks, coffee, soda, and more.<\/p>"
+          }
+        },
+        "7222fc7d-83d6-4c18-804a-2584d7a6eab4": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "question": "How does Pzaz control my energy?",
+            "answer": "<p>Our performance chemists are advocates for moderate and controlled caffeine consumption. <\/p><p>By using caffeine in small bursts throughout the day, you can feel energized and focused with no crash, jitters, or trouble getting to sleep.<\/p><p>One bottle of Pzaz (70 sprays) contains 180 mg of caffeine, which is the equivalent of about two large cups of coffee. <\/p><p><\/p><p><\/p><p><\/p>"
+          }
+        },
+        "edb3b48f-d5f9-49d5-a477-91caab3d4944": {
+          "type": "question",
+          "disabled": true,
+          "settings": {
+            "question": "Where is it made?",
+            "answer": "<p>Pzaz is manufactured in the United States in an FDA-approved facility that follows government mandated Good Manufacturing Processes.<\/p><p>If you have any issue with your Pzaz, reach out to us and we'll be glad to make sure you have a refreshing and energizing experience.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "69525df0-1f81-40d4-bc9e-a2bc895c4713",
+        "7a17231c-5a8a-4fd3-bb3d-05ef7c621cf9",
+        "template--16812185354483__4393bd49-66e4-46e0-a6a8-b1caf4345808-16874919166e4f0965-0",
+        "82385fea-89e9-4f04-9fab-e1cb7dd92d63",
+        "f44e4f88-7bf8-4289-a9c8-16cfdca5a1c7",
+        "7222fc7d-83d6-4c18-804a-2584d7a6eab4",
+        "edb3b48f-d5f9-49d5-a477-91caab3d4944"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "e8fdb751-c826-4305-a3aa-c04cea889351": {
+      "type": "home-review",
+      "blocks": {
+        "2196f156-097e-4003-a382-f88b99ce90fc": {
+          "type": "review",
+          "settings": {
+            "title": "Best thing yet!",
+            "user_name": "Paris H.",
+            "content": "I can honestly say this is the best thing yet! For times where trying to make coffee is such a hassle or even when you just need a little boost, this is the product to get it! I get tired throughout the day, so I spray for a pick me up and I feel amazing. I also love how it has vitamins which it’s necessary for your body!"
+          }
+        },
+        "024a6154-c38d-4e30-9383-7f2f21edfa90": {
+          "type": "review",
+          "settings": {
+            "title": "It really Works",
+            "user_name": "Alec S.",
+            "content": "I love using this spray in the morning to help me wake up and get going. The taste is delicious and the caffeine and vitamins give me the energy I need to start my day off right."
+          }
+        },
+        "1855815b-6165-4ea7-8bfb-0e919eb754ee": {
+          "type": "review",
+          "settings": {
+            "title": "Working very well",
+            "user_name": "Aiden F",
+            "content": "I love how I can throw it in my bag and get little boosts of energy throughout my day! It’s not too strong which is great for getting to that optimal caffeinated sweet spot. Plus not having to pee is kind of great."
+          }
+        },
+        "bf3ee592-2b0c-411f-a4d5-c82c615e875c": {
+          "type": "review",
+          "settings": {
+            "title": "I love this product!",
+            "user_name": "John S.",
+            "content": "I love this product. I get the caffeine hit basically right away but no jitters and it's not fucking with my stomach the way coffee does. Also, it's so convenient to be able to just throw it in my pocket and have for whenever. Love."
+          }
+        },
+        "6b52891d-04b9-4161-abd0-dd0fdb56b56f": {
+          "type": "review",
+          "settings": {
+            "title": "5 sprays and I'm zazzed",
+            "user_name": "Phil C",
+            "content": "Five pumps, zazzed up! My coworkers and I have been loving a new energy alternative. Pzaz gets the job done!"
+          }
+        },
+        "8e752b89-8684-40b7-a25f-a98a8b6cfdba": {
+          "type": "review",
+          "settings": {
+            "title": "Honestly pretty good",
+            "user_name": "Cole W",
+            "content": "I keep it in my pocket and if I’m working or something and need a little energy I get digging and bam I got caffeine in my pocket. Pretty bitter taste but it doesn’t last long. Not crazy strong. It’s good product yes"
+          }
+        }
+      },
+      "block_order": [
+        "2196f156-097e-4003-a382-f88b99ce90fc",
+        "024a6154-c38d-4e30-9383-7f2f21edfa90",
+        "1855815b-6165-4ea7-8bfb-0e919eb754ee",
+        "bf3ee592-2b0c-411f-a4d5-c82c615e875c",
+        "6b52891d-04b9-4161-abd0-dd0fdb56b56f",
+        "8e752b89-8684-40b7-a25f-a98a8b6cfdba"
+      ],
+      "settings": {
+        "title": "4.8 \/ 5 (780 Reviews)"
+      }
+    },
+    "5802ef26-7e00-49f4-9605-439da22a9e70": {
+      "type": "image-with-text2",
+      "blocks": {
+        "23f9c811-5c24-470e-8906-371001e0f18c": {
+          "type": "text",
+          "settings": {
+            "title": "Every order ships with a reusable <b>mesh bag and stickers to decorate.<\/b>"
+          }
+        },
+        "c4827725-28fa-4e87-806d-888884e1cc96": {
+          "type": "text",
+          "settings": {
+            "title": "Order five or more tubes and unlock a free <b>fanny pack<\/b> and <b>free shipping.<\/b>"
+          }
+        }
+      },
+      "block_order": [
+        "23f9c811-5c24-470e-8906-371001e0f18c",
+        "c4827725-28fa-4e87-806d-888884e1cc96"
+      ],
+      "settings": {
+        "background": "#fdff02",
+        "desktop_image": "shopify:\/\/shop_images\/Group_961.png",
+        "mobile_image": "shopify:\/\/shop_images\/Group_961.png"
+      }
+    },
+    "376cf9f5-0d9a-41b4-b9a1-f5934b6fc9ec": {
+      "type": "more-articles",
+      "settings": {
+        "title": "MORE RESEARCH:"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f2184a5a-5f3b-41d5-9bc8-2e9044662b7c",
+    "9a09323c-3e4f-4ae2-84d0-59be8fe0006b",
+    "54e17200-71af-42c8-953e-e3b31f08e6b4",
+    "6316fe59-044e-43f4-b9df-e3cac32997fd",
+    "d64b392e-abb2-424d-b37c-16bf6e492c1d",
+    "c298f0d2-ff53-4cd7-b710-327e1ca5892f",
+    "c8c29ab8-4e14-43a1-8a1c-d38cb27c82cf",
+    "e8fdb751-c826-4305-a3aa-c04cea889351",
+    "5802ef26-7e00-49f4-9605-439da22a9e70",
+    "376cf9f5-0d9a-41b4-b9a1-f5934b6fc9ec"
+  ]
+}

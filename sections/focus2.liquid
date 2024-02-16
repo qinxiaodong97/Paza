@@ -1,0 +1,62 @@
+<div class="focus container" id="focus">
+  <div class="focus__container">
+    <div class="focus__media">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/b7504a7e11714cc7a3f8956d6969170e.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="focus__content">
+      <div class="focus__content--inner">
+        <span>
+          <h2>
+            Unmatched<br>
+            Convenience
+          </h2>
+          <p>Pzaz is pocketable, so you’ll never without a trusted source of super smooth energy.</p>
+        </span>
+        {% render 'cta-button', color: 'light', size: 'small', text: 'try now' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="focus__container">
+    <div class="focus__media">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/d685f469cb114eaf912b294a53fed374.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="focus__content">
+      <div class="focus__content--inner">
+        <span>
+          <h2>
+            Innovation<br>
+            In energy
+          </h2>
+          <p>Precision micro-dosing lets you maintain steady focus throughout the day without an afternoon crash.</p>
+        </span>
+        {% render 'cta-button', color: 'light', size: 'small', text: 'try now' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "focus",
+  "tag": "section",
+  "class": "section overflow-hidden",
+  "settings": []
+}
+{% endschema %}

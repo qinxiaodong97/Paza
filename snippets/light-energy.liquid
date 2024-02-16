@@ -1,0 +1,144 @@
+{{ 'better-energy.css' | asset_url | stylesheet_tag }}
+<div class="container section-header-padding" ">
+  <h2 class="home-title better-energy__title">
+    {% if heading %}
+      {{ heading }}
+    {% else %}
+      Better ENERGY
+    {% endif %}
+  </h1>
+</div>
+<div class="container better-energy section-padding">
+  <div class="better-energy__card-grid">
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-lightning' -%}</div>
+          <h3 class="energy-card__title">
+            Caffeine +<br>
+            L-Theanine
+          </h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Caffeine + L-Theanine</h3>
+        <p class="energy-card__copy">Derived from green tea leaves for a natural burst of power and focus.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-heart' -%}</div>
+          <h3 class="energy-card__title">Vitamin B12</h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Vitamin B12</h3>
+        <p class="energy-card__copy">Maximize cellular energy, better metabolizizing glucose and carbs.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-money' -%}</div>
+          <h3 class="energy-card__title">Zinc</h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Zinc</h3>
+        <p class="energy-card__copy">Support your metabolism, immunity, and muscular function.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-star' -%}</div>
+          <h3 class="energy-card__title">Electrolytes</h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Electrolytes</h3>
+        <p class="energy-card__copy">Hydrate and recharge your body.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-plus-depth' -%}</div>
+          <h3 class="energy-card__title">Vitamin C</h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Vitamin C</h3>
+        <p class="energy-card__copy">Fight fatigue and brain fog while supporting your immune system.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+    <div class="energy-card">
+      <div class="energy-card__content">
+        <div class="energy-card__content-inner">
+          <div class="energy-card__icon">{%- render 'icon-earth' -%}</div>
+          <h3 class="energy-card__title">Zero Calories</h3>
+        </div>
+      </div>
+      <div class="energy-card__collapse">
+        <h3 class="energy-card__mobile-title">Zero Calories</h3>
+        <p class="energy-card__copy">Vegan, zero sugar, naturally flavored.</p>
+      </div>
+
+      <button class="energy-card__toggle"></button>
+    </div>
+  </div>
+  <div class="better-energy__photo">
+    {% comment %}
+    <img
+    src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/92313219-2-2.jpg?v=1677533629"
+    loading="lazy"
+    width="auto"
+    height="auto"
+    >
+    {% endcomment %}
+    <img
+      src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/stacked-boxes_03_14_V01_compressed.png?v=1678983676"
+      loading="lazy"
+      width="auto"
+      height="auto">
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.energy-card').forEach((card) => {
+    const toggle = card.querySelector('.energy-card__content');
+    toggle.addEventListener('click', () => {
+      if (card.classList.contains('active')) {
+        card.classList.remove('active');
+      } else {
+        document.querySelectorAll('.energy-card').forEach((card) => {
+          card.classList.remove('active');
+        });
+        card.classList.add('active');
+      }
+    });
+
+    const toggle1 = card.querySelector('.energy-card__toggle');
+    toggle1.addEventListener('click', () => {
+      if (card.classList.contains('active')) {
+        card.classList.remove('active');
+      } else {
+        document.querySelectorAll('.energy-card').forEach((card) => {
+          card.classList.remove('active');
+        });
+        card.classList.add('active');
+      }
+    });
+  });
+</script>

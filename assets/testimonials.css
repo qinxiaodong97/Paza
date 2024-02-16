@@ -1,0 +1,128 @@
+/* ------------------- */
+/*  Embla Testimonial  */
+/* ------------------- */
+
+.testimonial__image--gq {
+  mix-blend-mode: multiply;
+}
+.testimonial.embla {
+  padding-block: 12vh;
+  position: relative;
+}
+
+.testimonial {
+  overflow: hidden;
+}
+
+.testimonial .embla__viewport {
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.testimonial .embla__container {
+  display: flex;
+  will-change: transform;
+  margin-left: -1rem;
+}
+
+.testimonial .embla__slide {
+  flex: 0 0 auto;
+  width: 80%;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.testimonial .embla__slide__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(var(--color-light));
+  background-color: rgba(var(--color-primary));
+  border-radius: var(--br-large);
+  height: 50vw;
+  padding: 2vw 7vw;
+}
+
+.testimonial .embla__slide__inner span {
+  position: absolute;
+  top: -0.3rem;
+  right: -0.3rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 0rem;
+  transform: rotate(20deg);
+}
+
+.testimonial .embla__slide:nth-child(1) .i-a {
+  fill: rgba(var(--color-red), 0.9);
+}
+
+.testimonial .embla__slide:nth-child(2) .i-a {
+  fill: rgba(var(--color-blue), 0.9);
+}
+
+.testimonial .embla__slide:nth-child(3) .i-a {
+  fill: rgba(var(--color-green), 1);
+}
+
+.testimonial .embla__slide:nth-child(4) .i-a {
+  fill: rgba(var(--color-red), 0.9);
+}
+
+.testimonial .embla__slide:nth-child(5) .i-a {
+  fill: rgba(var(--color-green), 0.9);
+}
+
+.testimonial__decoration svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .testimonial .embla__slide__inner {
+    height: 22rem;
+  }
+
+  .testimonial .embla__slide {
+    flex: 0 0 auto;
+    width: 50%;
+    width: min(80%, 52rem);
+    position: relative;
+    padding-left: 1rem;
+  }
+}
+
+/* .testimonial .embla__slide.is-selected .embla__slide__inner {
+  opacity: 1;
+  transition: 0.5s;
+} */
+
+.testimonial__copy {
+  color: var(--color-dark);
+  font-family: var(--ff-heading);
+  font-size: clamp(var(--fs-xs), 4vw, var(--fs-xl));
+  font-weight: var(--fw-heading-heavy);
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.testimonial__image {
+  /* max-height: 4rem; */
+  height: clamp(2rem, 5vw, 3rem);
+  width: clamp(8rem, 12vw, 15rem);
+}
+
+.testimonial__image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+/* .testimonial__copy {
+  font-size: var(--fs-2xl);
+  font-family: var(--ff-heading);
+} */

@@ -1,0 +1,94 @@
+<style>
+.whole-btn {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.image-link img{
+    width: 100%;
+}
+.image-link .container{
+    position: relative;
+}
+.whole-btn a {
+    color: #000;
+    background: rgba(var(--color-primary));
+    border: 4px solid black;
+    align-items: center;
+    line-height: 1;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    font-size: 16px;
+    font-weight: 900;
+    text-decoration: none;
+    font-style: italic;
+    font-family: var(--ff-heading);
+    text-transform: uppercase;
+}
+@media (min-width: 800px) {
+    .whole-btn a {
+        font-size: var(--fs-2xl);
+    }
+}
+</style>
+<div class="image-link">
+    {% if section.settings.image != blank %}
+        <div class="container">
+            
+            <img
+                src="{{section.settings.image | img_url: 'master'}}"
+                loading="lazy"
+                width="auto"
+                height="auto"
+            >
+            <div class="whole-btn">
+                <a clas href="{{section.settings.link}}">
+                    {{section.settings.button_label}}
+                </a>
+            </div>
+            
+        </div>
+    {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Image Link",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Button Label",
+      "id": "button_label",
+      "default": "Show wholesale"
+    },
+    {
+      "type": "url",
+      "label": "Link",
+      "id": "link"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Image Link"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

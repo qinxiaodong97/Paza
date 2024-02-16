@@ -1,0 +1,106 @@
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 1rem));
+    }
+  }
+
+  .press {
+    --gap: 1rem;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    padding-block: 1rem;
+    background: yellow;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding: 2rem 0px;
+  }
+
+  .press__items {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: var(--gap, 1rem);
+    min-width: 100%;
+    animation: marquee 10s linear infinite;
+  }
+
+  .press__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 200px;
+  }
+  .press__image {
+    display: block;
+    width: 100%;
+    height: 100px;
+    max-width: 150px;
+    max-height: 2rem;
+    margin-bottom: 1rem;
+    fill: rgba(var(--color-dark), 1);
+  }
+
+  .press__text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: var(--ff-body);
+    font-weight: var(--fw-body-medium);
+    font-size: var(--fs-base);
+  }
+
+   @media (max-width: 768px) {
+    .press{
+      padding: 30px 0px;
+    }
+    .press__image {
+      display: block;
+      width: 100%;
+      height: 80px;
+      max-width: 120px;
+      max-height: 1.5rem;
+      margin-bottom: 1rem;
+      fill: rgba(var(--color-dark), 1);
+    }
+  } 
+
+  .press__image svg {
+    width: 100%;
+    height: 100%;
+  }
+{% endstyle %}
+<div class="press">
+  <div class="press__items color-dark">
+    {% render 'press-items' %}
+  </div>
+  <div class="press__items color-dark">
+    {% render 'press-items' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "New Testimonials"
+    }
+  ]
+}
+{% endschema %}

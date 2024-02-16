@@ -1,0 +1,159 @@
+{% render 'iwans-blog-css' %}
+{% assign custom_title = article.metafields.custom.title | metafield_text %}
+{% assign custom_headline = article.metafields.custom.headline | metafield_text %}
+{% assign custom_tagline = article.metafields.custom.tagline | metafield_text %}
+
+{% if article.metafields.custom.image %}
+  {% assign hero_image_url = article.metafields.custom.image %}
+{% else %}
+  {% assign hero_image_url = article.image %}
+{% endif %}
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"
+  integrity="sha512-wdUM0BxMyMC/Yem1RWDiIiXA6ssXMoxypihVEwxDc+ftznGeRu4s9Fmxl8PthpxOh5CQ0eqjqw1Q8ScgNA1moQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  defer
+></script>
+<article class="blog-wrapper">
+  <div class="blog-hero-image__container">
+    {% if hero_image_url %}
+      <img
+        src="{{ hero_image_url | img_url:'2000x' }}"
+        class="blog-hero-image"
+        width="100"
+        height="auto"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+  <div class="blog-header contain">
+    <div class="blog-header-main">
+      <h1 class="blog-header-main__title">
+        {% if custom_title.size > 0 %}
+          {{- article.metafields.custom.title -}}
+        {% else %}
+          {{ article.title }}
+        {% endif %}
+      </h1>
+      {% if custom_headline.size > 0 %}
+        <h2 class="blog-header-main__headline">
+          {{- article.metafields.custom.headline -}}
+        </h2>
+      {% endif %}
+      {% if custom_tagline.size > 0 %}
+        <h3 class="blog-header-main__tagline">
+          {{- article.metafields.custom.tagline -}}
+        </h3>
+      {% endif %}
+    </div>
+    {% unless blog.title == 'Company Pages' %}
+      <div class="blog-header-info">
+        <span class="blog-header-info__date">Updated: {{ article.updated_at | date: '%B %d, %Y' }} </span>
+        <br>
+        <span class="blog-header-info__author"
+          >Written by:
+          {{ article.author }}
+        </span>
+      </div>
+    {% endunless %}
+  </div>
+  <div class="blog-content">
+    {% assign article_paragraphs = article.content | split: 'content_break' %}
+    {% for paragraph in article_paragraphs %}
+      {% if paragraph contains 'blog-callout' %}
+        {% assign callout = paragraph | remove: 'blog-callout' | split: 'callout-content' %}
+        {%- assign callout-title = callout.first | strip_html -%}
+        {%- assign callout-content = callout.last -%}
+        {% render 'blog-callout', content: callout-content, title: callout-title %}
+      {% elsif paragraph contains 'blog-learn' %}
+        {% render 'blog-canvas-popup' %}
+      {% elsif paragraph contains 'blog-swiper' %}
+        {% render 'blog-swiper', article: article %}
+      {% else %}
+        <div class="contain">
+          {{ paragraph }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% render 'light-cards',
+    heading: 'want to wake up?',
+    subheading: 'Pzaz is a breath spray with caffeine and vitamins for perfect on-the-go energy.'
+  %}
+
+  <div style="margin-top:3rem; @media screen and (max-width:768px){min-height:calc(180vw)}">
+    {% render 'light-energy', heading: 'THE PZAZ DIFFERENCE' %}
+  </div>
+
+  <div class="blog-more contain" style="overflow:hidden;">
+    <h1 class="blog-more__title home-title">MORE RESEARCH:</h1>
+    <div class="blog-more__swiper embla">
+      <div class="blog-more__swiper-wrapper embla__container">
+        {% for article in blog.articles %}
+          <div class="blog-more__card swiper-slide embla__slide">
+            <div class="blog-more__card-image">
+              {% if article.metafields.custom.image %}
+                {% assign card_image_url = article.metafields.custom.image %}
+              {% else %}
+                {% assign card_image_url = article.image %}
+              {% endif %}
+              <a href="{{article.url}}">
+                <img
+                  src="{{ card_image_url | img_url:'2000x' }}"
+                  class="blog-hero-image"
+                  width="100"
+                  height="auto"
+                  loading="lazy"
+                >
+              </a>
+            </div>
+            <a href="{{article.url}}">
+              <div class="blog-more__card-content">
+                <h2 class="blog-more__card-title">
+                  {{ article.title }}
+                </h2>
+
+                <span class=" blog-more__card-date">
+                  {{ article.published_at | date: '%B %d, %Y' }}
+                </span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</article>
+
+<script defer>
+  window.addEventListener('load', function () {
+    const emblaNode = document.querySelector('.embla');
+    const options = { loop: true, slidesToScroll: 'auto' };
+    const embla = EmblaCarousel(emblaNode, options);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "default": true,
+      "label": "show date"
+    },
+    {
+      "type": "text",
+      "id": "article_headline",
+      "label": "Article Headline"
+    }
+  ]
+}
+{% endschema %}

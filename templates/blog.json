@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "blog",
+      "settings": {
+        "sub_heading": "",
+        "video": "shopify:\/\/files\/videos\/drive.mp4"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,106 @@
+{% style %}
+  .store-locator {
+  }
+
+  .store-locator h1 {
+    text-transform: uppercase;
+    font-family: var(--ff-heading);
+    font-style: italic;
+    font-size: var(--fs-5xl);
+    line-height: 1.2;
+  }
+
+  .store-locator p {
+    font-weight: var(fw-body-bold);
+    padding-bottom: 4rem;
+  }
+
+  .review-ratings {
+    display: flex;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    white-space: nowrap;
+  }
+
+  .review-ratings__container:first-child {
+    flex: 1;
+  }
+
+  .review-ratings__overall {
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    font-family: var(--ff-heading);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: #fdff02;
+  }
+
+  .review-ratings .button {
+    background-color: transparent;
+    border: 1px solid #fdff02;
+    color: #fdff02;
+  }
+
+  .review-ratings .button:hover {
+    background-color: #fdff02;
+    color: black;
+  }
+
+  .review-ratings .button {
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+{% endstyle %}
+
+<div class="color-primary store-locator container padding-base header-spacer full-height">
+  {% comment %}
+    <h1>{{- section.settings.title }}</h1>
+    <h1>4.8</h1>
+    {% render 'reviews-stars' %}
+  {% endcomment %}
+
+  <div class="review-ratings">
+    <div class="review-ratings__container">
+      <h1 class="home-title">840 reviews</h1>
+      <span class="review-ratings__overall">4.8 {% render 'reviews-stars' %}</span>
+    </div>
+    <div class="review-ratings__container">
+      {% render 'cta-button', text: 'Shop now', link: '/products/pzaz-four-pack' %}
+    </div>
+  </div>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "reviews-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Find Pzaz for only $3.99 per tube at more than 200+ retailers nationwide."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,125 @@
+{% style %}
+  .contact-us {
+  }
+
+  .contact-us__wrapper {
+    padding: 2rem 2rem;
+    text-align:center;
+  }
+
+  .contact-us__title {
+    font-family: var(--ff-heading);
+    font-size: 40px;
+    font-style: italic;
+    font-weight: var(--fw-heading-heavy);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .contact-email{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 28px;
+  }
+  .contact-email a{
+    color: #000;
+  }
+  .contact-info1 {
+    margin-top: 40px;
+  }
+  .contact-info{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+  }
+  .contact-info1{
+    display: flex;
+    flex-direction: column;
+    gap: 29px;
+  }
+  .hero-image img{
+    height: 100%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+  }
+  @media (max-width: 768px) {
+    .contact-us__title {
+      font-family: var(--ff-heading);
+      font-size: 30px;
+    }
+    .contact-email{
+      font-size: 20px;
+    }
+  }
+{% endstyle %}
+
+{% assign hero_image_url = section.settings.image %}
+
+<div class="contact-us full-height">
+  <div class="hero-image" style="background: {{section.settings.background}};">
+    <img
+      src="{{ hero_image_url | img_url:'2000x' }}"
+      class=""
+      width="100"
+      height="auto"
+      loading="lazy"
+    >
+  </div>
+  <div class="contact-us__wrapper container">
+    <div class="contact-us__col">
+      <h1 class="contact-us__title">Contact</h1>
+    </div>
+    <div class="contact-us__col contact-us__copy flow">
+      <div class="contact-info">
+        <div class="contact-email">
+          <p>Email</p>
+          <a href="mailto:help@pzaz.com">help@pzaz.com</a>
+        </div>
+        <div class="contact-email">
+          <p>Text</p>
+          <a href="#">(929)-374-2501</a>
+        </div>
+        <div class="contact-email">
+          <p>Call</p>
+          <a href="#">(877) 562-6417</a>
+        </div>
+      </div>
+      <div class="contact-info1">
+        <div class="contact-email">
+          <p>Partnerships</p>
+          <a href="mailto:friends@pzaz.com">friends@pzaz.com</a>
+        </div>
+        <div class="contact-email">
+          <p>Wholesale</p>
+          <a href="mailto:sales@pzaz.com">sales@pzaz.com</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "contact-us-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#0146E2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

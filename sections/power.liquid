@@ -1,0 +1,51 @@
+{{ 'power.css' | asset_url | stylesheet_tag }}
+
+<div class="color-dark bg-light" id="power">
+  <div class="power__col" id="power-left">
+    <div id="power-media">
+      <video autoplay muted loop playsinline preload="auto" class="power__video">
+        <source src="https://cdn.shopify.com/videos/c/o/v/bf5f7fc213b449e79181b2d7c361dd79.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <div class="power__col" id="power-right">
+    <div class="power__items section-padding">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'text-block' %}
+            <div class="power__item">
+              <p class="power__item-info">{{ block.settings.text }}</p>
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+      <div class="flex desktop-flex flex-start">
+        {% render 'cta-button', color: 'light', size: 'small', text: 'Try Now' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "power-section",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "text-block",
+      "type": "text-block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text",
+          "default": "Welcome to the future of energy."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

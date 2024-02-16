@@ -1,0 +1,16 @@
+{{ 'app.css' | asset_url | stylesheet_tag }}
+
+<div class="app">
+  <canvas id="canvas"></canvas>
+</div>
+
+<script defer src="{{ 'app_models.js' | asset_url }}" type="module"></script>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

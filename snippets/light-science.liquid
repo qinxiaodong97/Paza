@@ -1,0 +1,156 @@
+{{ 'science.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="science container padding-base color-dark"
+  id="science"
+>
+  {% comment %} <h1 class="home-heading desktop">Scientifically <br> Better Energy.</h1> {% endcomment %}
+  <h1
+    class="fs-7xl ff-heading desktop flow"
+  >
+    Better Energy.
+  </h1>
+  <h1
+    class="fs-7xl ff-heading mobile flow"
+  >
+    Better Energy.
+  </h1>
+
+  <div
+    class="science__grid"
+  >
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-lightning' -%}
+      </span>
+      <div>
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          SUPER FAST
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          Maximum bioavailability means you feel the power faster with no crash.
+        </p>
+      </div>
+    </div>
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-heart' -%}
+      </span>
+      <div>
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          HEALTHY + CLEAN
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          0 calories, natural flavors, sugar free, vegan, and made in the USA.
+        </p>
+      </div>
+    </div>
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-money' -%}
+      </span>
+      <div>
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          AFFORDABLE
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          Days of energy in every bottle at less than 40 cents per serving.
+        </p>
+      </div>
+    </div>
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-star' -%}
+      </span>
+      <div>
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          PERSONALIZED POWER
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          3 sprays or 30? Choose your own level of energy throughout the day.
+        </p>
+      </div>
+    </div>
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-plus-depth' -%}
+      </span>
+      <div>
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          ULTRA DELICIOUS
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          Caffeine is bitter. We masked it completely.
+        </p>
+      </div>
+    </div>
+    <div
+      class="science__item"
+    >
+      <span
+        class="science__icon"
+      >
+        {%- render 'icon-earth' -%}
+      </span>
+      <div
+        class="science__content"
+      >
+        <h2
+          class="uppercase fw-body-bold fs-lg"
+        >
+          SUSTAINABLE
+        </h2>
+        <p
+          class="fw-body-medium"
+        >
+          Less water, plastic, and carbon emissions than any bottled coffee or energy drink.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="button-wrapper"
+  >
+    {%- render 'cta-button', color: 'light', border: true, size: 'large', text: 'try now' -%}
+  </div>
+</div>

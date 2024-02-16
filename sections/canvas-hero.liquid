@@ -1,0 +1,112 @@
+{% style %}
+  .hero {
+    height: 100vh;
+    min-height: 100vh;
+    padding: 100px 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero__content {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .hero__content.active {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+
+  #hero-canvas {
+    width: 100%;
+  }
+
+  #hero-canvas-wrapper {
+  }
+  #scroll-cta {
+    margin-top: 2rem;
+    font-size: clamp(var(--fs-lg), 2vw, var(--fs-2xl));
+    /* white-space: nowrap; */
+    display: flex;
+    align-items: center;
+    /* border: 2px solid green; */
+  }
+
+  @media (max-width: 768px) {
+    #hero-canvas-wrapper {
+      flex: 0 0 70%;
+    }
+    ,
+    #scroll-cta {
+      display: none;
+      flex: 1;
+    }
+  }
+
+  #scroll-cta p {
+    font-weight: var(--fw-body-medium);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    #scroll-cta {
+      font-size: var(--fs-sm);
+    }
+  }
+
+  #scroll-cta svg {
+    margin-left: 0.5rem;
+    width: clamp(1.5rem, 3vw, 3rem);
+    height: clamp(1.5rem, 3vw, 3rem);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+{% endstyle %}
+
+<div class="container hero overflow-hidden" id="hero">
+  <div id="hero-canvas-wrapper">
+    <canvas id="hero-canvas"></canvas>
+  </div>
+  <span id="scroll-cta">
+    {% comment %}
+      <p>scroll to learn more</p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1em"
+        height="1em"
+        viewBox="0 0 24 24"
+      >
+        <path fill="currentColor" d="M12 14.975q-.2 0-.387-.075q-.188-.075-.313-.2l-4.6-4.6q-.275-.275-.275-.7q0-.425.275-.7q.275-.275.7-.275q.425 0 .7.275l3.9 3.9l3.9-3.9q.275-.275.7-.275q.425 0 .7.275q.275.275.275.7q0 .425-.275.7l-4.6 4.6q-.15.15-.325.212q-.175.063-.375.063Z" />
+      </svg>
+    {% endcomment %}
+    <p>
+      Welcome to the world of next-generation energy.<br>
+      Scroll to learn more...
+    </p>
+    {% comment %} {% render 'cta-button', color: 'light', size: 'small', text: 'try now' %} {% endcomment %}
+  </span>
+</div>
+
+{% schema %}
+{
+  "name": "hero",
+  "tag": "section",
+  "class": "hero-section section",
+  "settings": []
+}
+{% endschema %}

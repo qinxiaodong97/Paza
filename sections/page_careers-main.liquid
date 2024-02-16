@@ -1,0 +1,159 @@
+{% style %}
+  .careers {
+    padding: 8rem 2rem;
+  }
+  .careers__item {
+    display: flex;
+    margin-bottom: 3rem;
+  }
+
+  .careers__item .careers__wrapper:first-child {
+    flex: 0 0 40%;
+  }
+
+  .careers__title {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-xl);
+    font-style: italic;
+    font-weight: var(--fw-heading-heavy);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .careers__copy {
+    font-size: var(--fs-base);
+  }
+
+  @media (max-width: 768px) {
+    .careers__item {
+      flex-direction: column;
+    }
+    .careers__item .careers__wrapper:first-child {
+      flex: 0 0 100%;
+    }
+  }
+
+  .roles {
+    margin-bottom: 2rem;
+  }
+
+  .role {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 0.5em 0.75em;
+  }
+
+  .role__title {
+    font-weight: var(--fw-body-bold);
+    font-size: var(--fs-base);
+    text-decoration: none;
+    color: black;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
+
+  .role__icon svg {
+    width: 20px;
+    height: 25px;
+  }
+{% endstyle %}
+
+<div class="careers container full-height">
+  <div class="careers__item careers__item--first">
+    <div class="careers__wrapper">
+      <h1 class="careers__title">careers</h1>
+    </div>
+    <div class="careers__wrapper">
+      <p class="careers__copy">
+        Pzaz is a venture-backed consumer goods and technology company developing superior alternatives to energy drinks
+        and shots. Our breath spray is the world's most controlled and effective way to wake up.
+      </p>
+      <br>
+      <p class="careers__copy">
+        We are based in New York City and obsessed with providing consumers a better way to wake up while taking revenue and shelf space from outdated and unappealing
+        legacy brands. Our team and advisors bring experience from companies including Red Bull, 5 Hour Energy, and PepsiCo.
+      </p>
+    </div>
+  </div>
+  <div class="careers__item careers__item--last">
+    <div class="careers__wrapper">
+      <h1 class="careers__title">Open roles</h1>
+    </div>
+    <div class="careers__wrapper">
+      <div class="roles">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'role' %}
+              <a class="role" href="{{block.settings.url}}">
+                <h2 class="role__title">{{ block.settings.title }}</h2>
+                <span class="role__icon">{% render 'icon-star' %} </span>
+              </a>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      <p class="careers__copy">
+        Pzaz is proud to be an Equal Employment Opportunity and Affirmative Action employer. All employment is decided
+        on the basis of qualifications, merit, and business need. We celebrate diversity and do not discriminate based
+        upon race, religion, color, national origin, gender (including pregnancy, childbirth, or related medical
+        conditions), sexual orientation, gender identity, gender expression, age, status as a protected veteran, status
+        as an individual with a disability, or other applicable legally protected characteristics.
+      </p>
+    </div>
+  </div>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "careers-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "check us out"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Find Pzaz for only $3.99 per tube at more than 200+ retailers nationwide."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "role",
+      "name": "role",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Job title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link to job posting"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

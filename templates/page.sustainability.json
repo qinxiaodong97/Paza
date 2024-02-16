@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_sustainability",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_wholesale",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/image_38.png"
+      }
+    },
+    "f66f9be8-818d-4905-aeed-d320cebc6b8d": {
+      "type": "divider",
+      "settings": {}
+    },
+    "09a86a67-f1b8-4162-829c-4ac8a453e759": {
+      "type": "image-link",
+      "settings": {
+        "button_label": "Shop wholesale",
+        "link": "https:\/\/www.faire.com\/user\/sign-up?fdb=pzaz",
+        "image": "shopify:\/\/shop_images\/741686240763__3.png"
+      }
+    },
+    "24041cdf-f333-418b-9dad-e770d46049d7": {
+      "type": "divider",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "f66f9be8-818d-4905-aeed-d320cebc6b8d",
+    "09a86a67-f1b8-4162-829c-4ac8a453e759",
+    "24041cdf-f333-418b-9dad-e770d46049d7"
+  ]
+}

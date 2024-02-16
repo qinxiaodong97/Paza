@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_store-locator",
+      "settings": {
+        "title": "Pzaz® Breath Spray | Store Locator",
+        "copy": "Find Pzaz® at hundreds of stores nationwide and experience the thrilling rush of Instant Refreshmint™."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

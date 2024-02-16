@@ -1,0 +1,100 @@
+{{ 'collage.css' | asset_url | stylesheet_tag }}
+
+<div class="container section-padding collage-wrapper">
+  <div class="collage">
+    <div class="collage-cta bg-blue" id="collage-item-1">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/blue_box_transparent-squooshed.png?v=1676659600"
+        width="auto"
+        height="auto"
+        loading="lazy"
+        class="collage-bg-image collage-bg-image-blue"
+      >
+      <h1 class="home-title collage-title">
+        Energy<br>
+        Your Way
+      </h1>
+      <p class="fw-body-bold collage-copy">
+        Pzaz powers up creatives, athletes, students, professionals, travelers, and entertainers.
+      </p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+    <div class="collage-video bg-blue" id="collage-item-2">
+      <video
+        class="lazy"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/skate-poster-image.jpg?v=1679939405"
+      >
+        <source data-src="https://cdn.shopify.com/videos/c/o/v/991dc6f3ef344a8f801260d685efc18d.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="collage-video bg-blue" id="collage-item-3">
+      <video
+        class="lazy"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source data-src="https://cdn.shopify.com/videos/c/o/v/70a45e0112f14b4d8d68e3a5f9c46817.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="collage-cta bg-green " id="collage-item-4">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/green_box_transparent-squooshed.png?v=1676659600"
+        width="auto"
+        height="auto"
+        loading="lazy"
+        class="collage-bg-image collage-bg-image-green"
+      >
+      <h1 class="home-title collage-title">
+        $0.39/<br>
+        serving.
+      </h1>
+      <p class="fw-body-bold collage-copy">The cheapest way to wake up.</p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+    <div class="bg-red" id="collage-item-5">
+      <video
+        class="lazy"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/chess-poster-image.jpg?v=1679939405"
+      >
+        <source data-src="https://cdn.shopify.com/videos/c/o/v/b73a74a9c88e45a1b032fdcc30d6d277.mp4" type="video/mp4">
+      </video>
+
+      {{
+        'https://cdn.shopify.com/videos/c/o/v/b73a74a9c88e45a1b032fdcc30d6d277.mp4'
+        | video_tag: autoplay: true, loop: true, muted: true, controls: true
+      }}
+    </div>
+
+    <div class="collage-cta bg-red" id="collage-item-6">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/red_box_transparent-squooshed.png?v=1676659600"
+        width="auto"
+        height="auto"
+        loading="lazy"
+        class="collage-bg-image collage-bg-image-red"
+      >
+      <div class="flex flex-start desktop">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+  </div>
+</div>

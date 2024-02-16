@@ -1,0 +1,355 @@
+{% style %}
+  .heading-subtitle {
+    display: inline-block;
+    /* width: 500px; */
+    /* max-width: 100%; */
+    max font-size: 18px;
+    font-size: clamp(18px, 15.8873239437px + 0.4225352113vw, 24px);
+  }
+  #faqs-page {
+    margin-bottom: 50px;
+  }
+  #faqs-page h1 {
+    letter-spacing: 0.1em;
+    position: relative;
+  }
+
+  .faqs {
+    margin-top: 40px;
+    border: 3px solid #000;
+    border-radius: 10px;
+  }
+
+  .faqs__heading {
+    font-size: var(--fs-base);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    margin: 1rem 1rem 0;
+    display: inline-block;
+    background: black;
+    color: white;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  @media(min-width: 768px) {
+    .faqs__heading {
+      font-size: var(--fs-lg);
+    }
+  }
+
+  .faqs__list {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .faqs__item {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
+    margin-left: 5px;
+  }
+  .faqs__question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faqs__question h3 {
+    line-height: 2.5rem;
+    font-size: var(--fs-lg, 18px);
+    font-size: clamp(var(--fs-lg, 18px), 15.8873239437px + 0.4225352113vw, 24px);
+    white-space: nowrap;
+    margin-right: 1rem;
+  }
+
+  .faqs__item:first-child {
+    padding-top: 0;
+  }
+  .faqs__item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .faqs__button {
+    background: black;
+    border-radius: 3px;
+    min-width: 30px;
+    height: 25px;
+    color: white;
+    cursor: pointer;
+  }
+
+  .faqs__button:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  [data-answer] {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+  }
+
+  [data-answer].active {
+    max-height: 500px;
+    height: auto;
+    transition: max-height 1s ease-out;
+  }
+{% endstyle %}
+
+<div class="container padding-base header-spacer full-height flex flex-column align-center" id="faqs-page">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/college-footer-boxes-squooshed.png?v=1675449417"
+    loading="lazy"
+    width="auto"
+    height="auto"
+  >
+  <h1 class="ff-heading fw-heading-bold fs-4xl">{{- section.settings.title }}</h1>
+  <p class="heading-subtitle fw-body-semibold text-center">
+    {{- section.settings.copy -}}
+  </p>
+
+  <div class="faqs">
+    <h2 class="faqs__heading">general</h2>
+    <ul class="faqs__list">
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>What's Pzaz?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Pzaz is a pocketable breath spray with caffeine and vitamins. It's the world's most effective, portable, and
+            fun way to wake up.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>Why would I use it?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Keep days of energy in your pocket. No jitters, no need to pee, no crash. Every spray delivers fast-acting
+            bursts of focus and positive energy.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>How much does it cost?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            One tube of Pzaz costs $4 and gives you days of energy. It’s the most affordable way to power up. Subscribe
+            to save even more and to unlock free apparel and accessories including temporary tattoos, stickers, fanny
+            packs, and trucker hats.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="faqs">
+    <h2 class="faqs__heading">Ingredients</h2>
+    <ul class="faqs__list">
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>What's in it?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Pzaz is
+            <strong>vegan</strong>, <strong>zero-calorie</strong>, and <strong>sugar-free</strong>. Every spray contains
+            <strong>natural caffeine</strong>
+            and
+            <strong>l-theanine</strong>
+            from green tea leaves,
+            <strong>electrolytes</strong>,
+            <strong>vitamin c</strong>
+            and
+            <strong>zinc</strong>. Besides that, you'll find <strong>purified water</strong>,
+            <strong>citric acid</strong>, <strong>natural flavors</strong>, and <strong>potassium sorbate</strong>.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>It's not bitter?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Try Pzaz even if you find coffee bitter or energy drinks gross. Caffeine is extremely bitter, but our
+            researchers have developed methods to completely mask this bitterness using only natural flavors. function,
+            not flavor. It tastes like it works. Can you handle it?
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>how is pzaz made?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Pzaz is made in New York in compliance with the FDA's Good Manufacturing Practices. Our ingredients,
+            manufacturing processes, and labor standards are constantly tested, monitored, and improved.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="faqs">
+    <h2 class="faqs__heading">Instant Energy Techology</h2>
+    <ul class="faqs__list">
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>how is it so efficient?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Every spray of Pzaz contains thousands of highly bioavailable droplets of caffeine, electrolytes, vitamin C,
+            and zinc. Many clinical studies suggest that your body absorbs these active ingredients far more quickly and
+            efficiently than if you swallowed and digested a liquid or pill. This efficiency is also safety: an entire
+            bottle of Pzaz actually has less caffeine than most coffee drinks, energy drinks, and energy shots.
+            <strong> 94% of our focus testers say it works for them unlike anything else.</strong>
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>How do I use it?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Caffeine works best if consumed in small amounts multiple times per day.
+            <strong>Pull the cap off, stick your tongue out, and taste five sprays of Pzaz.</strong>
+            You'll feel an amazing burst of energy that dissipates smoothly with no crash or jitters. Then, spray all
+            day or night as desired.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>When should I use it?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Pzaz is the perfect for on-the-go moments: working, traveling, working out, partying, studying, playing, and
+            more.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="faqs">
+    <h2 class="faqs__heading">Sustainability</h2>
+    <ul class="faqs__list">
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>What's the climate impact?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Pzaz is a Climate Positive way to power up. One tube lasts much longer and uses much less energy to produce,
+            transport, and recycle than an equivalent number of energy drinks. Every tube is made with repurposed and
+            previously recycled plastic waste. Please recycle Pzaz after use.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>What about litter?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Although Pzaz is more sustainable than any other energy product, there is no denying that some people will
+            throw it in the trash, or worse, litter it. To fight this unfortunate reality, Pzaz has partnered with
+            RePurpose Global to ensure that<strong>
+              for every tube sold, two tubes worth of plastic litter are removed from the earth.
+            </strong>
+            This partnership makes Pzaz a Plastic Negative™ Certified product, whereby each unit sold causes a net
+            reduction in plastic litter around the world. Spread positive energy.
+          </p>
+        </div>
+      </li>
+      <li class="faqs__item" data-question>
+        <div class="faqs__question">
+          <h3>Climate positive verification?</h3>
+          <button class="button faqs__button">+</button>
+        </div>
+        <div class="faqs__answer" data-answer>
+          <p>
+            Our partner RePurpose Global constantly verifies that our material impact on the earth has been truly 200%
+            offset. Specifically, they verify that every purchase has subsidized the cost for waste workers around the
+            world to ethically reclaim and dispose of low-value plastic waste — litter that would otherwise be
+            landfilled, burned, or flushed into waterways and oceans.
+
+            <strong
+              >So far, our community has helped us remove the equivalent of more than 44,000 littered energy drink
+              bottles or more than 81,000 littered candy bar wrappers.</strong
+            >
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const questions = document.querySelectorAll('[data-question]');
+  questions.forEach((question) => {
+    question.addEventListener('click', () => {
+      const answer = question.querySelector('[data-answer]');
+      answer.classList.toggle('active');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "faq-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "FAQS"
+    },
+    {
+      "type": "text",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Learn more about the world’s most effective, portable, and fun way to wake up."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Header Video"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

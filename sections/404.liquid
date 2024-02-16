@@ -1,0 +1,133 @@
+{% style %}
+  .four__content {
+    padding: 20px;
+    margin-top: 90px;
+  }
+  .four_title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .redirect {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .four_left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .four_bottom{
+    margin-top: 2rem;
+  }
+  .four_btn {
+    width: 100%;
+    color: #000;
+    background: rgba(var(--color-primary));
+    border: 1px solid black;
+    align-items: center;
+    line-height: 1;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-size: var(--fs-2xl);
+    font-weight: 900;
+    text-decoration: none;
+    font-style: italic;
+     font-family: var(--ff-heading);
+  }
+  .four_right {
+    margin-top: 30px;
+  }
+  @media (min-width: 768px) {
+    .four__content {
+      padding: 20px;
+      margin-top: 0px;
+    }
+    .four_right {
+      margin-top: 0px;
+    }
+    .four_left {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+     .four_title {
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 700;
+    }
+     .four_btn {
+      font-size: 30px;
+     }
+     .redirect {
+      font-size: 40px;
+    }
+    .four__content{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row-reverse;
+      width: 100%;
+    }
+    .four_left {
+      width: 50%;
+    }
+    .four_right {
+      width: 50%;
+    }
+  }
+{% endstyle %}
+
+<div class="four full-height">
+  <div class="four__content">
+    <div class="four_left">
+      <h1 class="four_title">
+        This page does <br>
+        not exist :-(
+      </h1>
+      <p class="redirect">redirecting in <span id="four-countdown" class="">3</span> seconds</p>
+      <div class="four_bottom"><a href="/" class="four_btn">Go Back</a></div>
+    </div>
+    <div class="four_right">
+      <div class="four-image">
+        {% if section.settings.image != blank %}
+        <img
+          src="{{section.settings.image | img_url: 'master'}}"
+          alt="404"
+          loading="lazy"
+          width="auto"
+          height="auto"
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var count = 3;
+  var interval = setInterval(function () {
+    document.getElementById('four-countdown').innerHTML = count;
+    count--;
+    if (count === 0) {
+      clearInterval(interval);
+      window.location.href = '/';
+    } 
+  }, 1000);
+</script>
+
+{% schema %}
+{
+  "name": "404-page",
+  "tag": "section",
+  "class": "section bg-white",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    }
+  ]
+}
+{% endschema %}

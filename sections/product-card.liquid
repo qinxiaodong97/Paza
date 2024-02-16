@@ -1,0 +1,127 @@
+{{ 'flavor-cards.css' | asset_url | stylesheet_tag }}
+<div class="product-card">
+  <div class="container section-header-padding">
+    <h2 class="home-title flavor-heading">{{ heading }}</h2>
+    <p class="flavor-subheading">{{ subheading }}</p>
+  </div>
+  <div class="container  flex justify-center flavor-cards-wrapper">
+    <div class="flavor-cards">
+      <div class="flavor-cards-inner">
+      {% for block in section.blocks %}
+        <div
+          class="flavor-card"
+          {% if forloop.first == true %}
+              data-active="true"
+          {% else %}
+              data-active="false"
+          {% endif %}
+          data-id="43551487983859"
+          style="background:{{block.settings.background}};"
+        >
+          <div class="flavor-card-inner">
+            <div class="flavor-card__image">
+              {% if block.settings.image != blank %}
+              <img
+                src="{{block.settings.image | img_url: 'master'}}"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+              {% endif %}
+            </div>
+            <div class="flavor-card__body">
+              <p class="flavor-card__copy" style="color: {{ block.settings.text_color }};">
+                  {{block.settings.description}}
+              </p>
+              <div class="flex justify-center align-center">
+                  {% if block.settings.button_label != blank %}
+                      <a class="button button--primary  button--small" href="{{block.settings.button_link}}">
+                          {{block.settings.button_label}}
+                      </a>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const cards = [...document.querySelectorAll('.flavor-card')];
+
+  cards.forEach((card) => {
+    card.addEventListener('click', (event) => {
+      console.log(`clicked ${event.currentTarget.classList}`);
+
+      cards.map((card) => {
+        if (card.dataset.active == 'true') {
+          card.dataset.active = 'false';
+        }
+      });
+      event.currentTarget.dataset.active = 'true';
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Card",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "color",
+          "label": "Background",
+          "id": "background"
+        },
+        {
+          "type": "color",
+          "label": "Text Color",
+          "id": "text_color",
+          "default": "#ffffff"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "label": "Description",
+          "id": "description"
+        },
+        {
+          "type": "text",
+          "label": "Button Label",
+          "id": "button_label",
+          "default": "TRY NOW"
+        },
+        {
+          "type": "url",
+          "label": "button Link",
+          "id": "button_link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Card"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

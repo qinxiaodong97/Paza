@@ -1,0 +1,76 @@
+{{ 'focus.css' | asset_url | stylesheet_tag }}
+
+<div class="focus container section-padding" id="focus">
+  <div class="focus__container">
+    <h2 class="home-title mb-view">
+      Notably<br>
+      Compact
+    </h2>
+    <div class="focus__media">
+      <video
+        class="lazy"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/drive-poster-image.jpg?v=1679939405"
+      >
+        <source data-src="https://cdn.shopify.com/videos/c/o/v/fdea643b495d40a0a6ec99a2c321c35e.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="focus__content">
+      <div class="focus__content--inner">
+        <span>
+          <h2 class="home-title dk-view">
+            Notably<br>
+            Compact
+          </h2>
+          <p>Pzaz is a pocketable and trusted source of energy, refreshment and focus.</p>
+        </span>
+        {% render 'cta-button', color: 'light', size: 'small', text: 'try now' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="focus__container">
+    <h2 class="home-title mb-view">
+      energy<br>
+      Innovation
+    </h2>
+    <div class="focus__media">
+      <video
+        class="lazy"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/workout-poster-image.jpg?v=1679939405"
+      >
+        <source data-src="https://cdn.shopify.com/videos/c/o/v/fce09aaa0b404e29bf89e8ef885cb1da.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="focus__content">
+      <div class="focus__content--inner">
+        <span>
+          <h2 class="home-title dk-view">
+            energy<br>
+            Innovation
+          </h2>
+          <p>Precision micro-dosing lets you maintain steady focus throughout the day without an afternoon crash.</p>
+        </span>
+        {% render 'cta-button', color: 'light', size: 'small', text: 'try now' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "focus",
+  "tag": "section",
+  "class": "section overflow-hidden",
+  "settings": []
+}
+{% endschema %}

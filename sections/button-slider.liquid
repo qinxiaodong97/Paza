@@ -1,0 +1,157 @@
+
+{% style %}
+    .button_slider {
+        text-decoration: none;
+    }
+    .button_slider .press__items{
+        align-items: center;
+    }
+    .press.button_slider{
+        gap: 3rem;
+    }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 1rem));
+    }
+  }
+  .button_slider .press_text {
+    display: flex;
+    gap: 7px;
+  }
+
+ .press__item .btn{
+    position: relative;
+    display: inline-block;
+    padding: 0.75rem 2.2rem;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid rgba(var(--button-border));
+    color: rgba(var(--button-text));
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-heading-heavy);
+    font-family: var(--ff-heading);
+    font-style: italic;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 1px;
+ }
+
+  .press_text {
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.2;
+    font-family: var(--ff-body);
+    font-size: 24px;
+  } 
+    @media (max-width: 1200px) {
+        .press.button_slider{
+            gap: 13rem;
+        }
+    }
+    @media (max-width: 1024px) {
+        .press.button_slider{
+            gap: 14rem;
+        }
+    }
+    @media (max-width: 700px) {
+        .press.button_slider{
+            gap: 15rem;
+        }
+    }
+  
+{% endstyle %}
+<a class="press button_slider" href="{{section.settings.slider_link}}">
+  <div class="press__items color-dark">
+        <div class="press__item">
+            <h4  class="press_text">
+                {{section.settings.text}}
+            </h4>
+        </div>
+        <div class="press__item">
+            <div class="btn">
+                {{section.settings.button_label}}
+            </div>
+        </div>
+        <div class="press__item">
+            <h4  class="press_text">
+                {{section.settings.text}}
+            </h4>
+        </div>
+        <div class="press__item">
+            <div class="btn">
+                {{section.settings.button_label}}
+            </div>
+        </div>
+        <div class="press__item">
+            <h4  class="press_text">
+                {{section.settings.text}}
+            </h4>
+        </div>
+        
+  </div>
+  <div class="press__items color-dark">
+   
+    <div class="press__item">
+        <div class="btn">
+            {{section.settings.button_label}}
+        </div>
+    </div>
+    <div class="press__item">
+        <h4  class="press_text">
+            {{section.settings.text}}
+        </h4>
+    </div>
+    <div class="press__item">
+        <div class="btn">
+            {{section.settings.button_label}}
+        </div>
+    </div>
+    <div class="press__item">
+        <h4  class="press_text">
+            {{section.settings.text}}
+        </h4>
+    </div>
+    <div class="press__item">
+        <h4  class="press_text">
+            {{section.settings.text}}
+        </h4>
+    </div>
+  </div>
+</a>
+
+{% schema %}
+{
+  "name": "Button Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+        "type": "html",
+        "id": "text",
+        "label": "Text",
+        "default": "only $3.99 each"
+    },
+    {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label",
+        "default": "Shop Now"
+    },
+    {
+        "type": "url",
+        "label": "Slider Link",
+        "id": "slider_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Button Slider"
+    }
+  ]
+}
+{% endschema %}

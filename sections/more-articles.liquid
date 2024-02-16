@@ -1,0 +1,71 @@
+
+<div class="container" style="margin-bottom: 40px;">
+  <div class="blog-more contain" style="overflow:hidden;">
+    <h1 class="blog-more__title home-title">{{section.settings.title}}</h1>
+    <div class="blog-more__swiper swiper embla">
+      <div class="blog-more__swiper-wrapper embla__container swiper-wrapper ">
+        {% for article in blog.articles %}
+          <div class="blog-more__card swiper-slide embla__slide">
+            <div class="blog-more__card-image">
+              {% if article.metafields.custom.image %}
+                {% assign card_image_url = article.metafields.custom.image %}
+              {% else %}
+                {% assign card_image_url = article.image %}
+              {% endif %}
+              <a href="{{article.url}}">
+                <img
+                  src="{{ card_image_url | img_url:'2000x' }}"
+                  class="blog-hero-image"
+                  width="100"
+                  height="auto"
+                  loading="lazy"
+                >
+              </a>
+            </div>
+            <a href="{{article.url}}">
+              <div class="blog-more__card-content">
+                <h2 class="blog-more__card-title">
+                  {{ article.title }}
+                </h2>
+
+                <span class=" blog-more__card-date">
+                  {{ article.published_at | date: '%B %d, %Y' }}
+                </span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<script >
+ var morearticles = new Swiper(".blog-more__swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+ 
+  });
+</script>
+{% schema %}
+{
+  "name": "More Articles",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Flavors Heading",
+      "default": "MORE RESEARCH:"
+    }
+    
+  ],
+   "presets": [
+    {
+      "name": "More Articles"
+    }
+  ]
+}
+{% endschema %}

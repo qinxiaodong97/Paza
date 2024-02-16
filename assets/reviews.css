@@ -1,0 +1,129 @@
+.reviews__headline,
+.map__headline {
+  font-size: var(--fs-700);
+  font-weight: 600;
+  /* margin-bottom: 2rem; */
+  width: 60%;
+}
+
+.map__copy {
+  margin-bottom: 0.5rem;
+  max-width: 75%;
+  font-weight: var(--fw-body-medium);
+  font-size: var(--fs-xl);
+}
+
+.reviews__copy {
+  margin-bottom: 0.5rem;
+  max-width: 75%;
+  font-weight: var(--fw-body-medium);
+  font-size: var(--fs-xl);
+}
+
+/*MAKING IMAGES LARGE FOR PARALLAX #TEMPORARY*/
+
+.reviews__carousel.embla {
+  padding-block: 12vh;
+  position: relative;
+}
+
+.reviews .embla__container {
+  display: flex;
+  will-change: transform;
+  margin-left: -2rem;
+}
+
+.reviews .embla__slide {
+  flex: 0 0 auto;
+  width: clamp(300px, 50%, 400px);
+  position: relative;
+  padding-left: 2rem;
+}
+
+.reviews .embla__slide__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0.2; */
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid rgba(var(--color-dark), 1);
+}
+.reviews__image {
+  /* display: none; */
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* .reviews .embla__slide.is-selected .embla__slide__inner {
+  opacity: 1;
+  transition: 0.5s;
+  border: 2px solid rgba(var(--color-primary), 1);
+} */
+
+.review-ratings {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  /* white-space: nowrap; */
+}
+
+.review-ratings__container:first-child {
+  flex: 1;
+}
+
+.review-ratings__overall {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  font-family: var(--ff-heading);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: black;
+  /* margin-right: 1rem; */
+}
+
+.review-ratings .button {
+  max-width: 300px;
+  margin-top: 1rem;
+}
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.review-slider {
+  background: #dddddd73;
+  color: black;
+  border-radius: 1rem;
+  padding: 30px 20px 40px 20px;
+}
+.reviewSwiper  .swiper-slide {
+  height: auto;
+}
+.swiper-pagination-bullet-active {
+  background: black !important;
+}
+.review-description {
+  margin-top: 20px;
+}
+.review-title h3 {
+  text-transform: uppercase;
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+}
+.review-stars .star-wrapper svg {
+  width: 1rem;
+  height: 1rem;
+}
+.user_name {
+  font-size: 11px;
+  font-weight: 600;
+}
+.user_name span {
+  font-weight: 400;
+}

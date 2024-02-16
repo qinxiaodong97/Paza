@@ -1,0 +1,30 @@
+<!-- BEGIN app block: shopify://apps/seal-subscriptions-loyalty/blocks/subscription-script-append/13b25004-a140-4ab7-b5fe-29918f759699 -->
+<script type="lazyload_int">
+	/**	SealSubs loader,version number: 2.0 */
+	(function(){
+		var loadScript=function(a,b){var c=document.createElement("script");c.setAttribute("defer", "defer");c.type="text/javascript",c.readyState?c.onreadystatechange=function(){("loaded"==c.readyState||"complete"==c.readyState)&&(c.onreadystatechange=null,b())}:c.onload=function(){b()},c.src=a,document.getElementsByTagName("head")[0].appendChild(c)};
+		// Set variable to prevent the other loader from requesting the same resources
+		window.seal_subs_app_block_loader = true;
+		appendScriptUrl('shoppzaz.myshopify.com');
+		// get script url and append timestamp of last change
+		function appendScriptUrl(shop) {
+			var timeStamp = Math.floor(Date.now() / (1000*1*1));
+			var timestampUrl = 'https://app.sealsubscriptions.com/shopify/public/status/shop/'+shop+'.js?'+timeStamp;
+			loadScript(timestampUrl, function() {
+				// append app script
+				if (typeof sealsubscriptions_settings_updated == 'undefined') {
+					sealsubscriptions_settings_updated = 'default-by-script';
+				}
+				var scriptUrl = "https://cdn-app.sealsubscriptions.com/shopify/public/js/sealsubscriptions-main.js?shop="+shop+"&"+sealsubscriptions_settings_updated;
+				loadScript(scriptUrl, function(){});
+			});
+		}
+	})();
+	var SealSubsScriptAppended = true;	
+</script>
+<!-- END app app block -->
+{% render 'wsg-app' %}
+<!-- BEGIN app block: shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507 -->
+<script type="lazyload_int" data-src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=RbdHAx"></script>
+<script>!function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();</script>
+<!-- END app app block -->

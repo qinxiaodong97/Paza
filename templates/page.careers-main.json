@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main": {
+      "type": "page_careers-main",
+      "blocks": {
+        "aab61922-e180-407f-bdfe-22f5485fe2bf": {
+          "type": "role",
+          "settings": {
+            "title": "College Marketing Associate",
+            "url": "https:\/\/pzaz.com\/pages\/college"
+          }
+        }
+      },
+      "block_order": [
+        "aab61922-e180-407f-bdfe-22f5485fe2bf"
+      ],
+      "settings": {
+        "title": "check us out",
+        "copy": "Find Pzaz for only $3.99 per tube at more than 200+ retailers nationwide."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

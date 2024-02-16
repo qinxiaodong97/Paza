@@ -1,0 +1,27 @@
+<a
+  class="
+    button
+    {% if color == "dark" %}
+      button--dark
+    {% elsif color == "light" %}
+      button--light
+    {% elsif color == "primary" %}
+      button--primary
+    {% elsif color == "gradient" %}
+      button--gradient
+    {% endif %}
+    {% if size == "large" %}
+      button--large
+    {% elsif size == "small" %}
+      button--small
+    {% endif %}
+    quick-add
+  "
+  data-id="{{ id }}"
+>
+  {% if text %}
+    {{ text }}
+  {% else %}
+    Add to cart
+  {% endif %}
+</a>

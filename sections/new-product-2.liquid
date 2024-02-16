@@ -1,0 +1,405 @@
+{{ 'new-product-2.css' | asset_url | stylesheet_tag }}
+{% assign product = section.settings.product %}
+{%- assign product_price = product.price %}
+{% assign index = 0 %}
+
+{% assign variantArraySize = product.variants | size %}
+
+<script>
+  console.log('variant array size', {{ variantArraySize }});
+</script>
+
+<script>
+  window.variant_images = {};
+</script>
+
+<div class="product-page container">
+  <div class="container section-header-padding">
+    {% if section.settings.title != blank  %}
+      <h2 class="home-title flavor-heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank  %}
+      <p class="fw-body-medium fs-xl" >{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+  <div class="product-grid">
+    <div class="product-grid-container">
+      <div class="product-media">
+        {% assign first_visible_variant = true %}
+        {% for variant in section.settings.product.variants %}
+          {% if variant.metafields.custom.variant_available == false %}
+            {% continue %}
+          {% endif %}
+          {% assign variant_image_url = variant.metafields.custom.variant_test_media.value | first | image_url %}
+          <script>
+            window.variant_images['{{variant.id}}'] = '{{variant_image_url}}';
+          </script>
+          {% if first_visible_variant %}
+            {% assign first_variant_image = variant_image_url %}
+          {% endif %}
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+            data-src="{{variant_image_url}}"
+            width="1000"
+            height="1000"
+            loading="lazy"
+            alt="{{ variant.featured_media.alt | escape }}"
+            data-id="{{ variant.id }}"
+            {% if first_visible_variant %}
+              data-shown="true"
+            {% else %}
+              data-shown="false"
+            {% endif -%}
+            class="product-image"
+          >
+          {% assign first_visible_variant = false %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="product-grid-container">
+      <h1 class="product-header">
+        {{ section.settings.heading }}
+       
+      </h1>
+      <p class="product-info">
+       
+            {{ section.settings.subheading }}
+         
+       </p>
+      <div class="product-reviews">
+        <h3 class="product-reviews-rating">4.8</h3>
+        {% render 'reviews-stars' %}
+        <h3 class="product-reviews-count">(780)</h3>
+      </div>
+
+      <variant-selector class="v-selector flow">
+        {% unless section.settings.product.has_only_default_variant %}
+          <fieldset class="variants">
+            {% assign first_visible_variant = true %}
+            {% for variant in section.settings.product.variants %}
+              {% if variant.metafields.custom.variant_available == false %}
+                {% continue %}
+              {% endif %}
+              <style>
+                {% if variant.metafields.custom.background_2 != blank %}
+                    .{{ variant.title | handle }}:hover {
+                      background-image: linear-gradient(to right, {{variant.metafields.custom.background_1}} , {{variant.metafields.custom.background_2}});
+                    }
+                    input[type=radio]:checked+.{{ variant.title | handle }}{
+                      background-image: linear-gradient(to right, {{variant.metafields.custom.background_1}} , {{variant.metafields.custom.background_2}});
+                    }
+                {% else %}
+                    .{{ variant.title | handle }}:hover {
+                      background-color: {{variant.metafields.custom.background_1}};
+                    }
+                    input[type=radio]:checked+.{{ variant.title | handle }}{
+                     background-color: {{variant.metafields.custom.background_1}};
+                    }
+                {% endif %}
+              
+              </style>
+              <input
+                type="radio"
+                value="{{ variant.id }}"
+                name="{{product.handle}}"
+                id="{{ variant.title | handle }}"
+                data-id="{{ variant.id }}"
+                data-price="{{ variant.price }}" 
+                data-quantity="1"
+                {% if first_visible_variant %}
+                  checked="checked"
+                {% endif %}
+              >
+              <label for="{{ variant.title | handle }}" class="variant-label {{ variant.title | handle }}">
+                {{ variant.title }}
+              </label>
+              {% if first_visible_variant %}
+                {% assign variant_description = variant.metafields.custom.variant_description %}
+                {% assign first_variant = variant %}
+              {% endif %}
+              {% assign first_visible_variant = false %}
+            {% endfor %}
+          </fieldset>
+
+          <p class="variant-description">
+            {% if variant_description %}
+              {{ variant_description }}
+            {% else %}
+              “This breath spray is THE most convenient way to wake up. Caffeine and electrolytes in such a sweet,
+              portable, sharable package”
+            {% endif %}
+          </p>
+
+          <p class="product-price">$15.96</p>
+
+          <div class="submit-wrapper">
+            <div class="product-quantity">
+              <button
+                class="product-quantity-input product-quantity-input--subtract"
+                data-type="substract"
+              >
+                <span
+                  data-variant="{{ first_variant.title | handle}}"
+                  >-</span
+                >
+              </button>
+              <p class="product-quantity-text">1</p>
+              <button
+                class="product-quantity-input product-quantity-input--add"
+                data-type="add"
+                data-variant="{{ first_variant.title | handle}}"
+              >
+                <span data-variant="{{ first_variant.title | handle}}">+</span>
+              </button>
+            </div> 
+              <button
+                type="submit"
+                class="product-submit ff-heading"
+              >
+                Add to cart <span style="font-size:32px">+</span>
+              </button>
+          </div>
+          {% comment %}
+            <div class="sticky-submit-wrapper">
+              <div class="sticky-variant-title" data-variant="{{ first_variant.title | handle}}">
+                {{ first_variant.title }}
+              </div>
+              <button
+                type="submit"
+                class="
+                product-submit sticky-product-submit ff-heading{% if variant_quantity > 0 %}
+                  hidden
+                {% endif %}
+                "
+                {% if variant_quantity > 0 %}disabled{% endif %}>
+                Add to cart
+                <span
+                  style="font-size:32px">+</span>
+              </button>
+              <div
+                class="
+                product-quantity sticky-product-quantity{% if variant_quantity < 1 %}
+                  hidden
+                {% endif %}">
+                <button
+                  class="product-quantity-input"
+                  data-type="substract"
+                  {% if variant_quantity < 1 %}disabled{% endif %}>
+                  <span
+                    data-variant="{{ first_variant.title | handle}}">
+                    -
+                  </span>
+                </button>
+                <p class="product-quantity-text">{{ variant_quantity }}</p>
+                <button
+                  class="product-quantity-input"
+                  data-type="add"
+                  {% if variant_quantity < 1 %}disabled{% endif %}>
+                  <span data-variant="{{ first_variant.title | handle}}">
+                    +
+                  </span>
+                </button>
+              </div>
+            </div>
+          {% endcomment %}
+        {% endunless %}
+        {% comment %}Load original json{% endcomment %}
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </variant-selector>
+    </div>
+  </div>
+  {% if section.settings.show_content == true %}
+  <div class="product-content full-height flow" style="--flow-gap:2rem">
+    <div class="product-banner">
+      <img
+        data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pdp-btf-image-1.jpg?v=1680891015"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+        width="1000"
+        height="1000"
+        loading="lazy"
+        class="btf-1"
+      >
+      <div class="product-banner-inner">
+        <p>“Pzaz lets me power up throughout the day whenever I need a quick burst of focus and energy.”</p>
+      </div>
+    </div>
+  
+    <div class="product-banner-split">
+      <div class="product-banner">
+        <img
+          data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pdp-btf-diagram-2.jpg?v=1680891013"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-2"
+        >
+      </div>
+      <div class="product-banner">
+        <video
+          class="btf-3"
+          muted
+          loop
+          playsinline
+          preload="none"
+          data-poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/basketball-poster-image.jpg?v=1679939405"
+        >
+          <source src="https://cdn.shopify.com/videos/c/o/v/4acb50b061c64cad99facb0f28f10fac.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  
+    <div class="product-banner-split">
+      <div class="product-banner">
+        <img
+          data-src=" https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pdp-btf-diagram-1.jpg?v=1680891013"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-4"
+        >
+      </div>
+      <div class="product-banner">
+        <img
+          data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/image_3aef5396-e58d-4b9a-b7b2-759371c683e8.png?v=1683808866"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-5 btf-ingredients"
+        >
+      </div>
+    </div>
+
+    <div class="product-banner-split">
+      <div class="product-banner">
+        <img
+          data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Reviews-for-pdp_slower.gif?v=1681231860"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+          width="1000"
+          height="1000"
+          loading="lazy"
+          class="btf-6"
+        >
+      </div>
+      <div class="product-banner">
+        <video
+          class="btf-7"
+          muted
+          loop
+          playsinline
+          preload="none"
+          data-poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pdp-btf-image-2.jpg?v=1680891013"
+        >
+          <source src="https://cdn.shopify.com/videos/c/o/v/a44fe01afdc74cd2a900bf0cbbd17f4f.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  
+    <div class="product-banner">
+      <img
+        data-src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/btg-image-3-with-press.png?v=1681228045"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+        width="1000"
+        height="1000"
+        loading="lazy"
+        class="btf-8"
+      >
+    </div>
+  </div>
+
+{% endif %}
+
+
+<script>
+  window.variantDescriptions = {};{% for variant in product.variants %}
+    window.variantDescriptions["{{variant.id}}"] = '{{ variant.metafields.custom.variant_description }}';{% endfor %}
+  {% comment %}
+    console.log('variantDescriptions', variantDescriptions);{% endcomment %}
+</script>
+<script>
+  window.DISCOUNT_DATA = {{ product.metafields.custom.discount_text.value | json }};{% comment %}
+    console.log('discount_data', DISCOUNT_DATA);{% endcomment %}
+  if (!DISCOUNT_DATA) {
+    console.log('no discount data');
+    document.getElementById('discount-message').style.display = 'none';
+  }
+</script>
+<script src="{{ "new-product-2.js" | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name":"product-section",
+  "tag":"section",
+  "class":"section bg-light",
+  "settings":[
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
+     {
+        "type":"product",
+        "id":"product",
+        "label":"Main Product"
+     },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "PZAZ Four-Pack"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "4 tubes. 200 sprays. 50 hours of energy."
+    },
+     {
+        "type":"checkbox",
+        "id":"show_content",
+        "default":true,
+        "label":"Show below the fold content"
+     }
+  ],
+  "blocks":[
+     {
+        "type":"@app"
+     },
+     {
+        "type":"buy_buttons",
+        "name":"t:sections.main-product.blocks.buy_buttons.name",
+        "limit":1,
+        "settings":[
+           {
+              "type":"checkbox",
+              "id":"show_dynamic_checkout",
+              "default":true,
+              "label":"t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+              "info":"t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+           }
+        ]
+     }
+  ],
+  "presets":[
+    {
+      "name": "product-section",
+      "settings": {
+        "show_content": true,
+        "product": "pzaz-four-pack"
+      },
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

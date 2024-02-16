@@ -1,0 +1,91 @@
+{% style %}
+  .fw-video {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100 svh;
+    min-height: 100vh;
+
+    /* height: clamp(300px, 50%, 80vh); */
+    overflow: hidden;
+    background-color: rgba(var(--color-light));
+  }
+
+  .fw-video .button {
+    border: none;
+    margin-top: 1rem;
+  }
+
+  .fw-video__content .home-title {
+    width: 100%;
+    z-index: 1;
+    font-size: clamp(1.7rem, 5vw, 5rem);
+  }
+
+  .fw-video__content p {
+    width: 100%;
+    z-index: 1;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+  }
+
+  .fw-video .section-padding {
+    padding-bottom: 2.5rem;
+  }
+
+  .fw-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* height: min(650px, 100vw); */
+  }
+  .fw-video__content {
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+{% endstyle %}
+
+<div class=" fw-video overflow-hidden">
+  {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+
+  <div class="fw-video__content container section-padding color-light">
+    <h1 class="home-title">
+      {{ section.settings.title }}
+    </h1>
+    <p>{{ section.settings.subtitle }}</p>
+    <div class="flex flex center">
+      {% render 'cta-button' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "full-width-video",
+    "tag": "section",
+    "class": "hero-section section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Instantly Power Up"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Pzaz puts energy in your pocket."
+      }, {
+        "type": "video",
+        "id": "video",
+        "label": "Hero Video"
+      }
+    ]
+  }
+{% endschema %}

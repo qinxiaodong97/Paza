@@ -1,0 +1,312 @@
+{{ 'home-product.css' | asset_url | stylesheet_tag }}
+{% assign product = section.settings.product %}
+{%- assign product_price = product.price %}
+{% assign index = 0 %}
+
+{% assign variantArraySize = product.variants | size %}
+
+<script>
+  console.log('variant array size', {{ variantArraySize }});
+</script>
+
+<script>
+  window.variant_images = {};
+</script>
+
+<div class="product-page container">
+  <div class="container section-header-padding">
+    {% if section.settings.title != blank  %}
+      <h2 class="home-title flavor-heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% if section.settings.subtitle != blank  %}
+      <p class="fw-body-medium fs-xl" >{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+  <div class="product-grid">
+    <div class="product-grid-container">
+      <div class="product-media">
+        {% assign first_visible_variant = true %}
+        {% for variant in section.settings.product.variants %}
+          {% if variant.metafields.custom.variant_available == false %}
+            {% continue %}
+          {% endif %}
+          {% assign variant_image_url = variant.metafields.custom.variant_images.value | first | image_url %}
+          <script>
+            window.variant_images['{{variant.id}}'] = '{{variant_image_url}}';
+          </script>
+          {% if first_visible_variant %}
+            {% assign first_variant_image = variant_image_url %}
+          {% endif %}
+          {% if variant.metafields.custom.banner_text != blank %}
+          <div class="product-image-top"  data-id="{{ variant.id }}" 
+            {% if first_visible_variant %}
+              data-shown="true"
+            {% else %}
+              data-shown="false"
+            {% endif -%}
+            style="background: {{variant.metafields.custom.background }}"
+            >
+            {% if variant.available %}
+            {{variant.metafields.custom.banner_text}}
+            {% else %}
+            Out Of Stock
+            {% endif %}
+          </div>
+          {% endif %}
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+            data-src="{{variant_image_url}}"
+            width="1000"
+            height="1000"
+            loading="lazy"
+            alt="{{ variant.featured_media.alt | escape }}"
+            data-id="{{ variant.id }}"
+            {% if first_visible_variant %}
+              data-shown="true"
+            {% else %}
+              data-shown="false"
+            {% endif -%}
+            class="product-image"
+            style="background: {{variant.metafields.custom.background_1 }}"
+          >
+          {% assign first_visible_variant = false %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="product-grid-container product-right-section">
+        <h1 class="product-header">
+            {{ section.settings.heading }}
+        
+        </h1>
+        <div class="product-reviews">
+            <h3 class="product-reviews-rating">4.8</h3>
+            {% render 'reviews-stars' %}
+            <h3 class="product-reviews-count">(780)</h3>
+        </div>
+        <p class="product-info">
+            {{ section.settings.subheading }}
+        </p>
+      <variant-selector class="v-selector flow">
+        {% unless section.settings.product.has_only_default_variant %}
+            {% assign first_visible_variant = true %}
+            {% for variant in section.settings.product.variants %}
+                {% if variant.metafields.custom.variant_available == false %}
+                    {% continue %}
+                {% endif %}
+                {% if first_visible_variant %}
+                    {% assign variant_description = variant.metafields.custom.variant_description %}
+                    {% assign first_variant = variant %}
+                {% endif %}
+              {% assign first_visible_variant = false %}
+            {% endfor %}
+            <div class="variant-pick-title">
+                Pick your Flavor:
+            </div>
+            <p class="variant-description">
+                {% if variant_description %}
+                {{ variant_description }}
+                {% else %}
+                “This breath spray is THE most convenient way to wake up. Caffeine and electrolytes in such a sweet,
+                portable, sharable package”
+                {% endif %}
+            </p>
+          <fieldset class="variants">
+            {% assign first_visible_variant = true %}
+            {% for variant in section.settings.product.variants %}
+              {% if variant.metafields.custom.variant_available == false %}
+                {% continue %}
+              {% endif %}
+              <style>
+                .sticky-submit-wrapper[data-variant='{{ variant.title | handle }}'] {
+                  background-color: {{variant.metafields.custom.background_1}};
+                }
+                {% if variant.metafields.custom.background_2 != blank %}
+                    .{{ variant.title | handle }}:hover {
+                      background-image: linear-gradient(to right, {{variant.metafields.custom.background_1}} , {{variant.metafields.custom.background_2}});
+                    }
+                    input[type=radio]:checked+.{{ variant.title | handle }}{
+                      background-image: linear-gradient(to right, {{variant.metafields.custom.background_1}} , {{variant.metafields.custom.background_2}});
+                    }
+                {% else %}
+                    .{{ variant.title | handle }}:hover {
+                      background-color: {{variant.metafields.custom.background_1}};
+                    }
+                    input[type=radio]:checked+.{{ variant.title | handle }}{
+                     background-color: {{variant.metafields.custom.background_1}};
+                    }
+                   
+                {% endif %}
+              </style>
+              <input
+                type="radio"
+                value="{{ variant.id }}"
+                name="{{product.handle}}"
+                id="{{ variant.title | handle }}"
+                data-id="{{ variant.id }}"
+                data-price="{{ variant.price }}"
+                data-available="{{variant.available}}"
+                data-quantity="1"
+                {% if first_visible_variant %}
+                  checked="checked"
+                {% endif %}
+              >
+              <label for="{{ variant.title | handle }}" class="variant-label {{ variant.title | handle }}">
+                {{ variant.title }}
+              </label>
+              {% if first_visible_variant %}
+                {% assign variant_description = variant.metafields.custom.variant_description %}
+                {% assign first_variant = variant %}
+              {% endif %}
+              {% assign first_visible_variant = false %}
+            {% endfor %}
+          </fieldset>
+
+          <div class="submit-wrapper">
+            <div class="product-quantity hidden" >
+              <button
+                class="product-quantity-input product-quantity-input--subtract"
+                data-type="substract"
+              >
+                <span
+                  data-variant="{{ first_variant.title | handle}}"
+                  >-</span
+                >
+              </button>
+              <p class="product-quantity-text">1</p>
+              <button
+                class="product-quantity-input product-quantity-input--add"
+                data-type="add"
+                data-variant="{{ first_variant.title | handle}}"
+              >
+                <span data-variant="{{ first_variant.title | handle}}">+</span>
+              </button>
+            </div> 
+              <button
+                type="submit"
+                class="product-submit ff-heading"
+              >
+              <p class="product-price">{{product.price | money }}</p>
+              <p>Add to cart </p>
+              </button>
+          </div>
+          {% comment %} <div class="sticky-submit-wrapper"  data-variant="{{ first_variant.title | handle}}">
+              <div class="sticky-variant-title" data-variant="{{ first_variant.title | handle}}">
+                {{ first_variant.title }}
+              </div>
+              <button
+                type="submit"
+                class="
+                product-submit sticky-product-submit ff-heading{% if variant_quantity > 0 %}
+                  hidden
+                {% endif %}
+                "
+                {% if variant_quantity > 0 %}disabled{% endif %}>
+                <p class="product-price">{{product.price | money }}</p>
+                <p>Add to cart </p>
+              </button>
+              <div
+                class="
+                product-quantity sticky-product-quantity hidden">
+                <p class="product-quantity-text hidden">{{ variant_quantity }}</p>
+              </div>
+            </div> {% endcomment %}
+        {% endunless %}
+        {% comment %}Load original json{% endcomment %}
+        <script type="application/json">
+          {{ product.variants | json }}
+        </script>
+      </variant-selector>
+    </div>
+  </div>
+
+
+<script>
+  window.variantDescriptions = {};{% for variant in product.variants %}
+    window.variantDescriptions["{{variant.id}}"] = '{{ variant.metafields.custom.variant_description }}';{% endfor %}
+  {% comment %}
+    console.log('variantDescriptions', variantDescriptions);{% endcomment %}
+</script>
+<script>
+  window.DISCOUNT_DATA = {{ product.metafields.custom.discount_text.value | json }};{% comment %}
+    console.log('discount_data', DISCOUNT_DATA);{% endcomment %}
+  if (!DISCOUNT_DATA) {
+    console.log('no discount data');
+    document.getElementById('discount-message').style.display = 'none';
+  }
+</script>
+<script src="{{ 'home-product.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name":"Home Product",
+  "tag":"section",
+  "class":"section bg-light",
+  "settings":[
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+      
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
+     {
+        "type":"product",
+        "id":"product",
+        "label":"Main Product"
+     },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "PZAZ Four-Pack"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "4 tubes. 200 sprays. 50 hours of energy."
+    },
+     {
+        "type":"checkbox",
+        "id":"show_content",
+        "default":true,
+        "label":"Show below the fold content"
+     }
+  ],
+  "blocks":[
+     {
+        "type":"@app"
+     },
+     {
+        "type":"buy_buttons",
+        "name":"t:sections.main-product.blocks.buy_buttons.name",
+        "limit":1,
+        "settings":[
+           {
+              "type":"checkbox",
+              "id":"show_dynamic_checkout",
+              "default":true,
+              "label":"t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+              "info":"t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+           }
+        ]
+     }
+  ],
+  "presets":[
+    {
+      "name": "Home Product",
+      "settings": {
+        "show_content": true,
+        "product": "pzaz-four-pack"
+      },
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

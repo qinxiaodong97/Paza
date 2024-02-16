@@ -1,0 +1,639 @@
+/* ------------------- */
+/* custom properties   */
+/* ------------------- */
+
+:root {
+  --color-primary: 253, 255, 2;
+  --color-secondary: 235, 0, 180;
+  --color-light: 255, 255, 255;
+  --color-dark: 12, 12, 12;
+
+  --color-red: 241, 15, 59;
+  --color-green: 56, 235, 56;
+  --color-gray: 50, 50, 50;
+  --color-blue: 54, 239, 239;
+
+  --fs-tiny: 0.5rem; /*8px*/
+  --fs-xs: 0.75rem; /*12px*/
+  --fs-sm: 0.875rem; /*14px*/
+  --fs-base: 1rem; /*16px*/
+  --fs-lg: 1.125rem; /*18px*/
+  --fs-xl: 1.25rem; /*20px*/
+  --fs-2xl: 1.5rem; /*24px*/
+  --fs-3xl: 1.875rem; /*30px*/
+  --fs-4xl: 2.25rem; /*36px*/
+  --fs-5xl: 2.9rem; /*48px*/
+  --fs-6xl: 3.75rem; /*60px*/
+  --fs-7xl: clamp(2.2rem, 9vw, 4.5rem); /*72x*/
+  --fs-8xl: 6rem; /*96px*/
+  --fs-9xl: 8rem; /*128px*/
+
+  --ff-heading: 'DrukWide', sans-serif;
+  --ff-body: 'SpaceGrotesk', sans-serif;
+
+  --fw-heading-bold: 400;
+  --fw-heading-heavy: 500;
+  --fw-heading-super: 600;
+
+  --fw-body-regular: 400;
+  --fw-body-medium: 500;
+  --fw-body-semibold: 600;
+  --fw-body-bold: 700;
+
+  --container-width: 1050;
+  --header-height: 100px;
+
+  --screen-small: 480;
+  --screen-med: 768;
+  --screen-large: 1024;
+  --screen-xl: 1280;
+
+  --br-small: 6px;
+  --br-base: 10px;
+  --br-large: 15px;
+  --br-round: 100%;
+
+  --base-padding: 1.5rem;
+}
+
+@media (min-width: 400px) {
+  :root {
+    --base-padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --base-padding: 3rem;
+  }
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/*reset font weight*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+p {
+  font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* set up the body */
+body {
+  font-family: var(--ff-body);
+  min-height: 100vh;
+  line-height: 1.4;
+  overflow-x: hidden;
+  background-color: rgba(var(--color-light));
+  color: rgba(var(--color-dark));
+  overflow-x: hidden;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* -SETTING VIDEOS TO BE RESPONSIVE- */
+/* video {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+/* ------------------- */
+/* Font Faces          */
+/* ------------------- */
+
+/* DECLARED IN SNIPPET: "pzaz-fonts" */
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* fonts */
+
+.ff-heading {
+  font-family: var(--ff-heading);
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.ff-body {
+  font-family: var(--ff-body);
+}
+
+.fs-tiny {
+  font-size: var(--fs-tiny);
+}
+.fs-xs {
+  font-size: var(--fs-xs);
+}
+.fs-sm {
+  font-size: var(--fs-sm);
+}
+.fs-base {
+  font-size: var(--fs-base);
+}
+.fs-lg {
+  font-size: var(--fs-lg);
+}
+.fs-xl {
+  font-size: var(--fs-xl);
+}
+.fs-2xl {
+  font-size: var(--fs-2xl);
+}
+.fs-3xl {
+  font-size: var(--fs-3xl);
+}
+.fs-4xl {
+  font-size: var(--fs-4xl);
+}
+.fs-5xl {
+  font-size: var(--fs-5xl);
+}
+.fs-6xl {
+  font-size: var(--fs-6xl);
+}
+.fs-7xl {
+  font-size: var(--fs-7xl);
+}
+.fs-8xl {
+  font-size: var(--fs-8xl);
+}
+.fs-9xl {
+  font-size: var(--fs-9xl);
+}
+
+.fs-5xl,
+.fs-6xl,
+.fs-7xl,
+.fs-8xl,
+.fs-9xl {
+  line-height: 1.1;
+}
+
+.fw-heading-bold {
+  font-weight: var(--fw-heading-bold);
+}
+.fw-heading-heavy {
+  font-weight: var(--fw-heading-heavy);
+}
+.fw-heading-super {
+  font-weight: var(--fw-heading-super);
+}
+
+.fw-body-regular {
+  font-weight: var(--fw-body-regular);
+}
+.fw-body-medium {
+  font-weight: var(--fw-body-medium);
+}
+.fw-body-semibold {
+  font-weight: var(--fw-body-semibold);
+}
+.fw-body-bold {
+  font-weight: var(--fw-body-bold);
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* STANDARD UTILITIES */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.place-center {
+  place-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+.overflow-x {
+  overflow-x: hidden;
+}
+
+.overflow-y {
+  overflow-y: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* CUSTOM UTILITIES */
+.debug-1 {
+  outline: 2px solid coral !important;
+}
+.debug-2 {
+  outline: 2px solid lightskyblue !important;
+}
+.debug-3 {
+  outline: 2px solid lightgreen !important;
+}
+.container {
+  margin-inline: auto;
+  max-width: calc(var(--container-width, 1280) * 1px);
+}
+
+.header-spacer {
+  padding-top: calc(var(--header-height, 10rem) + 1vw) !important;
+  margin-top: 48px;
+}
+
+.button-wrapper {
+  min-height: var(--height, 10rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.desktop {
+  display: none;
+}
+
+.desktop-flex {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+.mobile-flex {
+  display: flex;
+}
+
+.desktop-end {
+  justify-content: none;
+}
+.desktop-start {
+  justify-content: none;
+}
+@media (max-width: 1280px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+@media (min-width: 768px) {
+  .desktop-start {
+    justify-content: flex-start;
+  }
+  .desktop-end {
+    justify-content: flex-end;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop-flex {
+    display: flex;
+  }
+
+  .mobile-flex {
+    display: none;
+  }
+}
+
+.padding-base {
+  padding-left: var(--base-padding, 2rem);
+  padding-right: var(--base-padding, 2rem);
+}
+
+.section-padding {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 4rem;
+}
+
+.section-header-padding {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-header-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.section {
+  position: relative;
+}
+
+.relative {
+  position: relative;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-gap, 1rem);
+}
+
+/*BACKGROUND COLOR CLASSES */
+
+.bg-primary {
+  background-color: rgba(var(--color-primary));
+}
+.bg-secondary {
+  background-color: rgba(var(--color-secondary));
+}
+.bg-light {
+  background-color: rgba(var(--color-light));
+}
+
+.bg-dark {
+  background-color: rgba(var(--color-dark));
+}
+
+/*TEXT COLOR CLASSES */
+
+.color-primary {
+  color: rgba(var(--color-primary));
+}
+.color-secondary {
+  color: rgba(var(--color-secondary));
+}
+.color-light {
+  color: rgba(var(--color-light));
+}
+.color-dark {
+  color: rgba(var(--color-dark));
+}
+
+/*FLAVOR COLOR CLASSES */
+
+.bg-red {
+  background-color: rgba(var(--color-red));
+}
+.bg-green {
+  background-color: rgba(var(--color-green));
+}
+.bg-gray {
+  background-color: rgba(var(--color-gray));
+}
+.bg-blue {
+  background-color: rgba(var(--color-blue));
+}
+.color-red {
+  color: rgba(var(--color-red));
+}
+.color-green {
+  color: rgba(var(--color-green));
+}
+.color-gray {
+  color: rgba(var(--color-gray));
+}
+.color-blue {
+  color: rgba(var(--color-blue));
+}
+
+/* ------------------- */
+/*      MISC        */
+/* ------------------- */
+
+* .embla__slide {
+  cursor: grab;
+}
+
+#background {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  transition: 0.4s;
+  color: #fff;
+}
+
+/* #background[data-color='primary'] {
+  background-color: rgba(var(--color-primary));
+} */
+#background [data-color='dark'] {
+  background-color: #0c0c0c;
+}
+
+/* @keyframes marquee {
+  0% {
+    -moz-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+} */
+.home-title {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-heading-heavy);
+  font-size: 27px;
+  /*font-size: clamp(var(--fs-xl), 7vw, var(--fs-4xl));*/
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+.mb-hidden {
+  display:none;
+}
+.dk-hidden {
+  display: block;
+}
+@media (min-width: 768px) {
+  .home-title {
+    font-size: var(--fs-3xl);
+  }
+  .mb-hidden {
+    display:block;
+  }
+  .dk-hidden {
+    display: none;
+  }
+  
+}
+@media (min-width: 1024px) {
+  .home-title {
+    font-size: var(--fs-4xl);
+  }
+}
+/* @media (min-width: 1204px) {
+  .home-title {
+    font-size: var(--fs-5xl);
+  }
+} */
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-image {
+  background-color: yellow;
+  min-height: 300px;
+  height: 40vh;
+  width: 100%;
+  min-width: 100%;
+}
+
+#MainContent {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+.bottom-text{
+  font-size: 13px;
+  margin-top: 40px;
+}

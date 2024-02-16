@@ -1,0 +1,154 @@
+{{ 'testimonials.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="testimonial color-dark embla"
+>
+  <div
+    class="embla__viewport"
+  >
+    <div
+      class="embla__container"
+    >
+      <div
+        class="embla__slide"
+      >
+        <div
+          class="embla__slide__inner"
+        >
+          <span>{% render 'icon-plus-depth' %} </span>
+          <h4
+            class="testimonial__copy"
+          >
+            "A FUN WAY TO STAY HYPED ALL NIGHT LONG."
+          </h4>
+          <div
+            class="testimonial__image"
+          >
+            <img
+              class=" testimonial__image--vice"
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/favpng_vice-media-logo-viceland.png?v=1660761444"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="embla__slide"
+      >
+        <div
+          class="embla__slide__inner"
+        >
+          <span>{% render 'icon-plus-depth' %} </span>
+          <h4
+            class="testimonial__copy"
+          >
+            "MORE ZAZ,<br>
+            MORE FUN."
+          </h4>
+          <div
+            class="testimonial__image"
+          >
+            <img
+              class=" testimonial__image--gq"
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/gq-logo.png?v=1660759898"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="embla__slide"
+      >
+        <div
+          class="embla__slide__inner"
+        >
+          <span>{% render 'icon-plus-depth' %} </span>
+          <h4
+            class="testimonial__copy "
+          >
+            "A NEW ACCESSORY TO KEEP US CAFFEINATED"
+          </h4>
+          <div
+            class="testimonial__image"
+          >
+            <img
+              class="testimonial__image--nylon"
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Nylon_magazine_logo.svg_844a30c2-7c91-4434-9d37-f6f104e9a37c.png?v=1660749645"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="embla__slide"
+      >
+        <div
+          class="embla__slide__inner"
+        >
+          <span>{% render 'icon-plus-depth' %} </span>
+          <h4
+            class="testimonial__copy"
+          >
+            "SUPREMELY PORTABLE"
+          </h4>
+          <div
+            class="testimonial__image"
+          >
+            <img
+              class=" testimonial__image--nobiety"
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Highsnobiety_Logo_text.png?v=1660761039"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="embla__slide"
+      >
+        <div
+          class="embla__slide__inner"
+        >
+          <span>{% render 'icon-plus-depth' %} </span>
+          <h4
+            class="testimonial__copy"
+          >
+            "ZERO CALORIE, NO-SUGAR ENERGY"
+          </h4>
+          <div
+            class="testimonial__image"
+          >
+            <img
+              class=" testimonial__image--dieline"
+              src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Dieline_Logo_Final.png?v=1665118512"
+              width="auto"
+              height="auto"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  src="{{ 'testimonials.js' | asset_url }}"
+  defer="defer"
+></script>
+
+{% schema %}
+{
+  "name": "testimonials",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": []
+}
+{% endschema %}

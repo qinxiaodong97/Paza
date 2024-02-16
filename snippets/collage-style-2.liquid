@@ -1,0 +1,83 @@
+{{ 'collage-style-2.css' | asset_url | stylesheet_tag }}
+
+<div class="container collage-wrapper">
+  <div class="collage">
+    <div class="bg-blue collage-cta" id="collage-item-1 collage-cta-1">
+      <h1 class="home-title collage-title">
+        Energy<br>
+        Your Way
+      </h1>
+      <p class="fw-body-bold collage-copy">
+        Pzaz powers up creatives, athletes, students, professionals, travelers, and entertainers.
+      </p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+    <div class="bg-red" id="collage-item-2">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/bf447523135b43bbac0b748fc2519e31.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="bg-dark" id="collage-item-3">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/collage-style-2_img-1-squooshed.jpg?v=1676274470"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+
+    {% comment %}
+      <div class="bg-red" id="collage-item-4">
+        <img
+          src="https://cdn.shopify.com/videos/c/o/v/e2ca209713f549c6b5c95b192562554f.mp4"
+          width="auto"
+          height="auto"
+          loading="lazy"
+        >
+      </div>
+    {% endcomment %}
+    <div class="bg-red" id="collage-item-4">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source src="https://cdn.shopify.com/videos/c/o/v/e2ca209713f549c6b5c95b192562554f.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="bg-dark" id="collage-item-5">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/bodega-mockup-with-pzaz-stickers-squooshed.jpg?v=1676274488"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-gray" id="collage-item-6">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/pzaz-wheatpaste-extra-strong-1-squooshed.jpg?v=1676274494"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+    </div>
+    <div class="bg-red  collage-cta" id="collage-item-7 collage-cta-2">
+      <h1 class="home-title collage-title">AFFORDABLE.</h1>
+      <p class="fw-body-bold collage-copy">Every spray costs less than $0.03.</p>
+      <div class="flex flex-start">
+        {% render 'cta-button' %}
+      </div>
+    </div>
+  </div>
+</div>

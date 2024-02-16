@@ -1,0 +1,114 @@
+{{ 'cards.css' | asset_url | stylesheet_tag }}
+
+<div class="cards ">
+  <div class="embla">
+    <div class="embla__viewport">
+      <div class="embla__container">
+        <div class="embla__slide">
+          <div class="embla__slide__inner bg-red">
+            <div class="card__image">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/red_2-vetical.png?v=1670004418"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="card__body">
+              <h2 class="card__title">cinnamint</h2>
+              <p class="card__copy">
+                Our rarest flavor combines sweet and spicy cinnamon bark extracts with a hint of cool peppermint.
+              </p>
+              <div class="flex justify-center align-center">
+                {% render 'cta-button', border: true, color: 'primary', size: 'small', text: 'shop now' %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="embla__slide">
+          <div class="embla__slide__inner bg-blue">
+            <div class="card__image">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/blue_2_-_vertical.png?v=1670004416"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+            <div class="card__body">
+              <h2 class="card__title">mint frost</h2>
+              <p class="card__copy">
+                Our most popular flavor utilizes extra-strength peppermint leaf extracts for an extremely cooling sensation combined with a lingering fresh and clean breath.
+              </p>
+              <div class="flex justify-center align-center">
+                {% render 'cta-button', border: true, color: 'primary', size: 'small', text: 'shop now' %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="embla__slide">
+          <div class="embla__slide__inner bg-green">
+            <div class="card__image">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/green_2-vertical.png?v=1670004411"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+            <div class="card__body">
+              <h2 class="card__title">super sour</h2>
+              <p class="card__copy">
+                A mouthpuckering blend of tart green apple with fresh lemon. Limited edition flavor.
+              </p>
+              <div class="flex justify-center align-center">
+                {% render 'cta-button', border: true, color: 'primary', size: 'small', text: 'shop now' %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="embla__slide">
+          <div class="embla__slide__inner bg-gray">
+            <div class="card__image">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/black_2_-_vertical.png?v=1670004405"
+                width="auto"
+                height="auto"
+                loading="lazy"
+              >
+            </div>
+            <div class="card__body card__body--alt">
+              <h2 class="card__title color-light">XXXTRA STRONG</h2>
+              <p class="card__copy  color-light">
+                “Tastes so good and mysterious. A little spicy? The increased caffeine definitely gives me even more
+                energy than the other flavors.”
+              </p>
+              <div class=" flex justify-center align-center">
+                {% render 'cta-button', border: true, color: 'primary', size: 'small', text: 'shop now' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card__toggles flex justify-center">
+    <span class="card__toggle" data-color="red">{% render 'icon-plus' %} </span>
+    <span class="card__toggle" data-color="blue">{% render 'icon-plus' %} </span>
+    <span class="card__toggle" data-color="green">{% render 'icon-plus' %} </span>
+    <span class="card__toggle" data-color="black">{% render 'icon-plus' %} </span>
+  </div>
+</div>
+
+<script src="{{ 'cards.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "card-section",
+  "tag": "section",
+  "class": "section bg-dark",
+  "settings": []
+}
+{% endschema %}

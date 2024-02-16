@@ -1,0 +1,215 @@
+{% style %}
+  .sustain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sustain__copy {}
+
+  .sustain__copy h2 {
+    margin-bottom: 1rem;
+  }
+
+  .sustain__copy p{
+    width:70%;
+    margin-inline: auto;
+  }
+  .sustain__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 45rem;
+    margin-inline: auto;
+  }
+
+  @media(min-width: 768px) {
+    .sustain__list {
+      flex-direction: row;
+    }
+  }
+  .sustain__list-item {
+    position: relative;
+    font-size: var(--fs-base);
+    text-align: center;
+    padding: 0.7em;
+    border: 2px solid rgba(var(--color-dark));
+    border-radius: 10px;
+    min-height: 40px;
+  }
+  .sustain__list-item svg {
+    width: 100%;
+    height: 100%;
+  }
+  .sustain__list-item span {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    bottom: -14px;
+    right: -12px;
+  }
+
+  .sustain__stats {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    border: 2px solid rgba(var(--color-dark));
+    overflow: hidden;
+  }
+
+  .sustain__stats span {
+    display: flex;
+    padding: 1rem;
+  }
+  .sustain__stats span:nth-child(odd) {
+    background-color: rgba(var(--color-primary), 1);
+  }
+
+  .sustain__stats h3 {
+    flex: 0 0 30%;
+    text-align: center;
+    font-family: var(--ff-heading);
+  }
+  .sustain__stats p {
+    flex: 0 0 70%;
+    text-align: left;
+  }
+
+  .sustain-img {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .pad-2 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .sustain .button{
+    background-color: rgba(var(--color-dark), 1);
+    color:white;
+    font-family: var(--ff-body);
+    font-style: normal;
+    text-transform:normal;
+  }
+{% endstyle %}
+
+{% assign hero_image_url = section.settings.image %}
+
+<div class="sustain full-height">
+  <div class="hero-image">
+    <img
+      src="{{"sustain-hero.jpg" | asset_url  }}"
+      class="cover"
+      width="100"
+      height="auto"
+      loading="lazy">
+  </div>
+  <div class="sustain__content container  padding-base">
+    <h1 class="sustain__headline ff-body fw-body-bold text-center">
+      Energy drinks, coffees, and sodas cause a lot of litter. Pzaz is committed to being the most sustainable way to
+      wake up.
+    </h1>
+
+    <ul class="sustain__list">
+      <li class="sustain__list-item">
+        Every bottle of Pzaz uses 90% less plastic and materials than an equivalent number of energy drinks.<span>
+          {%- render 'icon-earth' -%}
+        </span>
+      </li>
+      <li class="sustain__list-item">
+        We manufacture every bottle of Pzaz in the United States with repurposed post-consumer recycled plastic.<span>
+          {%- render 'icon-lightning' -%}
+        </span>
+      </li>
+      <li class="sustain__list-item">
+        We recover, remove, and recycle litter around the world to offset 200% of our impact on the environment.<span>
+          {%- render 'icon-star' -%}
+        </span>
+      </li>
+    </ul>
+<div class="flex justify-center pad-2">
+  {% render "cta-button"  %}
+</div>
+   
+    <div class="sustain-item">
+      <h2 class="uppercase ff-heading fw-heading-heavy">the problem</h2>
+      <div class="sustain__stats">
+        <span>
+          <h3>362 BIL</h3>
+          <p>kilos of plastic are produced anually.</p>
+        </span>
+        <span>
+          <h3>91%</h3>
+          <p>of plastic waste is dumped into the environment.</p>
+        </span>
+        <span>
+          <h3>90%</h3>
+          <p>of waste is openly dumped or burned in low-income countries.</p>
+        </span>
+        <span>
+          <h3>80%</h3>
+          <p>of plastic leakage could be solved with a more circular economy and proper recycling.</p>
+        </span>
+      </div>
+    </div>
+
+    <div class="sustain-item">
+      <h2 class="uppercase ff-heading fw-heading-heavy">our solution</h2>
+      <div class="sustain-img pad-2">
+        <img
+          src="{{ "sustain-img-1.jpg"| asset_url}}"
+          class="cover"
+          width="100"
+          height="auto"
+          loading="lazy">
+      </div>
+    </div>
+    <div class="sustain-item sustain__copy">
+      <h2 class="uppercase ff-heading fw-heading-heavy">anti-litter.</h2>
+      <p>Pzaz is more sustainable than any other energy product. But some people will inevitably throw it in the trash, or worse, litter it. 
+        We can’t greenwash this fact, but to fight it, we partner with RePurpose Global to ensure that for every tube of Pzaz sold, two tubes worth of plastic litter are removed from the earth. This partnership makes Pzaz a Plastic Negative™ Certified product, whereby each unit sold causes a net reduction in plastic litter around the world.
+
+      </p>
+      <div class="sustain-img pad-2">
+        <img
+          src="{{ "sustain-img-2.jpg"| asset_url}}"
+          class="cover"
+          width="100"
+          height="auto"
+          loading="lazy">
+      </div>
+      <p>Our partner RePurpose Global constantly verifies that our material impact on the earth has been truly 200% offset. Specifically, they verify that every purchase has subsidized the cost for waste workers around the world to ethically reclaim and dispose of low-value plastic waste — litter that would otherwise be landfilled, burned, or flushed into waterways and oceans.</p>
+
+
+    <div class="sustain-img pad-2">
+      <img
+        src="{{ "sustain-img-3.jpg"| asset_url}}"
+        class="cover"
+        width="100"
+        height="auto"
+        loading="lazy">
+    </div>
+    <h2 class="uppercase ff-heading fw-heading-heavy">our impact:</h2>
+    <p>So far, our community has helped us remove the equivalent of more than 44,000 littered energy drink bottles or more than 81,000 littered candy bar wrappers.</p>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": " sustainability-section",
+    "tag": "section",
+    "class": "section bg-light",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

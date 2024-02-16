@@ -1,0 +1,276 @@
+/*WHEEL STYLE UPDATES*/
+#3d-ring:nth-child(1) {
+  display: none;
+}
+#inner-shadow {
+  display: none;
+}
+#\33 d-ring path:nth-child(1) {
+  display: none;
+}
+
+#\33 d-ring path:nth-child(2) {
+  display: none;
+  stroke: red;
+}
+
+/*Main Ring*/
+#\33 d-ring path:nth-child(3) {
+  fill: url(#my-cool-gradient) #447799;
+  fill: white;
+  stroke: black;
+  stroke-width: 2;
+  display: block;
+  box-shadow: 4px 4px black;
+  position: relative;
+}
+
+/*HIDE INNER LOGO SHADOW*/
+#wheelio2-app-cointainer
+  > div
+  > div.wlo-holder.wlo-too-bright.wlo-active
+  > div.wlo-panel.wlo-animation-helper
+  > div.wlo-wheel-holder
+  > div
+  > svg:nth-child(6) {
+  display: none;
+}
+#wheelio2-app-cointainer
+  > div
+  > div.wlo-holder.wlo-too-bright.wlo-active
+  > div.wlo-panel.wlo-animation-helper
+  > div.wlo-wheel-holder
+  > div
+  > svg:nth-child(7) {
+  display: none;
+}
+
+/* BIG WHEEL SHADOW */
+#wlo-wheel-shadow {
+  display: none;
+}
+#wheel-drop-shadow {
+  display: none;
+}
+/* SLICE STYLING */
+#Group {
+}
+/* POINTER STYLING */
+/*inner circle*/
+#wlo-pointer > g > g > g:nth-child(4) path {
+  /* display: none; */
+  fill: white;
+}
+/*upper edge*/
+#wlo-pointer > g > g > g:nth-child(3) > path {
+  display: none;
+}
+/*shodow*/
+#wlo-pointer > g > g > g:nth-child(1) > path {
+  display: none;
+}
+/* PIN STYLING */
+/*wheel pins */
+#zatici {
+  display: none;
+}
+/*outer nubs */
+#rogovile-copy {
+  fill: white;
+  stroke: white;
+  stroke-width: 2px;
+}
+
+/* SUBMIT BUTTON STYLING */
+#wlo-submit-btn > span {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 12px;
+}
+#wlo-submit-btn {
+  color: #fdff02;
+}
+#wlo-submit-btn:hover {
+  background-color: #fdff02 !important;
+  color: black !important;
+}
+
+/* TOP LOGO (replaces text) */
+#title > p > strong > em {
+  background: url("https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Pzaz_BreathSpray_Logo-25.png?v=1661445004")
+    0 0 no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: block;
+  height: 64px; /* your image height */
+  text-indent: -99999em;
+  width: auto; /* your image width */
+  overflow: hidden;
+}
+
+.wlo-content .form__label {
+  margin-left: 1rem !important;
+}
+
+.wlo-content #wlo-continue-btn,
+.wlo-content #wlo-submit-btn {
+  background-image: none !important;
+  box-shadow: none !important;
+  background: black !important;
+  color: #fdff02 !important;
+}
+
+.wlo-content #wlo-submit-btn:hover {
+  background: #fdff02 !important;
+  color: black !important;
+  /* transform: rotate(5deg) !important; */
+  border: solid;
+}
+
+.wlo-wheel .slices .wlo-label {
+  font-weight: var(--fw-body-bold) !important;
+  font-size: 1rem !important;
+}
+
+.wlo-holder {
+  font-family: var(--font-body) Arial, Helvetica, sans-serif !important;
+}
+
+.wlo-panel .wlo-content #title p strong {
+  font-family: "DrukWide", Arial, Helvetica, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  font-size: 31px !important;
+}
+.wlo-panel div#title p {
+  /* font-family: "DrukWide" !important; */
+  letter-spacing: 0 !important;
+}
+.wlo-panel .wlo-content #subtitle p {
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif !important;
+}
+.wlo-panel div#wlo-submit-btn {
+  border-radius: 12px !important;
+}
+/* .wlo-panel .wlo-form__group.field.wlo-pulse label.form__label,
+    .wlo-form__group.field label.form__label {
+    font-family: "Space Grotesk";
+    font-weight: bold;
+    font-size: 18px;
+    }
+    .wlo-panel div#wlo-submit-btn {
+    font-family: "Space Grotesk";
+    font-size: 25px !important;
+    font-weight: bold !important;
+    } */
+.wlo-content .wlo-form__group {
+  border-radius: 12px !important;
+  border: 2px solid #000 !important;
+}
+.wlo-content-holder #title {
+  font-size: 2.5rem !important;
+  margin-bottom: 0 !important;
+}
+.wlo-content-holder div#subtitle p {
+  font-size: 18px !important;
+}
+.wlo-content .wlo-form__field:placeholder-shown ~ .form__label {
+  top: 16px !important;
+  font-size: 21px !important;
+}
+.wlo-content .wlo-form__field:focus ~ .form__label {
+  font-size: 10px !important;
+  opacity: 1;
+  top: 5px !important;
+}
+div#wlo-submit-btn span {
+  font-size: 30px;
+}
+.wlo-content #wlo-close {
+  font-size: 15px !important;
+  opacity: 1 !important;
+}
+.wlo-content .phoneNumber .icon {
+  background-image: url("") !important;
+  display: none !important;
+}
+.wlo-content .email .icon {
+  background-image: url("") !important;
+  display: none !important;
+}
+.trigger-button-holder {
+  top: unset !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  transition: 0 all !important;
+  animation: none !important;
+  z-index: 0 !important;
+}
+
+.wlo-too-bright {
+  transition: 0ms !important;
+}
+
+.wlo-wheel .wlo-small-logo {
+  border: 2px solid #000 !important;
+  height: 110px !important;
+  width: 110px !important;
+}
+
+@media only screen and (max-width: 770px) {
+  .wlo-content-holder #title {
+    font-size: 42px !important;
+  }
+  .wlo-content-holder div#subtitle p {
+    font-size: 17px !important;
+  }
+}
+@media only screen and (max-width: 718px) {
+  .wlo-content-holder #title {
+    font-size: 38px !important;
+  }
+  .wlo-content-holder div#subtitle p {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .trigger-button-holder {
+    top: 50vh !important;
+    bottom: auto !important;
+    left: 3% !important;
+    display: none;
+  }
+}
+
+div#wlo-trigger-button {
+  background: transparent !important;
+  box-shadow: unset !important;
+  transition: 0s !important;
+}
+div#wlo-trigger-image {
+  fill: white !important;
+  background-image: url("https://cdn.shopify.com/s/files/1/0532/8234/1052/files/Group_954.png?v=1689967469") !important;
+  background-size: 72 !important;
+}
+div#wlo-notification {
+  background-color: transparent !important;
+  color: transparent !important;
+  border-color: transparent !important;
+}
+#wlo-trigger-button {
+  animation: none !important;
+}
+#wlo-trigger-button::before {
+  background-image: none !important;
+}
+#wlo-trigger-button #wlo-trigger-image {
+  background-position: left bottom !important;
+  height: 80px !important;
+  width: 240px !important;
+  transform: translateY(-1rem);
+}
+#Artboard-Copy {
+  stroke: black;
+  stroke-width: 2px;
+}

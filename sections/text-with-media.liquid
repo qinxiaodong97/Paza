@@ -1,0 +1,58 @@
+{{ 'science.css' | asset_url | stylesheet_tag }}
+<div class="home-control container section-padding">
+    <div class="product-banner-split">
+        <div class="product-banner image-banner">
+            <h2 class="home-title">{{section.settings.title}}</h2>
+            <p class="fw-body-medium fs-xl">{{section.settings.content}} </p>
+        </div>
+        <div class="product-banner">
+        {% if section.settings.image != blank %}
+
+         <img class=""
+            src="{{section.settings.image | img_url:'master'}}"
+            loading="lazy"
+            >
+        {% else %}
+        <video class="btf-3" autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="https://cdn.shopify.com/s/files/1/0532/8234/1052/files/basketball-poster-image.jpg?v=1679939405">
+            <source data-src="https://cdn.shopify.com/videos/c/o/v/4acb50b061c64cad99facb0f28f10fac.mp4" type="video/mp4" src="https://cdn.shopify.com/videos/c/o/v/4acb50b061c64cad99facb0f28f10fac.mp4">
+        </video>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Text With Media",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title",
+      "default": "Control your energy."
+    },
+    {
+      "type": "textarea",
+      "label": "Content",
+      "id": "content"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Text With Media"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

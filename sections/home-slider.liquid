@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+{{ 'home-slider.css' | asset_url | stylesheet_tag }}
+<div class="home-slider">
+    <div class="swiper homeSwiper ">
+        <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+            {% if block.type =='video' %}
+            <div class="swiper-slide home-slider">
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+            </div>
+            {% else %}
+            <div class="swiper-slide home-slider">
+                <img src="{{block.settings.image |  img_url: 'master'}}" loading="lazy">
+            </div>
+            {% endif%}
+        {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="home-slider-overlay">
+      <div class="container ">
+        <div class="overlay-content">
+          {% if section.settings.image != blank %}
+            <div class="overlay-image">
+              <img class="overlay-img" src="{{section.settings.image |  img_url: 'master'}}" loading="lazy">
+            </div>
+            
+          {% endif %}
+          {% if section.settings.button_label != blank %}
+            <a href="{{section.settings.button_link}}" class="overlay-btn">
+              {{section.settings.button_label}}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</div>
+<script>
+    var homeswiper = new Swiper(".homeSwiper", {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      
+    });
+  </script>
+{% schema %}
+{
+  "name": "Home Slider",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
+    },
+    {
+      "type": "text",
+      "label": "Button Label",
+      "id": "button_label"
+    },
+    {
+      "type": "url",
+      "label": "Button Link",
+      "id": "button_link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "label": "Video",
+          "id": "video"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Slider"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

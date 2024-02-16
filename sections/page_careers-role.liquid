@@ -1,0 +1,182 @@
+{% style %}
+  .careers {
+    padding: 8rem 2rem;
+  }
+  .careers__item {
+    display: flex;
+    margin-bottom: 3rem;
+  }
+
+  .careers li {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .careers__wrapper {
+      padding-left: 0;
+      margin-right: 2rem;
+    }
+  }
+
+  .careers__item .careers__wrapper:first-child {
+    flex: 0 0 40%;
+  }
+
+  .careers__title {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-xl);
+    font-style: italic;
+    font-weight: var(--fw-heading-heavy);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .careers__subtitle {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-body-bold);
+    margin-bottom: 2rem;
+  }
+
+  .careers__headline {
+    font-size: var(--fs-base);
+    font-weight: var(--fw-body-semibold);
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .careers__location {
+    font-size: var(--fs-base);
+    font-family: var(--ff-body);
+    font-weight: var(--fw-body-medium);
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+  }
+
+  .careers__apply {
+    font-size: var(--fs-base);
+    font-family: var(--ff-body);
+    font-weight: var(--fw-body-medium);
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .careers__item {
+      flex-direction: column;
+    }
+    .careers__item .careers__wrapper:first-child {
+      flex: 0 0 100%;
+    }
+  }
+{% endstyle %}
+
+<div class="careers container full-height">
+  <div class="careers__item" id="job">
+    <div class="careers__wrapper">
+      <h1 class="careers__title">
+        {{ page.metafields.custom.job_title.value }}
+        <span class="careers__location">{{ page.metafields.custom.job_location.value }}</span>
+      </h1>
+    </div>
+    <div class="careers__wrapper careers__copy">
+      <p class="careers__headline">{{ page.metafields.custom.job_headline.value }}</p>
+      {{ section.settings.about }}
+    </div>
+  </div>
+  <div class="careers__item" id="responsibilities">
+    <div class="careers__wrapper">
+      <h3 class="careers__subtitle">Responsibilities</h3>
+    </div>
+    <div class="careers__wrapper careers__copy">
+      {% assign responsibilities = page.metafields.custom.job_responsibilities.value %}
+      <ul>
+        {% for item in responsibilities %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="careers__item" id="responsibilities">
+    <div class="careers__wrapper">
+      <h3 class="careers__subtitle">Best qualifications</h3>
+    </div>
+    <div class="careers__wrapper careers__copy">
+      {% assign responsibilities = page.metafields.custom.job_responsibilities.value %}
+      <ul>
+        {% for item in responsibilities %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="careers__item" id="responsibilities">
+    <div class="careers__wrapper">
+      <h3 class="careers__subtitle">How to apply</h3>
+    </div>
+    <div class="careers__wrapper careers__copy">
+      <span class="careers__apply">
+        {{ section.settings.apply }}
+      </span>
+    </div>
+  </div>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "careers-section",
+  "tag": "section",
+  "class": "section bg-light",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Job title",
+      "default": "Work at Pzaz"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Job Location",
+      "default": "New York, NY"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Job headline",
+      "default": "job headline"
+    },
+    {
+      "type": "richtext",
+      "id": "about",
+      "label": "General job description"
+    },
+    {
+      "type": "richtext",
+      "id": "responsibilities",
+      "label": "responsibilities (bullet points)"
+    },
+    {
+      "type": "richtext",
+      "id": "qualifications",
+      "label": "Qualifications (bullet points)"
+    },
+    {
+      "type": "text",
+      "id": "apply",
+      "label": "How to apply (has default)",
+      "default": "Email careers@pzaz.com with a relevant CV and interest."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,165 @@
+.diagram {
+  /* overflow: hidden; */
+  position: relative;
+  width: 100%;
+  /* padding-bottom: min(100vh, 100%); */
+  /* max-width: 40rem; */
+  border-radius: var(--br-large);
+  color: rgba(var(--color-primary));
+}
+
+#diagram-canvas {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  fill: rgba(var(--color-primary));
+  opacity: 1;
+}
+
+.diagram__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  /* 
+  background: -webkit-linear-gradient(
+    left,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 80%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(12, 12, 12, 1) 50%,
+    rgba(12, 12, 12, 0) 40%,
+    rgba(12, 12, 12, 0) 40%,
+    rgba(12, 12, 12, 1) 100%
+  ); */
+
+  /* background-image: url('/assets/spray-square.png');
+  background-size: cover;
+  background-position: center; */
+}
+
+.diagram__image {
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.diagram__item {
+  position: absolute;
+  cursor: hover;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5em;
+  border-radius: var(--br-large);
+  filter: blur;
+  backdrop-filter: blur(10px);
+}
+
+.diagram__item svg {
+  overflow: visible;
+}
+.diagram__text {
+  white-space: nowrap;
+  position: relative;
+  height: auto;
+  text-align: left;
+  fill: rgba(var(--color-primary));
+  font-size: max(var(--fs-tiny), 2vw);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.diagram__info {
+  width: 12em;
+}
+
+@media (min-width: 768px) {
+  .diagram__text {
+    font-size: var(--fs-lg);
+  }
+}
+
+[data-item='zinc'] {
+  left: 12%;
+  bottom: 30%;
+}
+[data-item='caffeine'] {
+  left: 5%;
+  top: 35%;
+}
+[data-item='vit-c'] {
+  bottom: 15%;
+  right: 45%;
+}
+[data-item='vit-b'] {
+  bottom: 30%;
+  right: 10%;
+}
+[data-item='calories'] {
+  top: 20%;
+  left: 33%;
+}
+[data-item='electrolytes'] {
+  top: 30%;
+  right: 5%;
+}
+
+.diagram__border {
+  stroke-width: 2px;
+  stroke: rgba(var(--color-primary));
+  /* fill: black; */
+  fill: rgba(var(--color-dark), 0.75);
+}
+
+.diagram__border.active {
+  animation: dash 0.8s ease-in;
+}
+
+@keyframes dash {
+  from {
+    stroke-dasharray: 30;
+    /* stroke-dashoffset: 150; */
+    opacity: 0;
+  }
+  to {
+    stroke-dasharray: 500;
+    /* stroke-dashoffset: 0; */
+    opacity: 1;
+  }
+}
+
+.diagram__card {
+  /* display: none; */
+  position: absolute;
+  bottom: -5rem;
+  /* top: 2rem; */
+  right: -20px;
+  width: 13rem;
+  padding: 1em;
+  font-size: var(--fs-sm);
+  min-width: none;
+  height: 10rem;
+  background-color: rgba(var(--color-dark), 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  opacity: 1;
+  text-align: center;
+  color: rgba(var(--color-light));
+}
+/* .diagram__card.active {
+  transition: 0.3s;
+  display: block;
+  opacity: 1;
+} */
